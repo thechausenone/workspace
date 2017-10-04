@@ -2,7 +2,7 @@ import 'zone.js/dist/zone-mix';
 import 'reflect-metadata';
 import 'polyfills';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -24,6 +24,7 @@ import { ElectronService } from './providers/electron.service';
     HttpModule,
     AppRoutingModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [ElectronService],
   bootstrap: [AppComponent]
 })
