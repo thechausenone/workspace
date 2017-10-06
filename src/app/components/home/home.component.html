@@ -1,5 +1,23 @@
-<div class="container">
-  <h1 class="title">
-    {{title}}
-  </h1>
-</div>
+<x-tabs class="taskbar-container">
+    <x-tab selected>
+      <x-box vertical>
+        <x-icon name="mail"></x-icon>
+        <x-label>Task one</x-label>
+      </x-box>
+    </x-tab>
+  
+    <x-tab>
+      <x-box vertical>
+        <x-icon name="send"></x-icon>
+        <x-label>Task two</x-label>
+      </x-box>
+    </x-tab>
+  
+    <x-tab>
+      <x-box vertical>
+        <x-icon name="unarchive"></x-icon>
+        <x-label>Task three</x-label>
+      </x-box>
+    </x-tab>
+  </x-tabs>
+  

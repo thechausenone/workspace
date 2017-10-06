@@ -1,17 +1,20 @@
-.container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.taskbar-container{
+  height:100%;
+  max-width:144px;
+  width:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  padding:0;
+}
 
-  background: url(../../../assets/background.jpg) no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
-
-  .title {
-    color: white;
-    margin:0;
-    padding:50px 20px;
+.taskbar-container{
+  x-tab{
+    padding:0;
+    height:auto;
   }
 
+  x-box{
+    padding:25px 0 25px 0;
+  }
 }
