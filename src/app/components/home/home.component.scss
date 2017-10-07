@@ -1,17 +1,23 @@
-.container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/*extensions*/
+.flexboxColumn{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
-  background: url(../../../assets/background.jpg) no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
+/*main*/
+.taskbar-container{
+  @extend .flexboxColumn;
+  height:100%;
+  width:auto;
+  max-width:25%;
+  padding:0;
+  float:left;//parent div width = child div's width
 
-  .title {
-    color: white;
-    margin:0;
-    padding:50px 20px;
+  x-tab{
+    height:auto;
+    padding:20px;
+    justify-content: left;
+    border-bottom:0.5px solid white;
   }
-
 }
