@@ -1,20 +1,23 @@
-.taskbar-container{
-  height:100%;
-  max-width:144px;
-  width:auto;
+/*extensions*/
+.flexboxColumn{
   display:flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: flex-start;
-  padding:0;
 }
 
+/*main*/
 .taskbar-container{
-  x-tab{
-    padding:0;
-    height:auto;
-  }
+  @extend .flexboxColumn;
+  height:100%;
+  width:auto;
+  max-width:25%;
+  padding:0;
+  float:left;//parent div width = child div's width
 
-  x-box{
-    padding:25px 0 25px 0;
+  x-tab{
+    height:auto;
+    padding:20px;
+    justify-content: left;
+    border-bottom:0.5px solid white;
   }
 }

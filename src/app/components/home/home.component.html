@@ -1,22 +1,19 @@
 <x-tabs class="taskbar-container">
-    <x-tab selected>
-      <x-box vertical>
-        <x-icon name="mail"></x-icon>
-        <x-label>Task one</x-label>
+    <x-tab selected (click) = "expandTaskBar()">
+      <x-box>
+        <x-icon name="menu" id = "menu-icon"></x-icon>
       </x-box>
     </x-tab>
-  
     <x-tab>
-      <x-box vertical>
+      <x-box>
         <x-icon name="send"></x-icon>
-        <x-label>Task two</x-label>
+        <x-label *ngIf = "showHide">Task one</x-label>
       </x-box>
     </x-tab>
-  
     <x-tab>
-      <x-box vertical>
+      <x-box>
         <x-icon name="unarchive"></x-icon>
-        <x-label>Task three</x-label>
+        <x-label *ngIf = "showHide">Task Two</x-label>
       </x-box>
     </x-tab>
   </x-tabs>
