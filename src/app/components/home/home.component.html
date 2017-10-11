@@ -21,7 +21,16 @@
 
   <gridster [options]="options" class="grid-container">
       <gridster-item [item]="item" *ngFor="let item of dashboard">
-    </gridster-item>
+          <div class="gridster-item-content">
+              UnDragable text
+          </div>
+          <div class="item-buttons">
+            <button md-icon-button md-raised-button class="remove-button btn btn-primary" (click)="removeItem($event, item)"
+                    (touchstart)="removeItem($event, item)" mdTooltip="Remove">
+              <md-icon>x</md-icon>
+            </button>
+          </div>
+      </gridster-item>
   </gridster>
   
 </div>
