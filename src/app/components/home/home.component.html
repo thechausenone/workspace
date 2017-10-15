@@ -8,16 +8,17 @@
     <x-tab>
       <x-box>
         <x-icon name="send"></x-icon>
-        <x-label *ngIf = "showHide">Task one</x-label>
+        <x-label *ngIf = "showHide">Board 1</x-label>
       </x-box>
     </x-tab>
     <x-tab>
       <x-box>
         <x-icon name="unarchive"></x-icon>
-        <x-label *ngIf = "showHide">Task Two</x-label>
+        <x-label *ngIf = "showHide">Board 2</x-label>
       </x-box>
     </x-tab>
   </x-tabs>
+
 
   <gridster [options]="options" class="grid-container">
       <gridster-item [item]="item" *ngFor="let item of dashboard">
@@ -25,10 +26,16 @@
               UnDragable text
           </div>
           <div class="item-buttons">
-            <button md-icon-button md-raised-button class="remove-button btn btn-primary" (click)="removeItem($event, item)"
-                    (touchstart)="removeItem($event, item)" mdTooltip="Remove">
-              <md-icon>x</md-icon>
-            </button>
+      
+
+            <x-button md-icon-button md-raised-button class="remove-button"(click)="removeItem($event, item)"
+            (touchstart)="removeItem($event, item)" mdTooltip="Remove">
+              <x-box>
+                <x-icon name="delete"></x-icon>
+                <x-label>Button</x-label>
+              </x-box>
+            </x-button>
+
           </div>
       </gridster-item>
   </gridster>
