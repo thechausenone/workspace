@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {NgIf} from '@angular/common';
 import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
 
 @Component({
@@ -8,8 +7,6 @@ import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  title = `App works !`;
-  showHide = false;
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
 
@@ -105,11 +102,6 @@ export class HomeComponent implements OnInit {
       {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: false, resizeEnabled: false, label: 'Drag&Resize Disabled'},
       {cols: 1, rows: 1, y: 2, x: 6, initCallback: HomeComponent.itemInit}
     ];
-  }
-
-  expandTaskBar(){
-    this.showHide = !this.showHide;
-    
   }
 
   static eventStop(item, itemComponent, event) {

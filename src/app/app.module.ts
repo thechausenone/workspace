@@ -14,11 +14,13 @@ import { GridsterModule } from 'angular-gridster2';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ElectronService } from './providers/electron.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,32 +1,11 @@
 <div id="wrapper">
-<x-tabs class="taskbar-container">
-    <x-tab selected (click) = "expandTaskBar()">
-      <x-box>
-        <x-icon name="menu" id = "menu-icon"></x-icon>
-      </x-box>
-    </x-tab>
-    <x-tab>
-      <x-box>
-        <x-icon name="send"></x-icon>
-        <x-label *ngIf = "showHide">Board 1</x-label>
-      </x-box>
-    </x-tab>
-    <x-tab>
-      <x-box>
-        <x-icon name="unarchive"></x-icon>
-        <x-label *ngIf = "showHide">Board 2</x-label>
-      </x-box>
-    </x-tab>
-  </x-tabs>
-
-
+  <app-navbar></app-navbar> 
   <gridster [options]="options" class="grid-container">
       <gridster-item [item]="item" *ngFor="let item of dashboard">
           <div class="gridster-item-content">
               UnDragable text
           </div>
           <div class="item-buttons">
-      
 
             <x-button md-icon-button md-raised-button class="remove-button"(click)="removeItem($event, item)"
             (touchstart)="removeItem($event, item)" mdTooltip="Remove">
