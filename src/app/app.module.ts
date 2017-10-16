@@ -8,6 +8,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { GridsterModule } from 'angular-gridster2';
+
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -22,7 +24,8 @@ import { ElectronService } from './providers/electron.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    GridsterModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [ElectronService],
