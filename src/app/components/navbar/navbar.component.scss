@@ -13,6 +13,7 @@
     max-width:25%;
     padding:0;
     float:left;//parent div width = child div's width
+    
     x-tab{
       height:auto;
       padding:20px;
@@ -20,8 +21,5 @@
       border-bottom:0.5px solid white;
     }
   }
-  
-  .grid-container {
-    width: auto;
-  }
+
   

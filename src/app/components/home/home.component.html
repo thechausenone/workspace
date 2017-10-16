@@ -1,12 +1,11 @@
 <div id="wrapper">
-  <app-navbar></app-navbar> 
+  <app-navbar></app-navbar>
   <gridster [options]="options" class="grid-container">
       <gridster-item [item]="item" *ngFor="let item of dashboard">
           <div class="gridster-item-content">
               UnDragable text
           </div>
           <div class="item-buttons">
-
             <x-button md-icon-button md-raised-button class="remove-button"(click)="removeItem($event, item)"
             (touchstart)="removeItem($event, item)" mdTooltip="Remove">
               <x-box>
@@ -14,9 +13,7 @@
                 <x-label>Button</x-label>
               </x-box>
             </x-button>
-
           </div>
       </gridster-item>
   </gridster>
-  
 </div>
