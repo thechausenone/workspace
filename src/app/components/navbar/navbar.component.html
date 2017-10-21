@@ -4,16 +4,18 @@
       <x-icon name="menu" id = "menu-icon"></x-icon>
     </x-box>
   </x-tab>
-  <x-tab>
+
+  <x-tab *ngFor = "let board of boards">
     <x-box>
-      <x-icon name="send"></x-icon>
-      <x-label *ngIf = "showHide">Board 1</x-label>
+      <x-icon name= "web"></x-icon><!--cannot dynamically change icon...-->
+      <x-label *ngIf = "showHide">{{board.title}}</x-label>
     </x-box>
   </x-tab>
-  <x-tab>
+
+  <x-tab (click) = "addNewBoard()">
     <x-box>
-      <x-icon name="unarchive"></x-icon>
-      <x-label *ngIf = "showHide">Board 2</x-label>
+      <x-icon name="add-box"></x-icon>
+      <x-label *ngIf = "showHide"></x-label>
     </x-box>
   </x-tab>
 </x-tabs>
