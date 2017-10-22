@@ -1,0 +1,25 @@
+/*extensions*/
+.flexboxColumn{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  /*main*/
+  .taskbar-container{
+    @extend .flexboxColumn;
+    height:100%;
+    width:auto;
+    max-width:25%;
+    padding:0;
+    float:left;//parent div width = child div's width
+    
+    x-tab{
+      height:auto;
+      padding:20px;
+      justify-content: left;
+      border-bottom:0.5px solid white;
+    }
+  }
+
+  

@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {NgIf} from '@angular/common';
 import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-grid',
+  templateUrl: './grid.component.html',
+  styleUrls: ['./grid.component.scss']
 })
-export class HomeComponent implements OnInit {
-  title = `App works !`;
-  showHide = false;
+export class GridComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
 
@@ -19,10 +16,10 @@ export class HomeComponent implements OnInit {
     this.options = {
       gridType: 'fit',
       compactType: 'none',
-      itemChangeCallback: HomeComponent.itemChange,
-      itemResizeCallback: HomeComponent.itemResize,
-      itemInitCallback: HomeComponent.itemInit,
-      itemRemovedCallback: HomeComponent.itemRemoved,
+      itemChangeCallback: GridComponent.itemChange,
+      itemResizeCallback: GridComponent.itemResize,
+      itemInitCallback: GridComponent.itemInit,
+      itemRemovedCallback: GridComponent.itemRemoved,
       margin: 5,
       outerMargin: true,
       mobileBreakpoint: 640,
@@ -60,12 +57,12 @@ export class HomeComponent implements OnInit {
         ignoreContentClass: 'gridster-item-content',
         ignoreContent: false,
         dragHandleClass: 'drag-handler',
-        stop: HomeComponent.eventStop
+        stop: GridComponent.eventStop
       },
       resizable: {
         delayStart: 0,
         enabled: true,
-        stop: HomeComponent.eventStop,
+        stop: GridComponent.eventStop,
         handles: {
           s: true,
           e: true,
@@ -78,9 +75,9 @@ export class HomeComponent implements OnInit {
         }
       },
       api: {
-        resize: HomeComponent.eventStop,
-        optionsChanged: HomeComponent.eventStop,
-        getNextPossiblePosition: HomeComponent.eventStop,
+        resize: GridComponent.eventStop,
+        optionsChanged: GridComponent.eventStop,
+        getNextPossiblePosition: GridComponent.eventStop,
       },
       swap: false,
       pushItems: true,
@@ -103,13 +100,8 @@ export class HomeComponent implements OnInit {
       {cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2'},
       {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled'},
       {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: false, resizeEnabled: false, label: 'Drag&Resize Disabled'},
-      {cols: 1, rows: 1, y: 2, x: 6, initCallback: HomeComponent.itemInit}
+      {cols: 1, rows: 1, y: 2, x: 6, initCallback: GridComponent.itemInit}
     ];
-  }
-
-  expandTaskBar(){
-    this.showHide = !this.showHide;
-    
   }
 
   static eventStop(item, itemComponent, event) {
@@ -153,5 +145,5 @@ export class HomeComponent implements OnInit {
     this.dashboard.push({});
   }
   
-}
 
+}
