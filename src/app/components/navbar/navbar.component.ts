@@ -21,7 +21,7 @@ export class NavbarComponent {
   }
 
   addNewBoard(){
-    this.boards.push(new Board());
+    this.boards.push(new Board("Board #" + this.boards.length, "web"));
     console.log(this.boards);
   }
 }
