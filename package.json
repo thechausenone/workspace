@@ -2,10 +2,10 @@
   "name": "angular-electron",
   "version": "1.9.0",
   "description": "Angular 4 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "homepage": "https://github.com/weihanli101/workspace",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "David Chau, Weihan, Jiwan Kang",
+    "email": "weihanli101@gmail.com"
   },
   "keywords": [
     "angular",
