@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
+import {DataService} from '../../providers/data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,7 @@ export class NavbarComponent {
   showHide = false;
   boards: Array<Board>;
 
-  constructor() {
+  constructor(private _dataService: DataService) {
     this.boards = new Array<Board>();
    }
 
@@ -21,7 +22,11 @@ export class NavbarComponent {
   }
 
   addNewBoard(){
-    this.boards.push(new Board("Board #" + this.boards.length, "web"));
-    console.log(this.boards);
+    this._dataService.getBoards()
+                     .subscribe(
+                        boards => {this.boards = boards, console.log(this.boards)},
+                        error => console.log("Boards were unsuccessfully retrieved from the DataService")
+                     );
+   
   }
 }
