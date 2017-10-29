@@ -7,12 +7,12 @@
   
   <x-tab *ngFor = "let board of boards">
     <x-box>
-      <x-icon name= "web"></x-icon><!--cannot dynamically change icon...-->
+      <x-icon [name]= "board.icon"></x-icon>
       <x-label *ngIf = "showHide">{{board.title}}</x-label>
     </x-box>
   </x-tab>
 
-  <x-tab (click) = "addNewBoard()">
+  <x-tab (click) = "addBoard()">
     <x-box>
       <x-icon name="add-box"></x-icon>
       <x-label *ngIf = "showHide"></x-label>

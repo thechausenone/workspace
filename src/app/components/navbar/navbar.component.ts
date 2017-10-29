@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
+import {DataService} from '../../providers/data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,19 +10,43 @@ import {Board} from './objects/board.object'
 })
 
 export class NavbarComponent {
-  showHide = false;
-  boards: Array<Board>;
+   showHide = false;
+   boards: Array<Board>;
 
-  constructor() {
-    this.boards = new Array<Board>();
-   }
+  constructor(private _dataService: DataService) {
+    console.log("constructor for navbar called");
+    this.getBoards();
+  }
 
   expandTaskBar(){
     this.showHide = !this.showHide;
   }
 
-  addNewBoard(){
-    this.boards.push(new Board());
-    console.log(this.boards);
+  private getBoards(){
+    this._dataService.getBoards()
+                      .subscribe(
+                          boards => {
+                              this.boards = boards,
+                              console.log(this.boards)
+                          }
+                      );
+  }
+
+  addBoard(){
+    //replace these with dynamic title/icon
+    var title = "test123";
+    var icon = "web";
+    this._dataService.addBoard(title, icon);
+    this._dataService.getBoards();
+  }
+
+  //note: we will want a dynamic title passed into only one delete call here, followed by a call to getBoards
+  deleteBoard(){
+    //will successfully delete (demo)
+    this._dataService.deleteBoard("the first board");
+    
+    //will send an error as there is no board by the name "rando" (demo)
+    this._dataService.deleteBoard("rando"); 
+    this._dataService.getBoards();
   }
 }

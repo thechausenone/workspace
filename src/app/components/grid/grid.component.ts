@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
+import { GridsterConfig }  from 'angular-gridster2';
+import {Window} from './objects/window.object';
 
 @Component({
   selector: 'app-grid',
@@ -8,11 +9,17 @@ import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
 })
 export class GridComponent implements OnInit {
   options: GridsterConfig;
-  dashboard: Array<GridsterItem>;
+  windows:Array<Window>;
 
   constructor() { }
 
   ngOnInit() {
+    //need to inject service here and subscribe to changes 
+    this.windows = [
+      new Window("Unique Window"),
+      new Window()
+    ];
+
     this.options = {
       gridType: 'fit',
       compactType: 'none',
@@ -23,9 +30,9 @@ export class GridComponent implements OnInit {
       margin: 5,
       outerMargin: true,
       mobileBreakpoint: 640,
-      minCols: 1,
+      minCols: 4,
       maxCols: 100,
-      minRows: 1,
+      minRows: 4,
       maxRows: 100,
       maxItemCols: 100,
       minItemCols: 1,
@@ -88,20 +95,6 @@ export class GridComponent implements OnInit {
       displayGrid: 'onDrag&Resize',
       disableWindowResize: false
     };
-
-    this.dashboard = [
-      {cols: 2, rows: 1, y: 0, x: 0},
-      {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
-      {cols: 1, rows: 1, y: 0, x: 4},
-      {cols: 1, rows: 1, y: 2, x: 5},
-      {cols: undefined, rows: undefined, y: 1, x: 0},
-      {cols: 1, rows: 1, y: undefined, x: undefined},
-      {cols: 2, rows: 2, y: 3, x: 5, minItemRows: 2, minItemCols: 2, label: 'Min rows & cols = 2'},
-      {cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2'},
-      {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled'},
-      {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: false, resizeEnabled: false, label: 'Drag&Resize Disabled'},
-      {cols: 1, rows: 1, y: 2, x: 6, initCallback: GridComponent.itemInit}
-    ];
   }
 
   static eventStop(item, itemComponent, event) {
@@ -126,7 +119,7 @@ export class GridComponent implements OnInit {
 
   emptyCellClick(event, item) {
     console.info('empty cell click', event, item);
-    this.dashboard.push(item);
+    this.windows.push(item);
   }
 
   changedOptions() {
@@ -138,11 +131,11 @@ export class GridComponent implements OnInit {
   removeItem($event, item) {
     $event.preventDefault();
     $event.stopPropagation();
-    this.dashboard.splice(this.dashboard.indexOf(item), 1);
+    this.windows.splice(this.windows.indexOf(item), 1);
   }
 
   addItem() {
-    this.dashboard.push({});
+    this.windows.push(new Window());
   }
   
 

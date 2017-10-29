@@ -1,7 +1,7 @@
 <gridster [options]="options" class="grid-container">
-  <gridster-item [item]="item" *ngFor="let item of dashboard">
+  <gridster-item [item]="item" *ngFor="let item of windows">
       <div class="gridster-item-content">
-          UnDragable text
+          {{item.windowName}}
       </div>
       <div class="item-buttons">
         <x-button md-icon-button md-raised-button class="remove-button"(click)="removeItem($event, item)"
