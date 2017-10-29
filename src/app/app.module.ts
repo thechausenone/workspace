@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ElectronService } from './providers/electron.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { GridComponent } from './components/grid/grid.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    GridsterModule
+    GridsterModule,
+    BrowserAnimationsModule,
+    MatButtonModule, 
+    MatCheckboxModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [ElectronService],
