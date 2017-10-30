@@ -13,12 +13,15 @@
     max-width:25%;
     padding:0;
     float:left;//parent div width = child div's width
+    background-color: #008080;
     
-    x-tab{
+    button{
       height:auto;
       padding:20px;
       justify-content: left;
+      background-color: #008080;
       border-bottom:0.5px solid white;
+
     }
   }
 
