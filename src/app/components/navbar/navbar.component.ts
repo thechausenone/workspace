@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material';
 import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
 import {DataService} from '../../providers/data.service';
+import {BoardCreationComponent} from '../board-creation/board-creation.component';
 
 @Component({
   selector: 'app-navbar',
@@ -11,9 +13,10 @@ import {DataService} from '../../providers/data.service';
 
 export class NavbarComponent {
    showHide = false;
+   dialogRef: MatDialogRef<BoardCreationComponent>;
    boards: Array<Board>;
 
-  constructor(private _dataService: DataService) {
+  constructor(private _dataService: DataService, public dialog: MatDialog) {
     console.log("constructor for navbar called");
     this.getBoards();
   }
@@ -36,6 +39,16 @@ export class NavbarComponent {
     //replace these with dynamic title/icon
     var title = "test123";
     var icon = "web";
+
+    this.dialogRef = this.dialog.open(BoardCreationComponent, {
+      height: '400px',
+      width: '600px',   
+    });
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //title = result;
+    });
+
     this._dataService.addBoard(title, icon);
     this._dataService.getBoards();
   }
