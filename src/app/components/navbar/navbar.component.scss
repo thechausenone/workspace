@@ -14,13 +14,15 @@
     padding:0;
     float:left;//parent div width = child div's width
     background-color: #008080;
-    
-    button{
-      height:auto;
-      padding:20px;
-      justify-content: center;
-      border-bottom:0.5px solid white;
+
+    .taskbar-tab-group{
+      //stops from bleeding off the top of the screen
+      margin-top: auto;
     }
   }
 
-  
+  .taskbar-tab {
+  }
+  .taskbar-tab mat-icon {
+    margin: 15px 0;
+  }

@@ -12,7 +12,7 @@ import { ElectronService } from './providers/electron.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,9 @@ import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule} fro
     MatButtonModule, 
     MatCheckboxModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatButtonToggleModule,
+    MatIconModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [ElectronService],

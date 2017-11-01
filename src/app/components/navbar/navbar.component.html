@@ -21,6 +21,15 @@
 </x-tabs> -->
 
 <mat-toolbar class="taskbar-container">
-  <button mat-raised-button>Basic</button>
-  <button mat-raised-button>Basic</button>
+  <mat-button-toggle-group class="taskbar-tab-group" vertical>
+    <mat-button-toggle class="taskbar-tab">
+      <mat-icon>dashboard</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle class="taskbar-tab">
+      <mat-icon>web_asset</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle class="taskbar-tab">
+      <mat-icon>note_add</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
 </mat-toolbar>
