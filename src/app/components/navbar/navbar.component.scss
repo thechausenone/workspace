@@ -13,13 +13,16 @@
     max-width:25%;
     padding:0;
     float:left;//parent div width = child div's width
-    
-    x-tab{
-      height:auto;
-      padding:20px;
-      justify-content: left;
-      border-bottom:0.5px solid white;
+    background-color: #008080;
+
+    .taskbar-tab-group{
+      //stops from bleeding off the top of the screen
+      margin-top: auto;
     }
   }
 
-  
+  .taskbar-tab {
+  }
+  .taskbar-tab mat-icon {
+    margin: 15px 0;
+  }
