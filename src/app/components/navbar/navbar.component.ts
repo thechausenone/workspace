@@ -20,7 +20,7 @@ export class NavbarComponent {
     this.showHide = !this.showHide;
   }
 
-  addNewBoard(){
+  addBoard(){
     this.boards.push(new Board());
     console.log(this.boards);
   }
