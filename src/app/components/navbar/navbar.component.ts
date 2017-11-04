@@ -22,7 +22,6 @@ export class NavbarComponent {
     this.showHide = !this.showHide;
   }
 
-<<<<<<< HEAD
   private getBoards(){
     this._dataService.getBoards()
                       .subscribe(
@@ -49,10 +48,6 @@ export class NavbarComponent {
     //will send an error as there is no board by the name "rando" (demo)
     this._dataService.deleteBoard("rando"); 
     this._dataService.getBoards();
-=======
-  addBoard(){
-    this.boards.push(new Board());
-    console.log(this.boards);
->>>>>>> 16-migrate-to-angular-mat
+
   }
 }

@@ -11,12 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ElectronService } from './providers/electron.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
-<<<<<<< HEAD
 import { DataService } from './providers/data.service';
-=======
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule} from '@angular/material';
->>>>>>> 16-migrate-to-angular-mat
 
 @NgModule({
   declarations: [
