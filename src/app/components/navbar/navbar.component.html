@@ -3,7 +3,7 @@
     <mat-button-toggle class="taskbar-tab">
       <mat-icon>dashboard</mat-icon>
     </mat-button-toggle>
-    <mat-button-toggle class="taskbar-tab" *ngFor = "let board of boards">
+    <mat-button-toggle class="taskbar-tab" *ngFor = "let board of boards" (click) = "setActiveBoard(board)">
       <mat-icon>web_asset</mat-icon>
     </mat-button-toggle>
     <mat-button-toggle class="taskbar-tab" (click) = "addBoard()">

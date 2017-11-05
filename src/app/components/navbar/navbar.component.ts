@@ -22,6 +22,10 @@ export class NavbarComponent {
     this.showHide = !this.showHide;
   }
 
+  setActiveBoard(board:Board){
+    this._dataService.setActiveBoard(board);
+  }
+
   private getBoards(){
     this._dataService.getBoards()
                       .subscribe(

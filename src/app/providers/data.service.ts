@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
@@ -10,23 +11,34 @@ import {ElectronService} from "./electron.service";
 
 @Injectable()
 export class DataService {
-    private _filePath = './mock-data/boards.data.json';
-    private _boards = new Array<Board>();//local instance of boards to be used by add/delete
+    private _filePath: string;
+    private _boards: Array<Board>;
+    private _activeBoardIndex: number;
+    private _activeWindowsSource: BehaviorSubject<Array<Window>>;
+    public activeWindows$: Observable<Array<Window>>;
 
-    constructor(private _http: HttpClient, private _electronService: ElectronService) {}
+    constructor(private _http: HttpClient, private _electronService: ElectronService) {
+        this._filePath = './mock-data/boards.data.json';
+        this._boards = new Array<Board>();
+        this._activeBoardIndex = -1;
+        this._activeWindowsSource = new BehaviorSubject<Array<Window>>(this.getActiveWindow());
+        this.activeWindows$ = this._activeWindowsSource.asObservable();
+    }
+
+    public setActiveBoard(board:Board): void{
+        this._activeBoardIndex = this._boards.findIndex(x => x == board);
+        this._activeWindowsSource.next(this.getActiveWindow());
+        console.log("Current board index is " + this._activeBoardIndex);
+    }
 
     public getBoards(): Observable<Array<Board>>{
         return this._http.get<Array<Board>>(this._filePath)
                          .do(data => {
                              this._boards = data as Array<Board>;
+                             this._activeBoardIndex = 0;
                              console.log("Data retrieved from JSON")
                             })
                          .catch(this.handleNotFound);
-    }
-
-    private handleNotFound (error: any){
-        console.error(error.message);
-        return Observable.of([]);
     }
 
     public addBoard(title:string, icon:string):void{
@@ -46,4 +58,23 @@ export class DataService {
             console.error("Could not find a board titled \"" + title + "\".");
         }
     }
+
+    //#region private methods
+
+    private handleNotFound (error: any){
+        console.error(error.message);
+        return Observable.of([]);
+    }
+
+    private getActiveWindow():Array<Window>{
+        console.log("getActiveWindow has been called");
+        if (this._boards.length == 0){
+            return new Array<Window>();
+        }
+        else{
+            return this._boards[this._activeBoardIndex].windows;
+        }
+    }
+
+    //#endregion
 }
