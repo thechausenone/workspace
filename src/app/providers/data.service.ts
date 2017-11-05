@@ -1,13 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
 import { Window } from "../components/grid/objects/window.object";
 import { Board } from "../components/navbar/objects/board.object";
 import { HttpClient } from "@angular/common/http";
-import {ElectronService} from "./electron.service";
+import { ElectronService } from "./electron.service";
 
 @Injectable()
 export class DataService {
@@ -28,7 +28,6 @@ export class DataService {
     public setActiveBoard(board:Board): void{
         this._activeBoardIndex = this._boards.findIndex(x => x == board);
         this._activeWindowsSource.next(this.getActiveWindow());
-        console.log("Current board index is " + this._activeBoardIndex);
     }
 
     public getBoards(): Observable<Array<Board>>{
@@ -36,7 +35,6 @@ export class DataService {
                          .do(data => {
                              this._boards = data as Array<Board>;
                              this._activeBoardIndex = 0;
-                             console.log("Data retrieved from JSON")
                             })
                          .catch(this.handleNotFound);
     }
@@ -67,7 +65,6 @@ export class DataService {
     }
 
     private getActiveWindow():Array<Window>{
-        console.log("getActiveWindow has been called");
         if (this._boards.length == 0){
             return new Array<Window>();
         }

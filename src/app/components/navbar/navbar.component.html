@@ -1,10 +1,7 @@
 <mat-toolbar class="taskbar-container">
   <mat-button-toggle-group class="taskbar-tab-group" vertical>
-    <mat-button-toggle class="taskbar-tab">
-      <mat-icon>dashboard</mat-icon>
-    </mat-button-toggle>
     <mat-button-toggle class="taskbar-tab" *ngFor = "let board of boards" (click) = "setActiveBoard(board)">
-      <mat-icon>web_asset</mat-icon>
+      <mat-icon>{{board.icon}}</mat-icon>
     </mat-button-toggle>
     <mat-button-toggle class="taskbar-tab" (click) = "addBoard()">
       <mat-icon>note_add</mat-icon>
