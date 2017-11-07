@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material';
 import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
 import {DataService} from '../../providers/data.service';
-import {BoardCreationComponent} from '../board-creation/board-creation.component';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +16,8 @@ export class NavbarComponent {
    dialogRef: MatDialogRef<BoardCreationComponent>;
    boards: Array<Board>;
 
-  constructor(private _dataService: DataService, public dialog: MatDialog) {
+
+  constructor(private _dataService: DataService, private dialog: MatDialog) {
     console.log("constructor for navbar called");
     this.getBoards();
   }
@@ -40,17 +41,16 @@ export class NavbarComponent {
     var title = "test123";
     var icon = "web";
 
-    this.dialogRef = this.dialog.open(BoardCreationComponent, {
-      height: '400px',
-      width: '600px',   
-    });
-    this.dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      //title = result;
+    let dialogRef = this.dialog.open(BoardDialogComponent, {
+      width: '500px',
+      data: { name: title, icon: icon }
     });
 
-    this._dataService.addBoard(title, icon);
-    this._dataService.getBoards();
+    dialogRef.afterClosed().subscribe(result => {
+      title = result;
+      this._dataService.addBoard(title, icon);
+      this._dataService.getBoards();
+    });
   }
 
   //note: we will want a dynamic title passed into only one delete call here, followed by a call to getBoards

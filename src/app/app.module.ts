@@ -12,25 +12,45 @@ import { ElectronService } from './providers/electron.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
 import { DataService } from './providers/data.service';
+<<<<<<< Updated upstream
+=======
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule} from '@angular/material';
+import { BoardDialogComponent } from './components/board-dialog/board-dialog.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    GridComponent
+    GridComponent,
+    BoardDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+<<<<<<< Updated upstream
     GridsterModule
+=======
+    GridsterModule,
+    BrowserAnimationsModule,
+    MatButtonModule, 
+    MatCheckboxModule,
+    MatDialogModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatButtonToggleModule,
+    MatIconModule
+>>>>>>> Stashed changes
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     ElectronService,
     DataService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [BoardDialogComponent]
 })
 export class AppModule { }
