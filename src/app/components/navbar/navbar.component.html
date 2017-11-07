@@ -1,13 +1,22 @@
-<mat-toolbar class="taskbar-container">
-  <mat-button-toggle-group class="taskbar-tab-group" vertical>
-    <mat-button-toggle class="taskbar-tab">
-      <mat-icon>dashboard</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle class="taskbar-tab" *ngFor = "let board of boards">
-      <mat-icon>web_asset</mat-icon>
-    </mat-button-toggle>
-    <mat-button-toggle class="taskbar-tab" (click) = "addBoard()">
-      <mat-icon>note_add</mat-icon>
-    </mat-button-toggle>
-  </mat-button-toggle-group>
-</mat-toolbar>
+<mat-sidenav-container class="navbar-container">
+  <div class="sidenav-content">
+    <mat-button-toggle-group class="taskbar-tab-group" vertical>
+      <mat-button-toggle class="taskbar-tab">
+        <mat-icon>dashboard</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle class="taskbar-tab" *ngFor="let board of boards" mat-button (click)="sidenav.toggle()">
+        <mat-icon>web_asset</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle class="taskbar-tab" (click)="addBoard()">
+        <mat-icon>note_add</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <mat-sidenav #sidenav mode="side" class="sidenav" position="end">
+    <!-- add click function here when adding new windows -->
+    <button mat-raised-button class="window-menu-tab" >
+      <mat-icon>add_to_photos</mat-icon>
+    </button>
+  </mat-sidenav>
+</mat-sidenav-container>

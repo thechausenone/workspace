@@ -5,24 +5,33 @@
     justify-content: flex-start;
   }
   
-  /*main*/
-  .taskbar-container{
-    @extend .flexboxColumn;
-    height:100%;
-    width:auto;
-    max-width:25%;
-    padding:0;
-    float:left;//parent div width = child div's width
-    background-color: #008080;
+.taskbar-tab mat-icon {
+  margin: 15px 0;
+}
 
-    .taskbar-tab-group{
-      //stops from bleeding off the top of the screen
-      margin-top: auto;
-    }
-  }
+.navbar-container {
+  @extend .flexboxColumn;
+  height:100%;
+  width:auto;
+  max-width:25%;
+  padding:0;
+  float:left;//parent div width = child div's width
+  background-color: #008080;
 
-  .taskbar-tab {
+  .taskbar-tab-group{
+    //stops from bleeding off the top of the screen
+    margin-top: auto;
   }
-  .taskbar-tab mat-icon {
-    margin: 15px 0;
-  }
+}
+
+.sidenav-content {
+
+}
+
+.sidenav {
+  background-color: #015c5c;
+}
+
+.window-menu-tab {
+  background-color: #015c5c;
+}
