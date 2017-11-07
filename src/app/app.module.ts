@@ -12,12 +12,9 @@ import { ElectronService } from './providers/electron.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
 import { DataService } from './providers/data.service';
-<<<<<<< Updated upstream
-=======
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule} from '@angular/material';
 import { BoardDialogComponent } from './components/board-dialog/board-dialog.component';
->>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -31,9 +28,6 @@ import { BoardDialogComponent } from './components/board-dialog/board-dialog.com
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-<<<<<<< Updated upstream
-    GridsterModule
-=======
     GridsterModule,
     BrowserAnimationsModule,
     MatButtonModule, 
@@ -43,7 +37,6 @@ import { BoardDialogComponent } from './components/board-dialog/board-dialog.com
     MatTabsModule,
     MatButtonToggleModule,
     MatIconModule
->>>>>>> Stashed changes
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [

@@ -13,9 +13,7 @@ import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 
 export class NavbarComponent {
    showHide = false;
-   dialogRef: MatDialogRef<BoardCreationComponent>;
    boards: Array<Board>;
-
 
   constructor(private _dataService: DataService, private dialog: MatDialog) {
     console.log("constructor for navbar called");

@@ -4,13 +4,10 @@
           {{item.windowName}}
       </div>
       <div class="item-buttons">
-        <x-button md-icon-button md-raised-button class="remove-button"(click)="removeItem($event, item)"
+        <button mat-icon-button color="warn" class="remove-button"(click)="removeItem($event, item)"
         (touchstart)="removeItem($event, item)" mdTooltip="Remove">
-          <x-box>
-            <x-icon name="delete"></x-icon>
-            <x-label>Button</x-label>
-          </x-box>
-        </x-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+        </button>
       </div>
   </gridster-item>
 </gridster>
