@@ -12,24 +12,21 @@ import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 })
 
 export class NavbarComponent {
-   showHide = false;
    boards: Array<Board>;
 
   constructor(private _dataService: DataService, private dialog: MatDialog) {
-    console.log("constructor for navbar called");
     this.getBoards();
   }
 
-  expandTaskBar(){
-    this.showHide = !this.showHide;
+  setActiveBoard(board:Board){
+    this._dataService.setActiveBoard(board);
   }
 
   private getBoards(){
     this._dataService.getBoards()
                       .subscribe(
                           boards => {
-                              this.boards = boards,
-                              console.log(this.boards)
+                              this.boards = boards
                           }
                       );
   }
@@ -44,13 +41,10 @@ export class NavbarComponent {
     });
   }
 
-  //note: we will want a dynamic title passed into only one delete call here, followed by a call to getBoards
   deleteBoard(){
-    //will successfully delete (demo)
-    this._dataService.deleteBoard("the first board");
-    
-    //will send an error as there is no board by the name "rando" (demo)
-    this._dataService.deleteBoard("rando"); 
+    //replace these with dynamic board name
+    var boardName = "the first board";
+    this._dataService.deleteBoard(boardName);
     this._dataService.getBoards();
   }
 }

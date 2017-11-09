@@ -1,25 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GridsterConfig }  from 'angular-gridster2';
 import {Window} from './objects/window.object';
+import {DataService} from '../../providers/data.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss']
 })
-export class GridComponent implements OnInit {
+export class GridComponent implements OnInit, OnDestroy {
+
   options: GridsterConfig;
   windows:Array<Window>;
+  windowSubscription: Subscription;
 
-  constructor() { }
+  constructor(private dataService: DataService) { 
+    this.windowSubscription = this.dataService.activeWindows$.subscribe(data => this.windows = data);
+  }
 
   ngOnInit() {
-    //need to inject service here and subscribe to changes 
-    this.windows = [
-      new Window("Unique Window"),
-      new Window()
-    ];
-
     this.options = {
       gridType: 'fit',
       compactType: 'none',
@@ -96,6 +96,12 @@ export class GridComponent implements OnInit {
       disableWindowResize: false
     };
   }
+
+  ngOnDestroy(): void {
+    //to prevent memory leak when component is destroyed
+    this.windowSubscription.unsubscribe();
+  }
+
 
   static eventStop(item, itemComponent, event) {
     console.info('eventStop', item, itemComponent, event);
