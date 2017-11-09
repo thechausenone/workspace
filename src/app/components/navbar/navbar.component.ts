@@ -36,18 +36,11 @@ export class NavbarComponent {
 
   addBoard(){
     //replace these with dynamic title/icon
-    var title = "test123";
-    var icon = "web";
-
     let dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '500px',
-      data: { name: title, icon: icon }
+      data: {name: "", icon: ""}
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      title = result;
-      this._dataService.addBoard(title, icon);
-      this._dataService.getBoards();
     });
   }
 
