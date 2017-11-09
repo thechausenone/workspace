@@ -13,15 +13,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
 import { DataService } from './providers/data.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule} from '@angular/material';
+import { BoardDialogComponent } from './components/board-dialog/board-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    GridComponent
+    GridComponent,
+    BoardDialogComponent
   ],
-  
   imports: [
     BrowserModule,
     FormsModule,
@@ -31,6 +32,7 @@ import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule, Mat
     BrowserAnimationsModule,
     MatButtonModule, 
     MatCheckboxModule,
+    MatDialogModule,
     MatToolbarModule,
     MatTabsModule,
     MatButtonToggleModule,
@@ -42,6 +44,7 @@ import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule, Mat
     ElectronService,
     DataService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [BoardDialogComponent]
 })
 export class AppModule { }

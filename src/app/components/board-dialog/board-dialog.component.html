@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Create a Board</h1>
+<div mat-dialog-content>
+  <p>Name:</p>
+  <mat-form-field>
+    <input matInput tabindex="1" [(ngModel)]="data.name">
+  </mat-form-field>
+  <p>Icon:</p>
+  <mat-form-field>
+    <input matInput tabindex="1" [(ngModel)]="data.icon">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  <button mat-button (click)="saveBoard(data.name, data.icon)" tabindex="2">Ok</button>
+</div>

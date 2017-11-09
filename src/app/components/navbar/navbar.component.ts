@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
 import {DataService} from '../../providers/data.service';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +14,7 @@ import {DataService} from '../../providers/data.service';
 export class NavbarComponent {
    boards: Array<Board>;
 
-  constructor(private _dataService: DataService) {
+  constructor(private _dataService: DataService, private dialog: MatDialog) {
     this.getBoards();
   }
 
@@ -31,10 +33,12 @@ export class NavbarComponent {
 
   addBoard(){
     //replace these with dynamic title/icon
-    var title = "test123";
-    var icon = "web";
-    this._dataService.addBoard(title, icon);
-    this._dataService.getBoards();
+    let dialogRef = this.dialog.open(BoardDialogComponent, {
+      width: '500px',
+      data: {name: "", icon: ""}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   deleteBoard(){
@@ -42,6 +46,5 @@ export class NavbarComponent {
     var boardName = "the first board";
     this._dataService.deleteBoard(boardName);
     this._dataService.getBoards();
-
   }
 }
