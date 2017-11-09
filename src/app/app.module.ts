@@ -13,7 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
 import { DataService } from './providers/data.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule, Mat
     MatToolbarModule,
     MatTabsModule,
     MatButtonToggleModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [
