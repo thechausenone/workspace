@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
 import {DataService} from '../../providers/data.service';
