@@ -25,6 +25,10 @@ export class DataService {
         this.activeWindows$ = this._activeWindowsSource.asObservable();
     }
 
+    public checkIfActiveBoard(board:Board):boolean{
+        return this._boards.findIndex(x => x == board) === this._activeBoardIndex;
+    }
+
     public setActiveBoard(board:Board): void{
         this._activeBoardIndex = this._boards.findIndex(x => x == board);
         this._activeWindowsSource.next(this.getActiveWindow());

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
 import {DataService} from '../../providers/data.service';
@@ -13,9 +13,21 @@ import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 
 export class NavbarComponent {
    boards: Array<Board>;
+  @ViewChild('sidenav') sideNav:any;
 
   constructor(private _dataService: DataService, private dialog: MatDialog) {
     this.getBoards();
+  }
+
+  handleSideNavToggle(board:Board){
+    if (!(this.checkIfActiveBoard(board) == false && this.sideNav.opened == true)){
+      this.sideNav.toggle();
+    }
+    this.setActiveBoard(board);
+  }
+
+  checkIfActiveBoard(board:Board):boolean{
+    return this._dataService.checkIfActiveBoard(board);
   }
 
   setActiveBoard(board:Board){
@@ -32,7 +44,6 @@ export class NavbarComponent {
   }
 
   addBoard(){
-    //replace these with dynamic title/icon
     let dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '500px',
       data: {name: "", icon: ""}
