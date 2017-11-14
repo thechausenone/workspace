@@ -13,5 +13,10 @@
     <button mat-raised-button class="window-menu-tab">
       <mat-icon>add_to_photos</mat-icon>
     </button>
+
+    <mat-list *ngFor="let window of windows" class="sidenav-item">
+      <mat-card class="sidenav-windows">{{window.windowName}}</mat-card>
+    </mat-list>
+
   </mat-sidenav>
 </mat-sidenav-container>
