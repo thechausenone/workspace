@@ -14,7 +14,12 @@
       <mat-icon>add_to_photos</mat-icon>
     </button>
     <mat-list *ngFor="let window of windows" class="sidenav-tab">
-      <mat-card class="sidenav-windows">{{window.windowName}}</mat-card>
+      <mat-card class="sidenav-windows">
+        <p>{{window.windowName}}</p>
+        <mat-button-toggle>
+          <mat-icon>delete</mat-icon>
+        </mat-button-toggle>
+      </mat-card>
     </mat-list>
   </mat-sidenav>
 </mat-sidenav-container>
