@@ -76,6 +76,5 @@ export class DataService {
             return this._boards[this._activeBoardIndex].windows;
         }
     }
-
     //#endregion
 }
