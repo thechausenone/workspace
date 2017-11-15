@@ -15,13 +15,15 @@ import { DataService } from './providers/data.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule, MatListModule, MatCardModule} from '@angular/material';
 import { BoardDialogComponent } from './components/board-dialog/board-dialog.component';
+import { WindowDialogComponent } from './components/window-dialog/window-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     GridComponent,
-    BoardDialogComponent
+    BoardDialogComponent,
+    WindowDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,6 @@ import { BoardDialogComponent } from './components/board-dialog/board-dialog.com
     DataService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [BoardDialogComponent]
+  entryComponents: [BoardDialogComponent, WindowDialogComponent]
 })
 export class AppModule { }

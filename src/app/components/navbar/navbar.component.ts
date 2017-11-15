@@ -5,6 +5,7 @@ import {Window} from '../grid/objects/window.object';
 import {DataService} from '../../providers/data.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
+import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -62,4 +63,12 @@ export class NavbarComponent {
     this._dataService.getBoards();
   }
 
+  addWindow(){
+    let dialogRef = this.dialog.open(WindowDialogComponent, {
+      width: '500px',
+      data: {name: ""}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });    
+  }
 }

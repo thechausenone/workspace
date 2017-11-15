@@ -16,8 +16,9 @@ export class Window implements GridsterItem{
     maxItemArea?: number;
     [propName: string]: any;
     windowName:string;
+    windowFilePath: string;
 
-    constructor(windowName:string = "default window"){
+    constructor(windowName:string = "default window", windowFilePath:string = ""){
         this.x = undefined;
         this.y = undefined;
         this.rows = 1;
@@ -25,5 +26,6 @@ export class Window implements GridsterItem{
         this.dragEnabled = true;
         this.resizeEnabled = true;
         this.windowName = windowName;
+        this.windowFilePath = windowFilePath;
     }
 }
