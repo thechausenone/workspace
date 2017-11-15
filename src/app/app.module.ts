@@ -15,13 +15,15 @@ import { DataService } from './providers/data.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule} from '@angular/material';
 import { BoardDialogComponent } from './components/board-dialog/board-dialog.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     GridComponent,
-    BoardDialogComponent
+    BoardDialogComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
