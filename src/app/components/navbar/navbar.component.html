@@ -1,11 +1,11 @@
 <mat-sidenav-container class="navbar-container">
-  <div class="sidenav-content">
-    <mat-button-toggle-group class="taskbar-tab-group" vertical>
-      <mat-button-toggle class="taskbar-tab" *ngFor="let board of boards" mat-button (click) = "setActiveBoard(board)" (click)="sidenav.toggle()">
+  <div class="navbar-content">
+    <mat-button-toggle-group class="taskbar-tab-group" vertical value = "">
+      <mat-button-toggle class="taskbar-tab" *ngFor="let board of boards" mat-button (click)="handleSideNavToggle(board)">
         <mat-icon>{{board.icon}}</mat-icon>
       </mat-button-toggle>
       <mat-button-toggle class="taskbar-tab" (click)="addBoard()">
-        <mat-icon>note_add</mat-icon>
+        <mat-icon>add</mat-icon>
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
@@ -15,5 +15,13 @@
     <button mat-raised-button class="window-menu-tab" (click)="addWindow()">
       <mat-icon>add_to_photos</mat-icon>
     </button>
+    <mat-list *ngFor="let window of windows" class="sidenav-tab">
+      <mat-card class="sidenav-windows">
+        <p>{{window.windowName}}</p>
+        <mat-button-toggle>
+          <mat-icon>delete</mat-icon>
+        </mat-button-toggle>
+      </mat-card>
+    </mat-list>
   </mat-sidenav>
 </mat-sidenav-container>

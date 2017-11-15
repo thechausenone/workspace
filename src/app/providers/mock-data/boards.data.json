@@ -1,33 +1,41 @@
-    [
-        {   
-            "id": 1,
-            "title": "the first board",
-            "dateCreated": "today",
-            "icon": "web_asset",
-            "windows": [{
+[
+    {   
+        "id": 1,
+        "title": "the first board",
+        "dateCreated": "today",
+        "icon": "web_asset",
+        "windows": [{
+            "x":1,
+            "y":1,
+            "rows": 1,
+            "cols": 1,
+            "dragEnabled": true,
+            "resizeEnabled": true,
+            "windowName": "first window"
+        }]
+    },
+    {   
+        "id": 2,
+        "title": "the second board",
+        "dateCreated": "tomorrow",
+        "icon": "web_asset",
+        "windows": [{
+            "x":3,
+            "y":2,
+            "rows": 1,
+            "cols": 1,
+            "dragEnabled": true,
+            "resizeEnabled": true,
+            "windowName": "test window"
+            },
+            {
                 "x":1,
                 "y":1,
                 "rows": 1,
                 "cols": 1,
                 "dragEnabled": true,
                 "resizeEnabled": true,
-                "windowName": "first window"
+                "windowName": "second window"
             }]
-        },
-        {   
-            "id": 2,
-            "title": "the second board",
-            "dateCreated": "tomorrow",
-            "icon": "web_asset",
-            "windows": [{
-                "x":3,
-                "y":2,
-                "rows": 1,
-                "cols": 1,
-                "dragEnabled": true,
-                "resizeEnabled": true,
-                "windowName": "first window"
-            }]
-        }
-    ]
-    
+    }
+]
