@@ -1,8 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+//================IMPORTS==================
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+//================VARIABLES==================
+$primary-colour: teal;
+$primary-colour-dark:#015c5c;
+
+//================MIXINS(REUSABLE STYLES)==================
+@mixin flex-display($direction){
+  display:flex;
+  flex-direction: $direction;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
 }
