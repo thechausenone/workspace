@@ -9,11 +9,11 @@
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-  <mat-sidenav #sidenav mode="side" class="sidenav" position="end">
-    <button mat-raised-button class="window-menu-tab">
+  <mat-sidenav #sidenav mode="side" class="sidenav-panel" position="end">
+    <button mat-raised-button class="sidenav-tab">
       <mat-icon>add_to_photos</mat-icon>
     </button>
-    <mat-list *ngFor="let window of windows" class="sidenav-item">
+    <mat-list *ngFor="let window of windows" class="sidenav-tab">
       <mat-card class="sidenav-windows">{{window.windowName}}</mat-card>
     </mat-list>
   </mat-sidenav>

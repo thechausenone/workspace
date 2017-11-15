@@ -104,27 +104,27 @@ export class GridComponent implements OnInit, OnDestroy {
 
 
   static eventStop(item, itemComponent, event) {
-    console.info('eventStop', item, itemComponent, event);
+    //console.info('eventStop', item, itemComponent, event);
   }
 
   static itemChange(item, itemComponent) {
-    console.info('itemChanged', item, itemComponent);
+    //console.info('itemChanged', item, itemComponent);
   }
 
   static itemResize(item, itemComponent) {
-    console.info('itemResized', item, itemComponent);
+    //console.info('itemResized', item, itemComponent);
   }
 
   static itemInit(item, itemComponent) {
-    console.info('itemInitialized', item, itemComponent);
+    //console.info('itemInitialized', item, itemComponent);
   }
 
   static itemRemoved(item, itemComponent) {
-    console.info('itemRemoved', item, itemComponent);
+    //console.info('itemRemoved', item, itemComponent);
   }
 
   emptyCellClick(event, item) {
-    console.info('empty cell click', event, item);
+    //console.info('empty cell click', event, item);
     this.windows.push(item);
   }
 

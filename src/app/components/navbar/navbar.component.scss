@@ -1,50 +1,22 @@
-/*extensions*/
-.flexboxColumn{
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-.taskbar-tab mat-icon {
-  margin: 15px 0;
-}
+@import 'src/styles.scss';
 
 .navbar-container {
-  @extend .flexboxColumn;
   height:100%;
-  width:auto;
-  max-width:25%;
-  padding:0;
-  float:left;//parent div width = child div's width
-  background-color: #008080;
+  background-color: $primary-colour;
+
   .taskbar-tab-group{
-    //stops from bleeding off the top of the screen
     margin-top: auto;
-  }
-}
 
-.navbar-content {
-  
-}
-
-.sidenav-item{
-  
-}
-
-
-.sidenav {
-  width:auto;
-  background-color: #015c5c;
-  margin-left: auto ;
-
-  .window-menu-tab {
-    background-color: #015c5c;
-    margin: auto;
+    mat-icon {
+      margin: 15px 0;
+    }
   }
 
-  .sidenav-windows{
-    padding: 0;
-    margin: auto;
-    background-color: #024747;
+  .sidenav-panel {
+    background-color: $primary-colour-dark;;
+  
+    .sidenav-tab {
+      background-color: $primary-colour-dark;
+    }
   }
 }
