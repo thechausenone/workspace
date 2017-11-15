@@ -1,5 +1,5 @@
 <mat-sidenav-container class="navbar-container">
-  <div class="sidenav-content">
+  <div class="navbar-content">
     <mat-button-toggle-group class="taskbar-tab-group" vertical value = "">
       <mat-button-toggle class="taskbar-tab" *ngFor="let board of boards" mat-button (click)="handleSideNavToggle(board)">
         <mat-icon>{{board.icon}}</mat-icon>
@@ -13,10 +13,8 @@
     <button mat-raised-button class="window-menu-tab">
       <mat-icon>add_to_photos</mat-icon>
     </button>
-
     <mat-list *ngFor="let window of windows" class="sidenav-item">
       <mat-card class="sidenav-windows">{{window.windowName}}</mat-card>
     </mat-list>
-
   </mat-sidenav>
 </mat-sidenav-container>

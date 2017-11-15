@@ -13,7 +13,6 @@ import { ElectronService } from "./electron.service";
 export class DataService {
     private _filePath: string;
     private _boards: Array<Board>;
-    private _windows: Array<Window>;
     private _activeBoardIndex: number;
     private _activeWindowsSource: BehaviorSubject<Array<Window>>;
     public activeWindows$: Observable<Array<Window>>;
@@ -21,7 +20,6 @@ export class DataService {
     constructor(private _http: HttpClient, private _electronService: ElectronService) {
         this._filePath = './mock-data/boards.data.json';
         this._boards = new Array<Board>();
-        this._windows = new Array<Window>();
         this._activeBoardIndex = -1;
         this._activeWindowsSource = new BehaviorSubject<Array<Window>>(this.getActiveWindow());
         this.activeWindows$ = this._activeWindowsSource.asObservable();
@@ -34,15 +32,6 @@ export class DataService {
     public setActiveBoard(board:Board): void{
         this._activeBoardIndex = this._boards.findIndex(x => x == board);
         this._activeWindowsSource.next(this.getActiveWindow());
-    }
-
-    public getWindows():Observable<Array<Window>>{
-        return this._http.get<Array<Window>>(this._filePath)
-            .do(data => {
-                this._windows = data as Array<Window>;
-                this._activeBoardIndex = 0;
-            })
-            .catch(this.handleNotFound);
     }
 
     public getBoards(): Observable<Array<Board>>{

@@ -17,31 +17,34 @@
   padding:0;
   float:left;//parent div width = child div's width
   background-color: #008080;
-
   .taskbar-tab-group{
     //stops from bleeding off the top of the screen
     margin-top: auto;
   }
 }
 
-.sidenav-content {
-
+.navbar-content {
+  
 }
 
 .sidenav-item{
-  position: fixed;
-}
-
-.sidenav-windows{
-  width: auto;
-  background-color: #024747;
+  
 }
 
 
 .sidenav {
+  width:auto;
   background-color: #015c5c;
-}
+  margin-left: auto ;
 
-.window-menu-tab {
-  background-color: #015c5c;
+  .window-menu-tab {
+    background-color: #015c5c;
+    margin: auto;
+  }
+
+  .sidenav-windows{
+    padding: 0;
+    margin: auto;
+    background-color: #024747;
+  }
 }
