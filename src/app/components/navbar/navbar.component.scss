@@ -3,13 +3,15 @@
 .navbar-container {
   height:100%;
   background-color: $primary-colour;
-  width: auto;
+
   .taskbar-tab-group{
     margin-top: auto;
+    
     mat-icon {
       margin: 15px 0;
     }
   }
+  
   .sidenav-panel {
     margin-left: 50%;
     background-color: $primary-colour-dark;
@@ -24,5 +26,3 @@
     }
   }
 }
-
-
