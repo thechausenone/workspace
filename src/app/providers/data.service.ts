@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/catch';
@@ -55,6 +55,11 @@ export class DataService {
         else{
             console.error("Could not find a board titled \"" + title + "\".");
         }
+    }
+
+    public addWindow(name:string, file:string):void{
+       // this.notify.next();
+       this._boards[this._activeBoardIndex].windows.push(new Window(name, file));
     }
 
     //#region private methods

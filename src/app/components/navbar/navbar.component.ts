@@ -4,6 +4,7 @@ import {Board} from './objects/board.object'
 import {DataService} from '../../providers/data.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
+import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,7 @@ import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 })
 
 export class NavbarComponent {
-   boards: Array<Board>;
+  boards: Array<Board>;
 
   constructor(private _dataService: DataService, private dialog: MatDialog) {
     this.getBoards();
@@ -46,5 +47,14 @@ export class NavbarComponent {
     var boardName = "the first board";
     this._dataService.deleteBoard(boardName);
     this._dataService.getBoards();
+  }
+
+  addWindow(){
+    let dialogRef = this.dialog.open(WindowDialogComponent, {
+      width: '500px',
+      data: {name: ""}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });    
   }
 }

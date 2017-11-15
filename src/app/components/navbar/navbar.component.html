@@ -12,7 +12,7 @@
 
   <mat-sidenav #sidenav mode="side" class="sidenav" position="end">
     <!-- add click function here when adding new windows -->
-    <button mat-raised-button class="window-menu-tab" >
+    <button mat-raised-button class="window-menu-tab" (click)="addWindow()">
       <mat-icon>add_to_photos</mat-icon>
     </button>
   </mat-sidenav>
