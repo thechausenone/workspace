@@ -1,8 +1,8 @@
 <mat-sidenav-container class="navbar-container">
   <div class="sidenav-content">
-    <mat-button-toggle-group class="taskbar-tab-group" vertical value = "">
+    <mat-button-toggle-group class="taskbar-tab-group" vertical value = "home">
 
-      <mat-button-toggle class = "taskbar-tab" (click)="handleSideNavToggle()" [routerLink] = "['/home']">
+      <mat-button-toggle class = "taskbar-tab" (click)="handleSideNavToggle()" [routerLink] = "['/home']" value ="home">
         <mat-icon>home</mat-icon>
       </mat-button-toggle>
 

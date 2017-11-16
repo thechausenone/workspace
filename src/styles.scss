@@ -8,6 +8,7 @@ $primary-colour-darker: #003b3b;
 $secondary-colour: #E0E0E0;
 $secondary-colour-dark:#585858;
 $secondary-colour-darker: #3f3f3f;
+
 //================MIXINS(REUSABLE STYLES)==================
 @mixin flex-display($direction, $position1, $position2){
   display:flex;

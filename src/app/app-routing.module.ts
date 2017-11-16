@@ -6,6 +6,10 @@ import { GridComponent } from './components/grid/grid.component';
 
 const routes: Routes = [
     {
+        path:'',
+        component: HomeComponent
+    },
+    {
         path: 'home',
         component: HomeComponent
     },
