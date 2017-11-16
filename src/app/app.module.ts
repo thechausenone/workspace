@@ -12,8 +12,10 @@ import { ElectronService } from './providers/electron.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
 import { DataService } from './providers/data.service';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule} from '@angular/material';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, 
+          MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule,
+          MatGridListModule} from '@angular/material';
 import { BoardDialogComponent } from './components/board-dialog/board-dialog.component';
 import { HomeComponent } from './components/home/home.component';
 
@@ -39,7 +41,8 @@ import { HomeComponent } from './components/home/home.component';
     MatTabsModule,
     MatButtonToggleModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatGridListModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [
