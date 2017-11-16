@@ -10,9 +10,9 @@
     </mat-button-toggle-group>
   </div>
 
-  <mat-sidenav #sidenav mode="side" class="sidenav" position="end">
+  <mat-sidenav #sidenav mode="side" class="sidenav-panel" position="end">
     <!-- add click function here when adding new windows -->
-    <button mat-raised-button class="window-menu-tab" (click)="addWindow()">
+    <button mat-raised-button class="sidenav-tab" (click)="addWindow()">
       <mat-icon>add_to_photos</mat-icon>
     </button>
     <mat-list *ngFor="let window of windows" class="sidenav-tab">
