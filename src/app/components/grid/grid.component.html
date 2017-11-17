@@ -1,7 +1,7 @@
 <gridster [options]="options">
   <gridster-item [item]="item" *ngFor="let item of windows">
       <div class="gridster-item-content">
-          {{item.windowName}}
+          {{item.windowName}}: {{item.windowFilePath}}
       </div>
       <div class="item-buttons">
         <button mat-icon-button color="warn" class="remove-button"(click)="removeItem($event, item)"

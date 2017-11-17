@@ -6,17 +6,24 @@
 
   .taskbar-tab-group{
     margin-top: auto;
-
+    
     mat-icon {
       margin: 15px 0;
-      color: $primary-colour-darker;
+      background-color: $primary-colour-darker;
     }
   }
-
+  
   .sidenav-panel {
-    background-color: $primary-colour-dark;;
+    margin-left: 50%;
+    background-color: $primary-colour-dark;
   
     .sidenav-tab {
+      align-items: center;
+      width: 100%;
+      background-color: $primary-colour-dark;
+    }
+    
+    .sidenav-windows {
       background-color: $primary-colour-dark;
     }
   }

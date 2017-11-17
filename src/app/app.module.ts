@@ -15,8 +15,9 @@ import { DataService } from './providers/data.service';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, 
           MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule,
-          MatGridListModule} from '@angular/material';
+          MatGridListModule, MatListModule, MatCardModule} from '@angular/material';
 import { BoardDialogComponent } from './components/board-dialog/board-dialog.component';
+import { WindowDialogComponent } from './components/window-dialog/window-dialog.component';
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { HomeComponent } from './components/home/home.component';
     NavbarComponent,
     GridComponent,
     BoardDialogComponent,
+    WindowDialogComponent,
     HomeComponent
   ],
   imports: [
@@ -42,7 +44,9 @@ import { HomeComponent } from './components/home/home.component';
     MatButtonToggleModule,
     MatIconModule,
     MatSidenavModule,
-    MatGridListModule
+    MatGridListModule,
+    MatListModule,
+    MatCardModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [
@@ -50,6 +54,6 @@ import { HomeComponent } from './components/home/home.component';
     DataService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [BoardDialogComponent]
+  entryComponents: [BoardDialogComponent, WindowDialogComponent]
 })
 export class AppModule { }

@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
+import {Window} from '../grid/objects/window.object';
 import {DataService} from '../../providers/data.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
+import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -13,12 +15,13 @@ import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 
 export class NavbarComponent {
    boards: Array<Board>;
+   windows: Array<Window>;
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private _dataService: DataService, private dialog: MatDialog) {
     this.getBoards();
   }
-
+ 
   handleSideNavToggle(board:Board = null){
     //case for non-board tab closing
     if (board == null){
@@ -61,6 +64,15 @@ export class NavbarComponent {
     this._dataService.getBoards();
   }
 
+  addWindow(){
+    let dialogRef = this.dialog.open(WindowDialogComponent, {
+      width: '500px',
+      data: {name: ""}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });    
+  }
+
   //#region Private Methods
 
   checkIfActiveBoard(board:Board):boolean{
@@ -72,4 +84,5 @@ export class NavbarComponent {
   }
   
   //#endregion
+
 }
