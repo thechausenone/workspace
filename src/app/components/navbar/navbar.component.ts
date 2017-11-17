@@ -21,21 +21,22 @@ export class NavbarComponent {
   constructor(private _dataService: DataService, private dialog: MatDialog) {
     this.getBoards();
   }
-
-  handleSideNavToggle(board:Board){
-    if (!(this.checkIfActiveBoard(board) == false && this.sideNav.opened == true)){
-      this.sideNav.toggle();
+ 
+  handleSideNavToggle(board:Board = null){
+    //case for non-board tab closing
+    if (board == null){
+      if (this.sideNav.opened == true){
+        this.sideNav.toggle();
+      }
     }
-    this.setActiveBoard(board);
-    this.windows = board.windows;
-  }
-
-  checkIfActiveBoard(board:Board):boolean{
-    return this._dataService.checkIfActiveBoard(board);
-  }
-
-  setActiveBoard(board:Board){
-    this._dataService.setActiveBoard(board);
+    //case for board tab opening/closing
+    else if (!(this.checkIfActiveBoard(board) == false && this.sideNav.opened == true)){
+      this.sideNav.toggle();
+      this.setActiveBoard(board);
+    }
+    else{
+      this.setActiveBoard(board);
+    }
   }
 
   private getBoards(){
@@ -71,4 +72,17 @@ export class NavbarComponent {
     dialogRef.afterClosed().subscribe(result => {
     });    
   }
+
+  //#region Private Methods
+
+  checkIfActiveBoard(board:Board):boolean{
+    return this._dataService.checkIfActiveBoard(board);
+  }
+
+  setActiveBoard(board:Board){
+    this._dataService.setActiveBoard(board);
+  }
+  
+  //#endregion
+
 }

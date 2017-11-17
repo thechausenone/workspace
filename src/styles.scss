@@ -4,12 +4,25 @@
 //================VARIABLES==================
 $primary-colour: teal;
 $primary-colour-dark:#015c5c;
-$primary-colour-med:#037a7a;
+$primary-colour-darker: #003b3b;
+$secondary-colour: #E0E0E0;
+$secondary-colour-dark:#585858;
+$secondary-colour-darker: #3f3f3f;
 
 //================MIXINS(REUSABLE STYLES)==================
-@mixin flex-display($direction){
+@mixin flex-display($direction, $position1, $position2){
   display:flex;
   flex-direction: $direction;
-  justify-content: flex-start;
+  justify-content: $position1;
+  align-items: $position2;
   flex-wrap: nowrap;
 }
+
+@mixin mat-icon-resize($size){
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+
+//================STYLE REFERENCES==================
+//https://github.com/angular/material2/blob/master/guides/typography.md
