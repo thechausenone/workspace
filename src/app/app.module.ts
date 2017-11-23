@@ -6,7 +6,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { GridsterModule } from 'angular-gridster2';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './modules/shared/shared.module';
+import { LoginModule } from "./modules/login/login.module";
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
@@ -30,7 +31,8 @@ import { DataService } from './providers/data.service';
     HttpClientModule,
     AppRoutingModule,
     GridsterModule,
-    SharedModule,
+    LoginModule,
+    SharedModule
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
