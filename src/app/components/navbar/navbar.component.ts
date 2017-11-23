@@ -33,9 +33,11 @@ export class NavbarComponent {
     else if (!(this.checkIfActiveBoard(board) == false && this.sideNav.opened == true)){
       this.sideNav.toggle();
       this.setActiveBoard(board);
+      this.windows = board.windows;
     }
     else{
       this.setActiveBoard(board);
+      this.windows = board.windows;
     }
   }
 

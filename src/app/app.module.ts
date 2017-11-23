@@ -3,22 +3,18 @@ import 'reflect-metadata';
 import 'polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
 import { GridsterModule } from 'angular-gridster2';
 import { AppRoutingModule } from './app-routing.module';
-import { ElectronService } from './providers/electron.service';
+import { SharedModule } from './shared/shared.module';
+import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
-import { DataService } from './providers/data.service';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, 
-          MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule,
-          MatGridListModule, MatListModule, MatCardModule} from '@angular/material';
 import { BoardDialogComponent } from './components/board-dialog/board-dialog.component';
 import { WindowDialogComponent } from './components/window-dialog/window-dialog.component';
 import { HomeComponent } from './components/home/home.component';
+import { ElectronService } from './providers/electron.service';
+import { DataService } from './providers/data.service';
 
 @NgModule({
   declarations: [
@@ -31,29 +27,24 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     GridsterModule,
-    BrowserAnimationsModule,
-    MatButtonModule, 
-    MatCheckboxModule,
-    MatDialogModule,
-    MatToolbarModule,
-    MatTabsModule,
-    MatButtonToggleModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatGridListModule,
-    MatListModule,
-    MatCardModule
+    SharedModule,
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  schemas:[
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   providers: [
     ElectronService,
     DataService
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [BoardDialogComponent, WindowDialogComponent]
+  bootstrap: [
+    AppComponent
+  ],
+  entryComponents: [
+    BoardDialogComponent, 
+    WindowDialogComponent
+  ]
 })
 export class AppModule { }
