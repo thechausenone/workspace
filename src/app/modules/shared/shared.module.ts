@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, 
         MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule,
-        MatGridListModule, MatListModule, MatCardModule} from '@angular/material';
+        MatGridListModule, MatListModule, MatCardModule, MatFormFieldModule,
+        MatInputModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -27,7 +28,9 @@ import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule,
     MatSidenavModule,
     MatGridListModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class SharedModule { }
