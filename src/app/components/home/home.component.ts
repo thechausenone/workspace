@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TileObject } from './objects/tile.object';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -7,18 +8,22 @@ import { TileObject } from './objects/tile.object';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  router: Router;
   tiles:Array<TileObject>;
 
-  constructor() {
+  constructor(router: Router) {
+    this.router = router;
     this.tiles = [
-      {text: "Account", image: "account_circle"},
-      {text: "Settings", image: "settings"},
-      {text: "About", image: "help"},
-      {text: "Tutorial", image: "ondemand_video"}
-    ]
+      {text: "Account", image: "account_circle", link: "login"},
+      {text: "Settings", image: "settings", link: ""},
+      {text: "About", image: "help", link: ""},
+      {text: "Tutorial", image: "ondemand_video", link: ""}
+    ];
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  navigateTo(tile: TileObject){
+    this.router.navigateByUrl("/" + tile.link);
+  }
 }

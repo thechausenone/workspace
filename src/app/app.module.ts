@@ -16,6 +16,7 @@ import { WindowDialogComponent } from './components/window-dialog/window-dialog.
 import { HomeComponent } from './components/home/home.component';
 import { ElectronService } from './providers/electron.service';
 import { DataService } from './providers/data.service';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DataService } from './providers/data.service';
     GridComponent,
     BoardDialogComponent,
     WindowDialogComponent,
-    HomeComponent
+    HomeComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

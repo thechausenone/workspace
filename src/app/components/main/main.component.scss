@@ -1,0 +1,19 @@
+@import 'src/styles.scss';
+
+.main-container {
+    height:100%;
+
+    .left-container{
+      height:100%;
+      width:auto;
+      float:left;
+    }
+
+    .right-container{
+      overflow:hidden;
+      width: auto;
+      height:100%;
+      position:relative;
+      background-color: grey;
+    }
+  }

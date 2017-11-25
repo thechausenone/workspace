@@ -1,4 +1,5 @@
 export interface TileObject{
     text: string,
-    image: string
+    image: string,
+    link: string
 }

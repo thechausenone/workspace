@@ -24,6 +24,15 @@ $secondary-colour-darker: #3f3f3f;
   width: $size;
 }
 
+@mixin exit-screen-button(){
+  @include mat-icon-resize(50px);
+  position: absolute;
+  top:0;
+  right:0;
+  color: white;
+  padding: 15px 15px 0 0;
+}
+
 //================STYLE REFERENCES==================
 //https://github.com/angular/material2/blob/master/guides/typography.md
 //https://klarsys.github.io/angular-material-icons/
