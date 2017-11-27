@@ -36,9 +36,6 @@ import { MainComponent } from './components/main/main.component';
     LoginModule,
     SharedModule
   ],
-  schemas:[
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
   providers: [
     ElectronService,
     DataService
