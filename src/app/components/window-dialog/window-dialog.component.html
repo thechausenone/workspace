@@ -6,7 +6,8 @@
   </mat-form-field>
   <p>File:</p>
   <mat-form-field>
-    <input type="file" matInput tabindex="1" (change)="onChange($event)">
+    <button type="button" mat-button (click)="imgFileInput.click()">Add a photo</button>
+    <input hidden type="file" #imgFileInput (change)="previewImage($event)"/>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
