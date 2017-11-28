@@ -1,6 +1,6 @@
 <div class = "home-container">
   <mat-grid-list cols="2" rowHeight = "fit" gutterSize = "20px">
-      <mat-grid-tile *ngFor = "let tile of tiles">
+      <mat-grid-tile *ngFor = "let tile of tiles" (click) = "navigateTo(tile)">
         <div class = "tile-content">
             <mat-icon>{{tile.image}}</mat-icon>
             <p class = "tile-text mat-headline">{{tile.text}}</p>

@@ -1,0 +1,51 @@
+@import '../../../../../../src/styles.scss';
+$font-size: 18px;
+$item-width: 350px;
+
+.login-container{
+    @include flex-display(column, center, center);
+    height:100%;
+    background-color: $primary-colour;
+
+    .exit-button{
+        @include exit-screen-button();
+    }
+
+    .form-container{
+        @include flex-display(column, center, center);
+        background-color:white;
+        padding: 50px;
+        width: $item-width;
+        
+        mat-form-field{
+            width: $item-width;
+            
+            mat-placeholder{
+                @include flex-display(row, flex-start, center);
+                font-size: $font-size;
+    
+                span{
+                    padding-left:5px;
+                }
+            }
+        }
+
+        .button{
+            width: 100%;
+            font-size: $font-size;
+            color: white;
+            padding: 8px;
+        }
+
+        .login-button{
+            @extend .button;
+            background-color: rgb(43, 201, 51);
+            margin:25px 0 15px 0;
+        }
+
+        .github-button{
+            @extend .button;
+            background-color: #6e5494;
+        }
+    }
+}

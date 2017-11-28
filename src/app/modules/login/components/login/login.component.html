@@ -1,0 +1,35 @@
+<div class = "login-container">
+
+  <a [routerLink] = "['/main']">
+    <mat-icon class = "exit-button">
+        close
+      </mat-icon>
+  </a>
+  
+  <div class = "form-container">
+
+    <mat-form-field>
+      <input matInput>
+      <mat-placeholder>
+          <mat-icon>person</mat-icon><span>Username</span>
+        </mat-placeholder>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [type]= 'password'>
+      <mat-placeholder>
+        <mat-icon>lock</mat-icon><span>Password</span>
+      </mat-placeholder>
+    </mat-form-field> 
+
+    <button mat-raised-button class = "login-button">
+      Sign In
+    </button>
+
+    <button mat-raised-button class = "github-button">
+      <mat-icon svgIcon = "github-circle"></mat-icon>
+      <span>Sign in with Github</span>
+    </button>
+
+    
+</div>
