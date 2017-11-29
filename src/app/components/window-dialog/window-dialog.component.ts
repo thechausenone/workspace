@@ -10,8 +10,11 @@ import {DataService} from '../../providers/data.service';
 export class WindowDialogComponent {
   private _selectedFile: string;
 
-  constructor(private _dataService: DataService, public dialogRef: MatDialogRef<WindowDialogComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private _dataService: DataService, 
+              public dialogRef: MatDialogRef<WindowDialogComponent>, 
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+    this._selectedFile = "";
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
