@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, Menu, Tray} from 'electron';
 import * as path from 'path';
 
 let win, serve;
@@ -9,6 +9,20 @@ if (serve) {
   require('electron-reload')(__dirname, {
   });
 }
+
+
+let tray = null
+app.on('ready', () => {
+  tray = new Tray('dist/assets/icons/icon.png')
+  const contextMenu = Menu.buildFromTemplate([
+    {label: 'Item1', type: 'radio'},
+    {label: 'Item2', type: 'radio'},
+    {label: 'Item3', type: 'radio', checked: true},
+    {label: 'Item4', type: 'radio'}
+  ])
+  tray.setToolTip('This is my application.')
+  tray.setContextMenu(contextMenu)
+})
 
 function createWindow() {
 
