@@ -5,10 +5,16 @@
     <input matInput tabindex="1" [(ngModel)]="name">
   </mat-form-field>
   <p>File:</p>
-  <mat-form-field>
-    <button type="button" mat-button (click)="imgFileInput.click()">Add a photo</button>
-    <input hidden type="file" #imgFileInput (change)="previewImage($event)"/>
-  </mat-form-field>
+
+  <div class="form-flex-container">
+      <mat-form-field >
+          <input type = "text" matInput [value] = "_selectedFile">   
+      </mat-form-field> 
+        <button type="button" mat-button (click)="imgFileInput.click()">Choose a file</button>
+        <input hidden type="file" #imgFileInput (change)="onChange($event)"/>
+  </div>
+  
+
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
