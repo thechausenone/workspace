@@ -21,7 +21,9 @@
   <mat-sidenav #sidenav mode="side" class="sidenav-panel" position="end">
 
     <div class="sidenav-header">
-      <p class = "mat-h2">TEST TITLE</p>
+      <span [matTooltip] = "activeBoard?.title" matTooltipPosition = "right">
+        <p class = "mat-h2">{{activeBoard?.title | uppercase | titleLength}}</p>
+      </span>
       <mat-icon>expand_more</mat-icon>
     </div>
 
