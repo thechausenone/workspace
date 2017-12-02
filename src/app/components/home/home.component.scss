@@ -8,8 +8,8 @@
         height:100%;
         
         mat-grid-tile {
-            background-color: $primary-colour;
-            box-shadow:0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            @include box-shadow();
+            background-color: $primary-colour-2;
             cursor:pointer;
             transition:.5s;
 
@@ -18,12 +18,12 @@
                 
                 mat-icon{
                     @include mat-icon-resize(110px);
-                    color: $primary-colour-darker;
+                    color: $primary-colour-1;
                 }
 
                 .tile-text{
                     margin:7.5px 0 0 0;
-                    color: $primary-colour-darker;
+                    color: $primary-colour-1;
                     text-transform: uppercase;
                     font-weight: bold;
                 }
@@ -31,7 +31,7 @@
         }
 
         mat-grid-tile:hover{
-            background-color: $secondary-colour;
+            background-color: $secondary-colour-1;
         }
     }
 }

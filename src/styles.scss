@@ -2,12 +2,26 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 //================VARIABLES==================
-$primary-colour: teal;
-$primary-colour-dark:#015c5c;
-$primary-colour-darker: #003b3b;
-$secondary-colour: #E0E0E0;
-$secondary-colour-dark:#585858;
-$secondary-colour-darker: #3f3f3f;
+$primary-colour-1: #002525;
+$primary-colour-2: #0D7E83;
+$primary-colour-3: rgb(10, 94, 99);
+$primary-colour-3-hover:rgb(8, 76, 80); 
+$primary-border-colour:#004949;
+
+$secondary-colour-1: #E0E0E0;
+$secondary-colour-2:#585858;
+$secondary-colour-3: #3f3f3f;
+
+$background-colour: grey;
+$font-default-colour: white;
+
+.mat-h1, .mat-h2, .mat-h3, .mat-h4{
+  margin:0;
+}
+
+.mat-button-toggle-checked .mat-button-toggle-label-content{
+  background-color:$secondary-colour-1 !important;
+}
 
 //================MIXINS(REUSABLE STYLES)==================
 @mixin flex-display($direction, $position1, $position2){
@@ -32,6 +46,13 @@ $secondary-colour-darker: #3f3f3f;
   color: white;
   padding: 15px 15px 0 0;
 }
+
+@mixin box-shadow(){
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+@mixin box-shadow-reverse(){
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 1.12)}
 
 //================STYLE REFERENCES==================
 //https://github.com/angular/material2/blob/master/guides/typography.md

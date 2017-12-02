@@ -2,29 +2,78 @@
 
 .navbar-container {
   height:100%;
-  background-color: $primary-colour;
+  background-color: $primary-colour-2;
 
   .taskbar-tab-group{
     margin-top: auto;
     
     mat-icon {
       margin: 15px 0;
-      color: $primary-colour-darker;
+      color: $primary-colour-1;
     }
   }
   
   .sidenav-panel {
+    width: 180px;
     margin-left: 50%;
-    background-color: $primary-colour-dark;
-  
-    .sidenav-tab {
-      align-items: center;
-      width: 100%;
-      background-color: $primary-colour-dark;
+    background-color: $primary-colour-3;
+    
+    .sidenav-header{
+      @include flex-display(row, space-between, center);
+      @include box-shadow;
+      padding: 0 16px;
+      margin-bottom: 3px;
+      color: $font-default-colour;
+      cursor: default;
+
+      mat-icon{
+        margin: 15px 0;
+      }
+    }
+
+    .mat-list{
+      padding-top:0;
+    }
+
+    .sidenav-windows-container {
+      @include flex-display(row, space-between, center);
+      padding: 0 16px;
+      color: $font-default-colour;
+      border-bottom:1px solid $primary-border-colour;
+      cursor: default;
+      transition:.5s;
+
+      mat-icon{
+        margin: 15px 0;
+        visibility: hidden;
+      }
+      
+      p{
+        margin: 14px 0px;
+      }
+      
+    }
+
+    .sidenav-windows-container:hover{
+      background-color: $primary-colour-3-hover;
+    }
+
+    .sidenav-windows-container:hover > mat-icon{
+      visibility:visible;
     }
     
-    .sidenav-windows {
-      background-color: $primary-colour-dark;
+    .sidenav-add-button{
+      position:absolute; 
+      bottom: 0;
+      align-items: center;
+      width: 100%;
+      @include box-shadow-reverse;
+
+      mat-icon{
+        margin: 15px 0;
+        color: $font-default-colour;
+      }
     }
+
   }
 }
