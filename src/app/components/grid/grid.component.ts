@@ -61,7 +61,7 @@ export class GridComponent implements OnInit, OnDestroy {
       draggable: {
         delayStart: 0,
         enabled: true,
-        ignoreContentClass: 'gridster-item-content',
+        ignoreContentClass: 'item-body',
         ignoreContent: false,
         dragHandleClass: 'drag-handler',
         stop: GridComponent.eventStop

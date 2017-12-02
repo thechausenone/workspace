@@ -11,7 +11,8 @@
             "cols": 1,
             "dragEnabled": true,
             "resizeEnabled": true,
-            "windowName": "first window"
+            "windowName": "first window",
+            "windowFilePath": "c:/placeholder/filepath/file"
         }]
     },
     {   
@@ -26,7 +27,8 @@
             "cols": 1,
             "dragEnabled": true,
             "resizeEnabled": true,
-            "windowName": "test window"
+            "windowName": "test window",
+            "windowFilePath": "c:/placeholder/filepath/file"
             },
             {
                 "x":1,
@@ -35,7 +37,8 @@
                 "cols": 1,
                 "dragEnabled": true,
                 "resizeEnabled": true,
-                "windowName": "second window"
+                "windowName": "second window",
+                "windowFilePath": "c:/placeholder/filepath/file"
             }]
     }
 ]

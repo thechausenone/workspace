@@ -1,13 +1,15 @@
 <gridster [options]="options">
   <gridster-item [item]="item" *ngFor="let item of windows">
-      <div class="gridster-item-content">
-          {{item.windowName}}: {{item.windowFilePath}}
+    <div class="gridster-item-content">
+      <div class = "item-header mat-body-2">
+          {{item.windowName}}
       </div>
-      <div class="item-buttons">
-        <button mat-icon-button color="warn" class="remove-button"(click)="removeItem($event, item)"
-        (touchstart)="removeItem($event, item)" mdTooltip="Remove">
-          <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+      <div class = "item-body mat-body-1">
+        <p>{{item.windowFilePath}}</p>
+        <button mat-raised-button (click)="removeItem($event, item)">
+          Delete
         </button>
       </div>
+    </div>
   </gridster-item>
 </gridster>
