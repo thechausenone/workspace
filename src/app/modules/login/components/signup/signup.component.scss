@@ -2,12 +2,12 @@
 $font-size: 18px;
 $item-width: 300px;
 
-.login-container{
+.signup-container{
     @include flex-display(column, center, center);
     height:100%;
     background-color: $primary-colour;
 
-    .exit-button{
+    .back-button{
         @include exit-screen-button();
     }
 
@@ -37,22 +37,11 @@ $item-width: 300px;
             padding: 8px;
         }
 
-        .login-button{
+        .signup-button{
             @extend .button;
-            background-color: rgb(43, 201, 51);
+            background-color: #1468A0;
             margin:25px 0 15px 0;
         }
 
-        .github-button{
-            @extend .button;
-            background-color: #6e5494;
-            margin-bottom: 15px;
-        }
-
-        .signup-text{
-            color: #1468A0;
-            font-size: 15px;
-            cursor: pointer; 
-        }
     }
 }

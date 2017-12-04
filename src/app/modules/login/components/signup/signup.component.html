@@ -1,0 +1,30 @@
+<div class = "signup-container">
+    
+  <a [routerLink] = "['/login']">
+    <mat-icon class = "back-button">
+        keyboard_arrow_left
+    </mat-icon>
+  </a>
+  
+  <div class = "form-container">
+
+    <mat-form-field>
+      <input matInput>
+      <mat-placeholder>
+          <mat-icon>person</mat-icon><span>Username</span>
+        </mat-placeholder>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type= 'password'>
+      <mat-placeholder>
+        <mat-icon>lock</mat-icon><span>Password</span>
+      </mat-placeholder>
+    </mat-form-field> 
+
+    <button mat-raised-button class = "signup-button">
+      Sign Up
+    </button>
+
+  </div>
+</div>

@@ -16,7 +16,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput [type]= 'password'>
+      <input matInput type= 'password'>
       <mat-placeholder>
         <mat-icon>lock</mat-icon><span>Password</span>
       </mat-placeholder>
@@ -31,5 +31,9 @@
       <span>Sign in with Github</span>
     </button>
 
-    
+    <div class="mat-body-2 signup-text"  [routerLink] = "['/signup']">
+        No account? <b>Create one here</b>
+    </div>
+
+  </div>
 </div>
