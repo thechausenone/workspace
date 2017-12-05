@@ -1,1 +1,17 @@
 @import 'src/styles.scss';
+
+.item-header{
+    padding:12px;
+    @include box-shadow();
+    background-color: $primary-colour-1;
+    font-size: 20px;
+    color: $font-default-colour;
+}
+
+.item-body{
+    @include flex-display(column, space-between, center);
+
+    p{
+        padding:12px;
+    }
+}

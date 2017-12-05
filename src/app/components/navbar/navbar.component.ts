@@ -6,6 +6,7 @@ import {DataService} from '../../providers/data.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-navbar',
@@ -15,11 +16,14 @@ import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
 
 export class NavbarComponent {
    boards: Array<Board>;
+   boardSubscription: Subscription;
+   activeBoard:Board;
    windows: Array<Window>;
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private _dataService: DataService, private dialog: MatDialog) {
     this.getBoards();
+    this.boardSubscription = this._dataService._activeBoard$.subscribe(data => this.activeBoard = data);
   }
  
   handleSideNavToggle(board:Board = null){

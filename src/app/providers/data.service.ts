@@ -16,6 +16,8 @@ export class DataService {
     private _activeBoardIndex: number;
     private _activeWindowsSource: BehaviorSubject<Array<Window>>;
     public activeWindows$: Observable<Array<Window>>;
+    private _activeBoardSource: BehaviorSubject<Board>;
+    public _activeBoard$: Observable<Board>;
 
     constructor(private _http: HttpClient, private _electronService: ElectronService) {
         this._filePath = './mock-data/boards.data.json';
@@ -23,6 +25,12 @@ export class DataService {
         this._activeBoardIndex = -1;
         this._activeWindowsSource = new BehaviorSubject<Array<Window>>(this.getActiveWindow());
         this.activeWindows$ = this._activeWindowsSource.asObservable();
+        this._activeBoardSource = new BehaviorSubject<Board>(this.getActiveBoard());
+        this._activeBoard$ = this._activeBoardSource.asObservable();
+    }
+
+    public getActiveBoard(): Board{
+        return this._boards[this._activeBoardIndex];
     }
 
     public checkIfActiveBoard(board:Board):boolean{
@@ -32,6 +40,7 @@ export class DataService {
     public setActiveBoard(board:Board): void{
         this._activeBoardIndex = this._boards.findIndex(x => x == board);
         this._activeWindowsSource.next(this.getActiveWindow());
+        this._activeBoardSource.next(this.getActiveBoard());
     }
 
     public getBoards(): Observable<Array<Board>>{
@@ -62,7 +71,6 @@ export class DataService {
     }
 
     public addWindow(name:string, file:string):void{
-       // this.notify.next();
        this._boards[this._activeBoardIndex].windows.push(new Window(name, file));
     }
 
