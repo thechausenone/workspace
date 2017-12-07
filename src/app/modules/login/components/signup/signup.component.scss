@@ -5,7 +5,7 @@ $item-width: 300px;
 .signup-container{
     @include flex-display(column, center, center);
     height:100%;
-    background-color: $primary-colour;
+    background-color: $primary-colour-2;
 
     .back-button{
         @include exit-screen-button();
