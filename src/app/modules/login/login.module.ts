@@ -4,8 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './components/signup/signup.component';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth'
-import { AuthenticationService } from './providers/authentication.service';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBartH5-zyYvpHn3YzdmYNz7H6GuEAgfYM",
@@ -28,7 +27,7 @@ export const firebaseConfig = {
     SignupComponent
   ],
   providers: [
-    AuthenticationService
+    
   ],
   exports: [
     LoginComponent
