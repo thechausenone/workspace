@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, Menu } from 'electron';
 import * as path from 'path';
 
 let win, serve;
@@ -20,9 +20,11 @@ function createWindow() {
     x: 0,
     y: 0,
     width: size.width,
-    height: size.height
+    height: size.height,
+    titleBarStyle: 'hiddenInset'
   });
 
+  win.setMenu(null);
   // and load the index.html of the app.
   win.loadURL('file://' + __dirname + '/index.html');
 
