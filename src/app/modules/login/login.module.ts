@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SignupComponent } from './components/signup/signup.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AccountComponent } from './components/account/account.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBartH5-zyYvpHn3YzdmYNz7H6GuEAgfYM",
@@ -24,7 +25,8 @@ export const firebaseConfig = {
   ],
   declarations: [
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    AccountComponent
   ],
   providers: [
     

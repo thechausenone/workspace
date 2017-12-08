@@ -52,7 +52,7 @@ export class LoginComponent{
     });
 
     popupRef.afterDismissed().subscribe(() => {
-      this.router.navigateByUrl("/main");
+      this.router.navigateByUrl("/account");
     });
   }
 

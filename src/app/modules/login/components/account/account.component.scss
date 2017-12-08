@@ -1,0 +1,21 @@
+@import '../../../../../../src/styles.scss';
+$font-size: 18px;
+$item-width: 300px;
+
+.login-container{
+    @include flex-display(column, center, center);
+    height:100%;
+    background-color: $primary-colour-2;
+
+    .exit-button{
+        @include exit-screen-button();
+    }
+
+    .text-container{
+        @include flex-display(column, center, center);
+        padding: 50px;
+        width: $item-width;  
+        color: white; 
+        text-align: left;
+    }
+}
