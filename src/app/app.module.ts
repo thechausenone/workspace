@@ -34,7 +34,8 @@ import { MainComponent } from './components/main/main.component';
     AppRoutingModule,
     GridsterModule,
     LoginModule,
-    SharedModule
+    SharedModule,
+    SharedModule.forRoot()
   ],
   providers: [
     ElectronService,

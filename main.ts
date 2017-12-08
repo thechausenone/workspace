@@ -15,13 +15,13 @@ if (serve) {
 
 let tray = null
 app.on('ready', () => {
-  createTray();
-  createWindow();
-  createTrayWindow();
+  //createTray();
+  //createWindow();
+  //createTrayWindow();
 })
 
-function createTray() {
-  tray = new Tray('dist/assets/icons/icon.png')
+//function createTray() {
+  //tray = new Tray('dist/assets/icons/icon.png')
   /*const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Settings',
@@ -38,10 +38,10 @@ function createTray() {
   ])
   tray.setToolTip('This is my application.');
   tray.setContextMenu(contextMenu);*/
-  tray.on('click', function (event) {
-    toggleWindow()
-  })
-}
+  // tray.on('click', function (event) {
+  //   toggleWindow()
+  // })
+//}
 
 const getWindowPosition = () => {
   const windowBounds = window.getBounds()
