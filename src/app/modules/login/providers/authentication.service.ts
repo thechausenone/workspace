@@ -16,29 +16,37 @@ export class AuthenticationService {
         return this.userInfo;
     }
 
-    SignupWithEmailAndPassword(email: string, password:string):boolean{
-        this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-            .catch((error) => {
+    SignupWithEmailAndPassword(email: string, password:string):Promise<boolean>{
+        var signupResult;
+
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(() =>{
+            signupResult = true;
+
+            }).catch((error) => {
                 var errorMessage = error.message;
                 console.error(errorMessage);
-                return false;
+                signupResult = false;
+
+            }).then(() => {
+                return signupResult;
             });
-            
-        return true;
     }
 
-    LoginWithEmailAndPassword(email: string, password:string):boolean{
-        this.afAuth.auth.signInWithEmailAndPassword(email, password).then(() => {
-            console.log("Sign-in successful");
-            this.UpdateUserInfo();
-            
-        }).catch((error) => {
-            var errorMessage = error.message;
-            console.error(errorMessage);
-            return false;
-        });
+    LoginWithEmailAndPassword(email: string, password:string):Promise<boolean>{
+        var loginResult;
 
-        return true;
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password).then(() => {
+                this.UpdateUserInfo();
+                loginResult = true;
+                
+            }).catch((error) => {
+                var errorMessage = error.message;
+                console.error(errorMessage);
+                loginResult =  false;
+                
+            }).then(() => {
+                return loginResult;
+            });
     }
 
     Logout():boolean{

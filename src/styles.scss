@@ -23,6 +23,10 @@ $font-default-colour: white;
   background-color:$secondary-colour-1 !important;
 }
 
+.mat-simple-snackbar{
+ justify-content: center !important; 
+}
+
 //================MIXINS(REUSABLE STYLES)==================
 @mixin flex-display($direction, $position1, $position2){
   display:flex;
