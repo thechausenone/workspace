@@ -9,27 +9,28 @@
   <div class = "form-container">
 
     <mat-form-field>
-      <input matInput>
+      <input matInput [(ngModel)] = "email">
       <mat-placeholder>
-          <mat-icon>person</mat-icon><span>Username</span>
-        </mat-placeholder>
+          <mat-icon>email</mat-icon><span>Email</span>
+      </mat-placeholder>
     </mat-form-field>
 
+    
     <mat-form-field>
-      <input matInput type= 'password'>
+      <input matInput type= 'password' [(ngModel)] = "password">
       <mat-placeholder>
         <mat-icon>lock</mat-icon><span>Password</span>
       </mat-placeholder>
     </mat-form-field> 
 
-    <button mat-raised-button class = "login-button">
+    <button mat-raised-button class = "login-button" (click) = 'LoginWithEmailAndPassword()'>
       Sign In
     </button>
-
-    <button mat-raised-button class = "github-button">
+    
+    <!-- <button mat-raised-button class = "github-button">
       <mat-icon svgIcon = "github-circle"></mat-icon>
       <span>Sign in with Github</span>
-    </button>
+    </button> -->
 
     <div class="mat-body-2 signup-text"  [routerLink] = "['/signup']">
         No account? <b>Create one here</b>

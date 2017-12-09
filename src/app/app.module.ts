@@ -36,7 +36,8 @@ import { TitleLengthPipe } from './pipes/title-length.pipe';
     AppRoutingModule,
     GridsterModule,
     LoginModule,
-    SharedModule
+    SharedModule,
+    SharedModule.forRoot()
   ],
   providers: [
     ElectronService,
