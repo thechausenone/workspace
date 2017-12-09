@@ -30,9 +30,13 @@ export class HomeComponent implements OnInit {
     var index = this.tiles.findIndex(x => x.text == "Account");
 
     if (this.authService.GetUserInfo().CheckUserStatus()){
+      this.tiles[index].text = "Account";
+      this.tiles[index].image = "account_circle";
       this.tiles[index].link = "account";
     }
     else{
+      this.tiles[index].text = "Sign In";
+      this.tiles[index].image = "input";
       this.tiles[index].link = "login";
     }
   }

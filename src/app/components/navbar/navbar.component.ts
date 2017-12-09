@@ -7,7 +7,6 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
 import { Subscription } from "rxjs/Subscription";
-import { AuthenticationService } from '../../modules/login/providers/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,8 +22,7 @@ export class NavbarComponent {
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private _dataService: DataService,
-              private dialog: MatDialog, 
-              private _authService: AuthenticationService) {
+              private dialog: MatDialog) {
     this.getBoards();
     this.boardSubscription = this._dataService._activeBoard$.subscribe(data => this.activeBoard = data);
   }
