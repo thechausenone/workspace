@@ -74,7 +74,7 @@ export class ElectronService {
   }
 
   private CreateTray(){
-    this.tray = new Tray(__dirname + "\\assets\\icons\\icon.png");
+    this.tray = new Tray(__dirname + "/assets/icons/icon.png");
     this.contextMenu = Menu.buildFromTemplate(this.defaultTemplates);
     this.tray.setToolTip('Workspace Menu');
     this.tray.setContextMenu(this.contextMenu);
