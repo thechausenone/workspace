@@ -15,18 +15,6 @@ $secondary-colour-3: #3f3f3f;
 $background-colour: grey;
 $font-default-colour: white;
 
-.mat-h1, .mat-h2, .mat-h3, .mat-h4{
-  margin:0;
-}
-
-.mat-button-toggle-checked .mat-button-toggle-label-content{
-  background-color:$secondary-colour-1 !important;
-}
-
-.mat-simple-snackbar{
- justify-content: center !important; 
-}
-
 //================MIXINS(REUSABLE STYLES)==================
 @mixin flex-display($direction, $position1, $position2){
   display:flex;
@@ -57,6 +45,61 @@ $font-default-colour: white;
 
 @mixin box-shadow-reverse(){
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 1.12)}
+
+//================OVERRIDES FOR ANGULAR MATERIAL==================
+.mat-h1, .mat-h2, .mat-h3, .mat-h4{
+  margin:0 !important;
+}
+
+.mat-button-toggle-checked .mat-button-toggle-label-content{
+  background-color:$secondary-colour-1 !important;
+}
+
+.mat-simple-snackbar{
+ justify-content: center !important; 
+}
+
+@import "~@angular/material/_theming.scss";
+@include mat-core();
+
+$mat-primary-teal: (
+  50: $primary-colour-3,
+  100: $primary-colour-3,
+  200: $primary-colour-3,
+  300: $primary-colour-3,
+  400: $primary-colour-3,
+  500: $primary-colour-3,
+  600: $primary-colour-3,
+  700: $primary-colour-3,
+  800: $primary-colour-3,
+  900: $primary-colour-3,
+  A100: $primary-colour-3,
+  A200: $primary-colour-3,
+  A400: $primary-colour-3,
+  A700: $primary-colour-3,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$app-primary: mat-palette($mat-primary-teal);
+$app-accent:  mat-palette($mat-primary-teal, A200, A100, A400);
+$app-warn:    mat-palette($mat-primary-teal);
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($app-theme);
 
 //================STYLE REFERENCES==================
 //https://github.com/angular/material2/blob/master/guides/typography.md

@@ -1,15 +1,40 @@
-<div class = "login-container">
+<div class = "signout-container">
   
     <a [routerLink] = "['/main']">
       <mat-icon class = "exit-button">
-          close
-        </mat-icon>
+        close
+      </mat-icon>
     </a>
     
-    <div class = "text-container mat-h1">
-      Hey there! 
-      <br>
-      You're currently signed in as {{email}} 
-      and are being authenticated using {{provider}}!
+    <div class = "form-container">
+
+      <div class = "section-title mat-display-1">
+        My Profile
+      </div>
+      
+      <div class = "info-row">
+        <mat-icon>email</mat-icon>
+        <mat-form-field>
+          <input matInput [readonly]="true" [(ngModel)] = "email">
+          <mat-placeholder>
+              <span>Email</span>
+          </mat-placeholder>
+        </mat-form-field>
+      </div>
+
+      <div class = "info-row">
+        <mat-icon>vpn_key</mat-icon>
+        <mat-form-field>
+          <input matInput [readonly]="true" [(ngModel)] = "provider">
+          <mat-placeholder>
+            <span>Authentication Provider</span>
+          </mat-placeholder>
+        </mat-form-field> 
+      </div>
+      
+      <button mat-raised-button class = "signout-button" (click) = 'Logout()'>
+        Sign Out
+      </button>
+
     </div>
   </div>

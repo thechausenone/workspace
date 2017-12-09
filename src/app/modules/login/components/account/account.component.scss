@@ -2,7 +2,7 @@
 $font-size: 18px;
 $item-width: 300px;
 
-.login-container{
+.signout-container{
     @include flex-display(column, center, center);
     height:100%;
     background-color: $primary-colour-2;
@@ -11,11 +11,45 @@ $item-width: 300px;
         @include exit-screen-button();
     }
 
-    .text-container{
+    .form-container{
         @include flex-display(column, center, center);
+        background-color:white;
         padding: 50px;
-        width: $item-width;  
-        color: white; 
-        text-align: left;
+        width: $item-width;
+
+        .section-title{
+            margin-bottom:35px;
+        }
+
+        .info-row{
+            @include flex-display(row, space-between, center);
+
+            mat-icon{
+                @include mat-icon-resize(32px);
+                padding: 0 12px 0 0px;
+
+            }
+
+            mat-form-field{
+                width: $item-width - 46px;
+
+                span{
+                    font-size: $font-size;
+                }
+            }
+        }
+
+        .button{
+            width: 100%;
+            font-size: $font-size;
+            color: white;
+            padding: 8px;
+        }
+
+        .signout-button{
+            @extend .button;
+            background-color: rgb(201, 43, 43);
+            margin:25px 0 0 0;
+        }
     }
 }

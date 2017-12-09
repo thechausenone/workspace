@@ -49,17 +49,19 @@ export class AuthenticationService {
             });
     }
 
-    Logout():boolean{
-        this.afAuth.auth.signOut().then(() => {
-            console.log("Sign-out successful");
-            this.UpdateUserInfo();
+    Logout():Promise<boolean>{
+        var result;
 
-        }).catch((error) => {
-            console.error(error);
-            return false;
-        });
+        return this.afAuth.auth.signOut().then(() => {
+                this.UpdateUserInfo();
+                result = true;
 
-        return true;
+            }).catch((error) => {
+                console.error(error);
+                result = false;
+            }).then(() => {
+                return result;
+            });
       }
 
     private UpdateUserInfo():void{
@@ -73,7 +75,6 @@ export class AuthenticationService {
                                                 user.email,
                                                 user.providerId);
             };
-            console.log(this.userInfo);
         }); 
     }
 }
