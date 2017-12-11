@@ -21,7 +21,8 @@ export class NavbarComponent {
    windows: Array<Window>;
   @ViewChild('sidenav') sideNav:any;
 
-  constructor(private _dataService: DataService, private dialog: MatDialog) {
+  constructor(private _dataService: DataService,
+              private dialog: MatDialog) {
     this.getBoards();
     this.boardSubscription = this._dataService._activeBoard$.subscribe(data => this.activeBoard = data);
   }

@@ -6,6 +6,7 @@ import { GridComponent } from './components/grid/grid.component';
 import { MainComponent } from "./components/main/main.component";
 import { LoginComponent } from "./modules/login/components/login/login.component";
 import { SignupComponent } from "./modules/login/components/signup/signup.component";
+import { AccountComponent } from "./modules/login/components/account/account.component";
 
 const routes: Routes = [
     {
@@ -39,6 +40,10 @@ const routes: Routes = [
     {
         path: 'signup',
         component: SignupComponent
+    },
+    {
+        path: 'account',
+        component: AccountComponent
     }
 ];
 

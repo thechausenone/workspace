@@ -38,7 +38,8 @@ import { MenubarComponent } from './components/menubar/menubar.component';
     AppRoutingModule,
     GridsterModule,
     LoginModule,
-    SharedModule
+    SharedModule,
+    SharedModule.forRoot()
   ],
   providers: [
     ElectronService,
