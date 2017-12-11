@@ -26,7 +26,11 @@ export class NavbarComponent {
     this.getBoards();
     this.boardSubscription = this._dataService._activeBoard$.subscribe(data => this.activeBoard = data);
   }
- 
+
+  mapWindowsToDesktop():void{
+    console.log("Map windows to desktop!");
+  }
+  
   handleSideNavToggle(board:Board = null){
     //case for non-board tab closing
     if (board == null){
