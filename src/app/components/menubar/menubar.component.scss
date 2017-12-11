@@ -1,0 +1,47 @@
+@import "src/styles.scss";
+.toolbar-container {
+  border: 1px solid white;
+
+  mat-toolbar {
+    min-height: 23px;
+    -webkit-app-region: drag;
+
+    mat-toolbar-row {
+      height: 23px;
+      padding: 0;
+      background-color: white;
+      color: $primary-colour-1;
+      font-size: 11px;
+
+      mat-button-toggle {
+        font-size: 18px;
+        align-items: center;
+        width: 55px;
+        color: $primary-colour-1;
+      }
+
+      .title {
+        padding-left: 10px;
+      }
+
+      .right-side-buttons {
+        right: 0;
+        top:0.2px;
+        position: absolute;
+
+        .mat-button {
+            min-width: 10px;
+            min-height: 25px;
+            align-items:center;
+            
+            mat-icon{
+                font-size: 15px;
+            }
+        }
+    
+      }
+    }
+  }
+}
+
+

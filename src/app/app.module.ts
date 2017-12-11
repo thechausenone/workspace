@@ -18,6 +18,7 @@ import { ElectronService } from './providers/electron.service';
 import { DataService } from './providers/data.service';
 import { MainComponent } from './components/main/main.component';
 import { TitleLengthPipe } from './pipes/title-length.pipe';
+import { MenubarComponent } from './components/menubar/menubar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TitleLengthPipe } from './pipes/title-length.pipe';
     WindowDialogComponent,
     HomeComponent,
     MainComponent,
-    TitleLengthPipe
+    TitleLengthPipe,
+    MenubarComponent
   ],
   imports: [
     BrowserModule,
