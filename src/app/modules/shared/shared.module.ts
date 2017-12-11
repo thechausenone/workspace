@@ -7,7 +7,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, 
         MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule,
         MatGridListModule, MatListModule, MatCardModule, MatFormFieldModule,
-        MatInputModule, MatTooltipModule, MatSnackBarModule} from '@angular/material';
+        MatInputModule, MatTooltipModule, MatSnackBarModule, MatMenuModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule
   ]
 })
 export class SharedModule {
