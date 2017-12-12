@@ -52,6 +52,15 @@ export class DataService {
                          .catch(this.handleNotFound);
     }
 
+    public openBoard(){
+        const {shell} = require('electron');
+        var windows = this._boards[this._activeBoardIndex].windows;
+        for(var i = 0; i < windows.length; i++){
+            var window:Window = windows[i];
+            shell.openItem(window.windowFilePath);
+        }
+    }
+
     public addBoard(title:string, icon:string):void{
         this._boards.push(new Board(title, icon));
         this._electronService.writeToJSON(this._filePath, JSON.stringify(this._boards));

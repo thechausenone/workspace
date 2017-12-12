@@ -29,6 +29,7 @@ export class NavbarComponent {
 
   mapWindowsToDesktop():void{
     console.log("Map windows to desktop!");
+    this._dataService.openBoard();
   }
   
   handleSideNavToggle(board:Board = null){
