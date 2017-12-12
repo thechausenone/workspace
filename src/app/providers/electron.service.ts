@@ -6,6 +6,7 @@ import * as childProcess from 'child_process';
 const {fs} = require('file-system');
 var { Menu, Tray } = require('electron').remote;
 import { Board } from '../components/navbar/objects/board.object';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ElectronService {
@@ -15,7 +16,7 @@ export class ElectronService {
   ipcRenderer: typeof ipcRenderer;
   childProcess: typeof childProcess;
 
-  constructor() {
+  constructor(router: Router) {
     // Conditional imports
     if (this.isElectron()) {
       this.ipcRenderer = window.require('electron').ipcRenderer;
@@ -25,8 +26,8 @@ export class ElectronService {
     this.defaultTemplates = [
       {
         label: 'Account',
-        click: function () {
-          console.log("Clicked on Account")
+        click: () => {
+          router.navigateByUrl("/login");
         }
       },
       {
