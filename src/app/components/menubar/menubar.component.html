@@ -1,10 +1,11 @@
 <div class="toolbar-container">
     <mat-toolbar>
-        <mat-toolbar-row>
-            <mat-button-toggle (click)="minimizeWindow()">
+            <button mat-button class = "menu-button"(click)="minimizeWindow()">
                 <mat-icon>list</mat-icon>
-            </mat-button-toggle>
+            </button>
+
             <div class="title">Workspace</div>
+            
             <div class="right-side-buttons">
                 <button mat-button (click)="minimizeWindow()">
                   <mat-icon>remove</mat-icon>
@@ -16,6 +17,5 @@
                   <mat-icon>clear</mat-icon>
                 </button>
             </div>
-        </mat-toolbar-row>
     </mat-toolbar>
 </div>

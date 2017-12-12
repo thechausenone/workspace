@@ -1,46 +1,50 @@
 @import "src/styles.scss";
+
+mat-button:hover{
+  color: white;
+}
+
 .toolbar-container {
-  border: 1px solid white;
-
   mat-toolbar {
-    min-height: 23px;
-    -webkit-app-region: drag;
+    @include flex-display(row, flex-start, center);
+    min-height: 36px;
+    height: 36px;
+    padding: 0;
+    background-color: $primary-colour-1;
+    color: white;
 
-    mat-toolbar-row {
-      height: 23px;
-      padding: 0;
-      background-color: white;
-      color: $primary-colour-1;
-      font-size: 11px;
-
-      mat-button-toggle {
+      .menu-button {
         font-size: 18px;
         align-items: center;
-        width: 55px;
-        color: $primary-colour-1;
+        width: 55px !important;
+        min-width: 55px !important;
+        color: white;
+        padding: 0 0 4px 0;
+        flex-grow:1;
       }
 
       .title {
         padding-left: 10px;
+        padding-top:2px;
+        font-size: 12px;
+        -webkit-app-region: drag;
+        height:100%;
+        flex-grow: 100;
       }
 
       .right-side-buttons {
-        right: 0;
-        top:0.2px;
-        position: absolute;
+        flex-grow: 1;
 
         .mat-button {
             min-width: 10px;
             min-height: 25px;
-            align-items:center;
             
             mat-icon{
-                font-size: 15px;
+              @include  mat-icon-resize(15px);
             }
         }
-    
       }
-    }
+    
   }
 }
 
