@@ -27,6 +27,10 @@
       color: $font-default-colour;
       cursor: default;
 
+      .dropdown-menu{
+        cursor: pointer;
+      }
+
       mat-icon{
         margin: 15px 0;
       }

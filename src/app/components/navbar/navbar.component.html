@@ -24,8 +24,12 @@
       <span [matTooltip] = "activeBoard?.title" matTooltipPosition = "right">
         <p class = "mat-h2">{{activeBoard?.title | uppercase | titleLength}}</p>
       </span>
-      <mat-icon>expand_more</mat-icon>
+      <mat-icon class = "dropdown-menu" [matMenuTriggerFor]="menu">expand_more</mat-icon>
     </div>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click) = "mapWindowsToDesktop()">Map windows</button>
+    </mat-menu>
 
     <mat-list *ngFor="let window of windows" class="sidenav-windows-container">
       <p class = "mat-h4">{{window.windowName}}</p>
