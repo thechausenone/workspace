@@ -8,11 +8,13 @@ import { BrowserWindow } from 'electron';
 })
 export class MenubarComponent {
   isFullscreen: boolean;
-  window;
+  window: any;
+  electron: any;
   fullscreenIcon: string;
 
   constructor() {
-    this.window =  require('electron').remote.getCurrentWindow();
+    this.electron = require('electron');
+    this.window = this.electron.remote.getCurrentWindow();
     this.setIcon();
    }
 
@@ -43,6 +45,6 @@ export class MenubarComponent {
   }
 
   openHelp(){
-    require("electron").shell.openExternal("https://github.com/weihanli101/workspace");
+   this.electron.shell.openExternal("https://github.com/weihanli101/workspace");
   }
 }
