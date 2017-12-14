@@ -28,7 +28,8 @@
     </div>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click) = "MapWindowsToDesktop()">Map windows</button>
+      <button mat-menu-item (click) = "mapWindowsToDesktop()">Map windows</button>
+      <button mat-menu-item (click) = "deleteBoard()">Delete</button>
     </mat-menu>
 
     <mat-list *ngFor="let window of windows" class="sidenav-windows-container">
