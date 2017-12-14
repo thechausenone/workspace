@@ -22,7 +22,7 @@ export class WindowDialogComponent {
   }
 
   createWindow(name): void {
-    this.stateManagerService.addWindow(name, this._selectedFile);
+    this.stateManagerService.AddWindow(name, this._selectedFile);
     this.dialogRef.close();
   }
 

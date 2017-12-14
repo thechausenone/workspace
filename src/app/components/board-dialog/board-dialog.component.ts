@@ -17,7 +17,7 @@ export class BoardDialogComponent {
   }
 
   saveBoard(name, icon): void {
-    this.stateManagerService.addBoard(name, icon);
+    this.stateManagerService.AddBoard(name, icon);
     this.dialogRef.close();
   }
 }

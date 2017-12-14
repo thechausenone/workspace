@@ -15,23 +15,28 @@ import { Subscription } from "rxjs/Subscription";
 })
 
 export class NavbarComponent {
-   boards: Array<Board>;
-   boardSubscription: Subscription;
-   activeBoard:Board;
-   windows: Array<Window>;
+  boards: Array<Board>;
+  windows: Array<Window>;
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private stateManagerService: StateManagerService,
               private dialog: MatDialog) {
-    this.getBoards();
-    this.boardSubscription = this.stateManagerService._activeBoard$.subscribe(data => this.activeBoard = data);
+    this.boards = this.stateManagerService.GetBoards();
   }
 
-  mapWindowsToDesktop():void{
+  MapWindowsToDesktop():void{
     console.log("Map windows to desktop!");
   }
+
+  GetActiveBoard():Board{
+    var index = this.stateManagerService.GetActiveBoardIndex();
+    if (index == -1){
+      return null; 
+    }
+    return this.boards[index];
+  }
   
-  handleSideNavToggle(board:Board = null){
+  HandleSideNavToggle(board:Board = null){
     //case for non-board tab closing
     if (board == null){
       if (this.sideNav.opened == true){
@@ -39,22 +44,18 @@ export class NavbarComponent {
       }
     }
     //case for board tab opening/closing
-    else if (!(this.checkIfActiveBoard(board) == false && this.sideNav.opened == true)){
+    else if (!(this.CheckIfBoardIsActive(board) == false && this.sideNav.opened == true)){
       this.sideNav.toggle();
-      this.setActiveBoard(board);
+      this.SetActiveBoard(board);
       this.windows = board.windows;
     }
     else{
-      this.setActiveBoard(board);
+      this.SetActiveBoard(board);
       this.windows = board.windows;
     }
   }
 
-  private getBoards(){
-    this.boards = this.stateManagerService.GetBoards();
-  }
-
-  addBoard(){
+  AddBoard(){
     let dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '500px',
       data: {name: "", icon: ""}
@@ -63,14 +64,14 @@ export class NavbarComponent {
     });
   }
 
-  deleteBoard(){
+  DeleteBoard(){
     //replace these with dynamic board name
     var boardName = "the first board";
-    this.stateManagerService.deleteBoard(boardName);
+    this.stateManagerService.DeleteBoard(boardName);
     this.stateManagerService.GetBoards();
   }
 
-  addWindow(){
+  AddWindow(){
     let dialogRef = this.dialog.open(WindowDialogComponent, {
       width: '500px',
       data: {name: ""}
@@ -81,12 +82,13 @@ export class NavbarComponent {
 
   //#region Private Methods
 
-  checkIfActiveBoard(board:Board):boolean{
-    return this.stateManagerService.checkIfActiveBoard(board);
+  private SetActiveBoard(board: Board){
+    this.stateManagerService.SetActiveBoardIndex(this.boards.findIndex(x => x == board));
   }
 
-  setActiveBoard(board:Board){
-    this.stateManagerService.setActiveBoard(board);
+  private CheckIfBoardIsActive(board:Board):boolean{
+    var activeBoardIndex = this.stateManagerService.GetActiveBoardIndex();
+    return (this.boards.findIndex(x => x == board) === activeBoardIndex);
   }
   
   //#endregion

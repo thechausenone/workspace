@@ -16,7 +16,8 @@ export class GridComponent implements OnInit, OnDestroy {
   windowSubscription: Subscription;
 
   constructor(private stateManagerService: StateManagerService) { 
-    this.windowSubscription = this.stateManagerService.activeWindows$.subscribe(data => this.windows = data);
+    this.windowSubscription = this.stateManagerService.GetWindowsObservable()
+                                  .subscribe(data => this.windows = data);
   }
 
   ngOnInit() {

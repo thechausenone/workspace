@@ -14,27 +14,37 @@ export class DatabaseService {
 
     constructor(private _http: HttpClient, 
                 private _electronService: ElectronService,
-                private _stateService: StateManagerService) {
+                private stateService: StateManagerService) {
         this._filePath = './mock-data/boards.data.json';
     }
 
-    private ReadBoardsFromDatabase(): Observable<Array<Board>>{
-        return this._http.get<Array<Board>>(this._filePath)
-                         .do(data => {
-                                var boards = data as Array<Board>;
-                                this._stateService.SetBoards(boards);
-                                if (boards.length == 0){
-                                this._stateService.SetActiveBoardIndex(0);
-                                }
-                            })
-                         .catch(this.handleNotFound);
+    //todo: change this return type to boolean if possible
+    public ReadBoardsFromDatabase(): Observable<Array<Board>> {
+    return this._http.get<Array<Board>>(this._filePath).do(data => {
+        this.HandleResponse(data as Array<Board>);
+      }).catch((error:any) => {
+          this.HandleError(error);
+          return Observable.of([]);
+      });
+    }
+
+    public SaveBoardsToDatabase(boards: Array<Board>): void{
+      this._electronService.writeToJSON(this._filePath, JSON.stringify(boards));
     }
 
     //#region private methods
 
-    private handleNotFound (error: any){
-        console.error(error.message);
-        return Observable.of([]);
+    private HandleResponse(boards: Array<Board>){
+      console.log(boards);
+      this.stateService.SetBoards(boards);
+
+      if (boards.length > 0){
+        this.stateService.SetActiveBoardIndex(0);
+      }
+    }
+
+    private HandleError (error: any){
+      console.error(error.message);
     }
     
     //#endregion
