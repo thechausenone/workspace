@@ -3,6 +3,7 @@ import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
 import {Window} from '../grid/objects/window.object';
 import {DataService} from '../../providers/data.service';
+import {ElectronService} from '../../providers/electron.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
@@ -22,6 +23,7 @@ export class NavbarComponent {
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private _dataService: DataService,
+              private _electronService: ElectronService, 
               private dialog: MatDialog) {
     this.getBoards();
     this.boardSubscription = this._dataService._activeBoard$.subscribe(data => this.activeBoard = data);
@@ -29,6 +31,7 @@ export class NavbarComponent {
 
   mapWindowsToDesktop():void{
     console.log("Map windows to desktop!");
+    this._electronService.openBoard(this.activeBoard);
   }
   
   handleSideNavToggle(board:Board = null){
