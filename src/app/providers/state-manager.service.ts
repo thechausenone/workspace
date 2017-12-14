@@ -32,15 +32,15 @@ export class StateManagerService {
     this._boards.push(new Board(title, icon));
   }
 
-  public DeleteBoard(title:string):void{
-    var index = this._boards.findIndex(board => board.title === title);
+  public DeleteBoard(board:Board):void{
+    var index = this._boards.findIndex(currBoard => currBoard === board);
 
     if (index!== -1){
         this._boards.splice(index, 1);
-        console.log("The board titled \"" + title + "\" has been deleted.");
+        console.log("The board titled \"" + board.title + "\" has been deleted.");
     }
     else{
-        console.error("Could not find a board titled \"" + title + "\".");
+        console.error("Could not find a board titled \"" + board.title + "\".");
     }
   }
 
@@ -50,7 +50,13 @@ export class StateManagerService {
 
   public SetActiveBoardIndex(index: number): void{
     this._activeBoardIndex = index;
-    this._activeWindowsSource.next(this.GetActiveWindows());
+    
+    if (index == -1){
+      this._activeWindowsSource.next(new Array<Window>());
+    }
+    else{
+      this._activeWindowsSource.next(this.GetActiveWindows());
+    }
   }
 
   //#endregion

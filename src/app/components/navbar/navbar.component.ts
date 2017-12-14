@@ -8,7 +8,7 @@ import {ElectronService} from '../../providers/electron.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
-import { Subscription } from "rxjs/Subscription";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -25,9 +25,11 @@ export class NavbarComponent {
   constructor(private stateManagerService: StateManagerService,
               private _electronService: ElectronService, 
               private dialog: MatDialog,
-              private authService: AuthenticationService) {
+              private authService: AuthenticationService,
+              private router: Router) {
     this.boards = this.stateManagerService.GetBoards();
     this.hidden = !this.authService.GetUserInfo().CheckUserStatus();
+    console.log("navbarcomponenet called");
   }
 
   MapWindowsToDesktop():void{
@@ -71,10 +73,10 @@ export class NavbarComponent {
   }
 
   DeleteBoard(){
-    //replace these with dynamic board name
-    var boardName = "the first board";
-    this.stateManagerService.DeleteBoard(boardName);
-    this.stateManagerService.GetBoards();
+    this.stateManagerService.DeleteBoard(this.GetActiveBoard());
+    this.stateManagerService.SetActiveBoardIndex(-1);
+    this.HandleSideNavToggle();
+    this.router.navigateByUrl("/main/home");
   }
 
   AddWindow(){
