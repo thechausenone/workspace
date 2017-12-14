@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
 import {Window} from '../grid/objects/window.object';
-import {DataService} from '../../providers/data.service';
+import { StateManagerService } from '../../providers/state-manager.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
@@ -21,10 +21,10 @@ export class NavbarComponent {
    windows: Array<Window>;
   @ViewChild('sidenav') sideNav:any;
 
-  constructor(private _dataService: DataService,
+  constructor(private stateManagerService: StateManagerService,
               private dialog: MatDialog) {
     this.getBoards();
-    this.boardSubscription = this._dataService._activeBoard$.subscribe(data => this.activeBoard = data);
+    this.boardSubscription = this.stateManagerService._activeBoard$.subscribe(data => this.activeBoard = data);
   }
 
   mapWindowsToDesktop():void{
@@ -51,12 +51,7 @@ export class NavbarComponent {
   }
 
   private getBoards(){
-    this._dataService.getBoards()
-                      .subscribe(
-                          boards => {
-                              this.boards = boards
-                          }
-                      );
+    this.boards = this.stateManagerService.GetBoards();
   }
 
   addBoard(){
@@ -71,8 +66,8 @@ export class NavbarComponent {
   deleteBoard(){
     //replace these with dynamic board name
     var boardName = "the first board";
-    this._dataService.deleteBoard(boardName);
-    this._dataService.getBoards();
+    this.stateManagerService.deleteBoard(boardName);
+    this.stateManagerService.GetBoards();
   }
 
   addWindow(){
@@ -87,11 +82,11 @@ export class NavbarComponent {
   //#region Private Methods
 
   checkIfActiveBoard(board:Board):boolean{
-    return this._dataService.checkIfActiveBoard(board);
+    return this.stateManagerService.checkIfActiveBoard(board);
   }
 
   setActiveBoard(board:Board){
-    this._dataService.setActiveBoard(board);
+    this.stateManagerService.setActiveBoard(board);
   }
   
   //#endregion
