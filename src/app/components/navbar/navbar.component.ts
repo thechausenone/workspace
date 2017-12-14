@@ -3,6 +3,7 @@ import {NgIf} from '@angular/common';
 import {Board} from './objects/board.object'
 import {Window} from '../grid/objects/window.object';
 import { StateManagerService } from '../../providers/state-manager.service';
+import { AuthenticationService } from '../../modules/login/providers/authentication.service';
 import {ElectronService} from '../../providers/electron.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
@@ -18,16 +19,18 @@ import { Subscription } from "rxjs/Subscription";
 export class NavbarComponent {
   boards: Array<Board>;
   windows: Array<Window>;
+  hidden: boolean;
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private stateManagerService: StateManagerService,
               private _electronService: ElectronService, 
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private authService: AuthenticationService) {
     this.boards = this.stateManagerService.GetBoards();
+    this.hidden = !this.authService.GetUserInfo().CheckUserStatus();
   }
 
   MapWindowsToDesktop():void{
-    console.log("Map windows to desktop!");
     this._electronService.openBoard(this.GetActiveBoard());
   }
 

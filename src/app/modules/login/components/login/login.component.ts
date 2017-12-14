@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AuthenticationService } from '../../providers/authentication.service';
 import { Router } from "@angular/router";
 import { MatSnackBar } from '@angular/material';
+import { DatabaseService } from '../../../../providers/database.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent{
               sanitizer: DomSanitizer, 
               private _authService: AuthenticationService,
               router: Router,
-              popupMessage: MatSnackBar) {
+              popupMessage: MatSnackBar,
+              private _databaseService: DatabaseService) {
     iconRegistry.addSvgIcon(
       'github-circle',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/github-circle.svg')
@@ -52,7 +54,9 @@ export class LoginComponent{
     });
 
     popupRef.afterDismissed().subscribe(() => {
-      this.router.navigateByUrl("/account");
+      this._databaseService.ReadBoardsFromDatabase().subscribe(data => {
+        this.router.navigateByUrl("/account");
+      });
     });
   }
 

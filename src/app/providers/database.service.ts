@@ -35,7 +35,6 @@ export class DatabaseService {
     //#region private methods
 
     private HandleResponse(boards: Array<Board>){
-      console.log(boards);
       this.stateService.SetBoards(boards);
 
       if (boards.length > 0){
