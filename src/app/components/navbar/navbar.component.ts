@@ -7,6 +7,7 @@ import {ElectronService} from '../../providers/electron.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
+import {BoardSettingsDialogComponent} from '../board-settings-dialog/board-settings-dialog.component';
 import { Subscription } from "rxjs/Subscription";
 
 @Component({
@@ -71,11 +72,13 @@ export class NavbarComponent {
     });
   }
 
-  deleteBoard(){
-    //replace these with dynamic board name
-    var boardName = "the first board";
-    this._dataService.deleteBoard(boardName);
-    this._dataService.getBoards();
+  boardSettings(){
+    let dialogRef = this.dialog.open(BoardSettingsDialogComponent, {
+      width: '500px',
+      data: {name: ""}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });  
   }
 
   addWindow(){

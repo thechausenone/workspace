@@ -19,6 +19,7 @@ import { DataService } from './providers/data.service';
 import { MainComponent } from './components/main/main.component';
 import { TitleLengthPipe } from './pipes/title-length.pipe';
 import { MenubarComponent } from './components/menubar/menubar.component';
+import { BoardSettingsDialogComponent } from './components/board-settings-dialog/board-settings-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MenubarComponent } from './components/menubar/menubar.component';
     HomeComponent,
     MainComponent,
     TitleLengthPipe,
-    MenubarComponent
+    MenubarComponent,
+    BoardSettingsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { MenubarComponent } from './components/menubar/menubar.component';
   ],
   entryComponents: [
     BoardDialogComponent, 
-    WindowDialogComponent
+    WindowDialogComponent,
+    BoardSettingsDialogComponent
   ]
 })
 export class AppModule { }
