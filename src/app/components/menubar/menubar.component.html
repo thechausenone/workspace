@@ -1,0 +1,24 @@
+<div class="toolbar-container">
+    <mat-toolbar>
+            <button mat-button class = "menu-button">
+                <mat-icon [matMenuTriggerFor]="menu">list</mat-icon>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openHelp()">Help</button>
+                  </mat-menu>
+            </button>
+
+            <div class="title">Workspace</div>
+            
+            <div class="right-side-buttons">
+                <button mat-button (click)="minimizeWindow()">
+                  <mat-icon>remove</mat-icon>
+                </button>
+                <button mat-button (click)="toggleFullscreen()">
+                    <mat-icon>{{fullscreenIcon}}</mat-icon>
+                </button>
+                <button mat-button (click)="closeWindow()">
+                  <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+    </mat-toolbar>
+</div>

@@ -3,8 +3,13 @@
 .main-container {
     height:100%;
 
+    .top-container{
+      height:36px;
+      width:100%;
+    }
+    
     .left-container{
-      height:100%;
+      height: calc(100% - 36px);
       width:auto;
       float:left;
     }
@@ -12,7 +17,7 @@
     .right-container{
       overflow:hidden;
       width: auto;
-      height:100%;
+      height: calc(100% - 36px);
       position:relative;
       background-color: $background-colour;
     }
