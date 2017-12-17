@@ -6,6 +6,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AccountComponent } from './components/account/account.component';
+import { DatabaseService } from '../../providers/database.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBartH5-zyYvpHn3YzdmYNz7H6GuEAgfYM",
@@ -29,7 +30,7 @@ export const firebaseConfig = {
     AccountComponent
   ],
   providers: [
-    
+    DatabaseService
   ],
   exports: [
     LoginComponent

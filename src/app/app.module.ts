@@ -15,7 +15,7 @@ import { BoardDialogComponent } from './components/board-dialog/board-dialog.com
 import { WindowDialogComponent } from './components/window-dialog/window-dialog.component';
 import { HomeComponent } from './components/home/home.component';
 import { ElectronService } from './providers/electron.service';
-import { DataService } from './providers/data.service';
+import { DatabaseService } from './providers/database.service';
 import { MainComponent } from './components/main/main.component';
 import { TitleLengthPipe } from './pipes/title-length.pipe';
 import { MenubarComponent } from './components/menubar/menubar.component';
@@ -43,7 +43,7 @@ import { MenubarComponent } from './components/menubar/menubar.component';
   ],
   providers: [
     ElectronService,
-    DataService
+    DatabaseService
   ],
   bootstrap: [
     AppComponent
