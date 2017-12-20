@@ -19,7 +19,7 @@ import { DatabaseService } from './providers/database.service';
 import { MainComponent } from './components/main/main.component';
 import { TitleLengthPipe } from './pipes/title-length.pipe';
 import { MenubarComponent } from './components/menubar/menubar.component';
-
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,8 @@ import { MenubarComponent } from './components/menubar/menubar.component';
     GridsterModule,
     LoginModule,
     SharedModule,
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
+    AngularFireDatabaseModule
   ],
   providers: [
     ElectronService,
