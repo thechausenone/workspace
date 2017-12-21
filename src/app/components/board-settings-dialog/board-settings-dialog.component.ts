@@ -10,23 +10,21 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls: ['./board-settings-dialog.component.scss']
 })
 export class BoardSettingsDialogComponent {
-
-  private _selectedFile: string;
   boardSubscription: Subscription;
   activeBoard:Board;
+  icon = '';
   boardtitle = '';
 
   constructor(private _dataService: DataService, 
               public dialogRef: MatDialogRef<BoardSettingsDialogComponent>, 
               @Inject(MAT_DIALOG_DATA) public data: any) {
-    this._selectedFile = "";
     this.boardSubscription = this._dataService._activeBoard$.subscribe(data => this.activeBoard = data);
     this.boardtitle = this.activeBoard.title;
+    this.icon = this.activeBoard.icon;
   }
 
   onNoClick(): void {
     this.dialogRef.close();
-    this._selectedFile = "";
   }
 
   deleteBoard(){
@@ -35,12 +33,9 @@ export class BoardSettingsDialogComponent {
     this._dataService.getBoards();
   }
 
-  onChange(event){
-    this._selectedFile = event.srcElement.files[0].path;
-  }
-
   renameBoard(){
     this.activeBoard.title = this.boardtitle;
+    this.activeBoard.icon = this.icon;
     this.dialogRef.close();
   }
   
