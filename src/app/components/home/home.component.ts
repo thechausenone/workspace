@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TileObject } from './objects/tile.object';
 import { Router } from "@angular/router";
-import { AuthenticationService } from "../../modules/login/providers/authentication.service";
+import { StateManagerService } from "../../providers/state-manager.service";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   tiles:Array<TileObject>;
 
   constructor(router: Router,
-              private authService: AuthenticationService) {
+              private stateManagerService: StateManagerService) {
     this.router = router;
     this.tiles = [
       {text: "Account", image: "account_circle", link: "login"},
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   private handleUserLoggedIn(): void{
     var index = this.tiles.findIndex(x => x.text == "Account");
 
-    if (this.authService.GetUserInfo().CheckUserStatus()){
+    if (this.stateManagerService.GetUserInfo().CheckUserStatus()){
       this.tiles[index].text = "Account";
       this.tiles[index].image = "account_circle";
       this.tiles[index].link = "account";

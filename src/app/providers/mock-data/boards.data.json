@@ -1,4 +1,5 @@
-[
+{
+"boards": [
     {   
         "id": 1,
         "title": "the first board",
@@ -42,3 +43,4 @@
             }]
     }
 ]
+}

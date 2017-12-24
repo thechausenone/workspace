@@ -7,6 +7,8 @@ import { Board } from "../components/navbar/objects/board.object";
 import { HttpClient } from "@angular/common/http";
 import { ElectronService } from "./electron.service";
 import { StateManagerService } from "./state-manager.service";
+import { AngularFireDatabase, AngularFireList  } from "angularfire2/database";
+import { UserData } from "./objects/user-data.object";
 
 @Injectable()
 export class DatabaseService {
@@ -14,18 +16,23 @@ export class DatabaseService {
 
     constructor(private _http: HttpClient, 
                 private _electronService: ElectronService,
-                private stateService: StateManagerService) {
+                private stateManagerService: StateManagerService,
+                private afDatabase: AngularFireDatabase) {
         this._filePath = './mock-data/boards.data.json';
+        console.log("database service initialized");
     }
 
-    //todo: change this return type to boolean if possible
     public ReadBoardsFromDatabase(): Observable<Array<Board>> {
-    return this._http.get<Array<Board>>(this._filePath).do(data => {
-        this.HandleResponse(data as Array<Board>);
-      }).catch((error:any) => {
-          this.HandleError(error);
-          return Observable.of([]);
-      });
+      var userId = this.stateManagerService.GetUserInfo().uid;
+      if (userId == "undefined" || userId == "")
+      {
+        console.log("To access boards, user must be logged in");
+        return new Observable();
+      }
+      
+      return this.afDatabase.list<Board>('/boards', ref => ref.orderByKey().equalTo("1"))
+                            .valueChanges()
+                            .do(data => this.HandleResponse(data));
     }
 
     public SaveBoardsToDatabase(boards: Array<Board>): void{
@@ -35,10 +42,10 @@ export class DatabaseService {
     //#region private methods
 
     private HandleResponse(boards: Array<Board>){
-      this.stateService.SetBoards(boards);
+      this.stateManagerService.SetBoards(boards);
 
       if (boards.length > 0){
-        this.stateService.SetActiveBoardIndex(0);
+        this.stateManagerService.SetActiveBoardIndex(0);
       }
     }
 

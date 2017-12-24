@@ -21,7 +21,7 @@ export class MenubarComponent {
    }
 
   ReadBoards():void{
-    this.databaseService.ReadBoardsFromDatabase();
+    this.databaseService.ReadBoardsFromDatabase().subscribe(data => console.log(data));
   }
 
   SaveBoards():void{

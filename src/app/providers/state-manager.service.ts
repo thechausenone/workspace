@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Board } from "../components/navbar/objects/board.object";
 import { Window } from "../components/grid/objects/window.object";
+import { UserInfo } from "../modules/login/providers/objects/userInfo.object";
 
 @Injectable()
 export class StateManagerService {
@@ -10,15 +11,37 @@ export class StateManagerService {
   private _boards: Array<Board>;
   private _activeWindowsSource: BehaviorSubject<Array<Window>>;
   private _activeWindows$: Observable<Array<Window>>;
+  private userInfo: UserInfo;
   
   constructor() {
     this._activeBoardIndex = -1;
     this._boards = new Array<Board>();
     this._activeWindowsSource = new BehaviorSubject<Array<Window>>(this.GetActiveWindows());
     this._activeWindows$ = this._activeWindowsSource.asObservable();
+    this.userInfo = new UserInfo();
   }
 
-  //#region board methods
+  //#region USERINFO METHODS
+
+  public GetUserInfo():UserInfo{
+    return this.userInfo;
+  }
+
+  public SetUserInfo(user: any):void{
+    if (user == null){
+      this.userInfo.ClearAllProperties();
+    }
+    else{
+        this.userInfo.SetAllProperties(user.uid, 
+                                        user.getIdToken,
+                                        user.email,
+                                        user.providerId);
+    };
+  }
+
+  //#endregion
+
+  //#region BOARD METHODS
 
   public GetBoards(): Array<Board>{
     return this._boards;
@@ -61,7 +84,7 @@ export class StateManagerService {
 
   //#endregion
 
-  //#region window methods
+  //#region WINDOW METHODS
 
   public AddWindow(name:string, file:string):void{
     this._boards[this._activeBoardIndex].windows.push(new Window(name, file));
@@ -73,7 +96,7 @@ export class StateManagerService {
 
   //#endregion
   
-  //#region private methods
+  //#region PRIVATE METHODS
 
   private GetActiveBoard(): Board{
     return this._boards[this._activeBoardIndex];

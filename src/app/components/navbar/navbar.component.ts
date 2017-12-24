@@ -28,7 +28,7 @@ export class NavbarComponent {
               private authService: AuthenticationService,
               private router: Router) {
     this.boards = this.stateManagerService.GetBoards();
-    this.hidden = !this.authService.GetUserInfo().CheckUserStatus();
+    this.hidden = !this.stateManagerService.GetUserInfo().CheckUserStatus();
     console.log("navbarcomponenet called");
   }
 
