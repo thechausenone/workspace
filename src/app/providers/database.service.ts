@@ -22,28 +22,44 @@ export class DatabaseService {
         console.log("database service initialized");
     }
 
+    public SaveUserToDatabase(user: any): void{
+      var data = {
+          boards: new Array<Board>(new Board())
+      };
+
+      this.afDatabase.object('users').update({ [user.uid]: data });
+    }
+
     public ReadBoardsFromDatabase(): Observable<Array<Board>> {
       var userId = this.stateManagerService.GetUserInfo().uid;
+
       if (userId == "undefined" || userId == "")
       {
-        console.log("To access boards, user must be logged in");
+        console.warn("To access boards, user must be logged in");
         return new Observable();
       }
       
-      return this.afDatabase.list<Board>('/boards', ref => ref.orderByKey().equalTo("1"))
+      return this.afDatabase.list<any>('users/' + userId + '/boards')
                             .valueChanges()
                             .do(data => this.HandleResponse(data));
     }
 
     public SaveBoardsToDatabase(boards: Array<Board>): void{
-      this._electronService.writeToJSON(this._filePath, JSON.stringify(boards));
+      var userId = this.stateManagerService.GetUserInfo().uid;
+
+      if (userId == "undefined" || userId == "")
+      {
+        console.warn("To save boards, user must be logged in");
+      }
+      else{
+        this.afDatabase.object('users/' + userId).set({boards: boards});
+      }
     }
 
     //#region private methods
 
     private HandleResponse(boards: Array<Board>){
       this.stateManagerService.SetBoards(boards);
-
       if (boards.length > 0){
         this.stateManagerService.SetActiveBoardIndex(0);
       }
