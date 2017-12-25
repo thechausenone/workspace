@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
-import 'rxjs/add/observable/of';
 import { Board } from "../components/navbar/objects/board.object";
 import { HttpClient } from "@angular/common/http";
-import { ElectronService } from "./electron.service";
 import { StateManagerService } from "./state-manager.service";
 import { AngularFireDatabase, AngularFireList  } from "angularfire2/database";
 import { UserData } from "./objects/user-data.object";
@@ -15,11 +13,9 @@ export class DatabaseService {
     private _filePath: string;
 
     constructor(private _http: HttpClient, 
-                private _electronService: ElectronService,
                 private stateManagerService: StateManagerService,
                 private afDatabase: AngularFireDatabase) {
-        this._filePath = './mock-data/boards.data.json';
-        console.log("database service initialized");
+        console.log("DatabaseService has been initialized");
     }
 
     public SaveUserToDatabase(user: any): void{

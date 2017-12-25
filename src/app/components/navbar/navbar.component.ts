@@ -29,7 +29,6 @@ export class NavbarComponent {
               private router: Router) {
     this.boards = this.stateManagerService.GetBoards();
     this.hidden = !this.stateManagerService.GetUserInfo().CheckUserStatus();
-    console.log("navbarcomponenet called");
   }
 
   MapWindowsToDesktop():void{

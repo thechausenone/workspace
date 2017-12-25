@@ -19,6 +19,7 @@ export class StateManagerService {
     this._activeWindowsSource = new BehaviorSubject<Array<Window>>(this.GetActiveWindows());
     this._activeWindows$ = this._activeWindowsSource.asObservable();
     this.userInfo = new UserInfo();
+    console.log("StateManagerService has been initialized");
   }
 
   //#region USERINFO METHODS
