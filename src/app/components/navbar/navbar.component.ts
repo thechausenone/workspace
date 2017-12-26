@@ -8,6 +8,8 @@ import {ElectronService} from '../../providers/electron.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
 import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
+import {BoardSettingsDialogComponent} from '../board-settings-dialog/board-settings-dialog.component';
+import { Subscription } from "rxjs/Subscription";
 import { Router } from '@angular/router';
 
 @Component({
@@ -71,12 +73,18 @@ export class NavbarComponent {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
-
+  
   DeleteBoard(){
     this.stateManagerService.DeleteBoard(this.GetActiveBoard());
     this.stateManagerService.SetActiveBoardIndex(-1);
     this.HandleSideNavToggle();
     this.router.navigateByUrl("/main/home");
+  }
+
+  boardSettings(){
+    let dialogRef = this.dialog.open(BoardSettingsDialogComponent, {
+      width: '500px'
+    });
   }
 
   AddWindow(){
@@ -85,7 +93,7 @@ export class NavbarComponent {
       data: {name: ""}
     });
     dialogRef.afterClosed().subscribe(result => {
-    });    
+    });
   }
 
   //#region Private Methods

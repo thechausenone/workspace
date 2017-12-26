@@ -29,4 +29,5 @@ export class WindowDialogComponent {
   onChange(event){
     this._selectedFile = event.srcElement.files[0].path;
   }
+  
 }

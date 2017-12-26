@@ -1,0 +1,14 @@
+@import 'src/styles.scss';
+
+.form-flex-container{
+    @include flex-display(row, flex-start, flex-start);
+}
+
+#settings-delete-btn {
+    //override global theme
+    background-color:#d6290a !important;
+    color: white;
+}
+.settings-title {
+    margin-bottom: 20px;
+}
