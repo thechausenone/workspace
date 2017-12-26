@@ -25,7 +25,6 @@
   </table>
 </div>
 <div mat-dialog-actions>
-  <button id=settings-delete-btn mat-raised-button (click)="deleteBoard()" tabindex="-1">Delete</button>
   <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
-  <button mat-button (click)="renameBoard(name)" tabindex="2">Ok</button>
+  <button mat-button (click)="applyChanges()" tabindex="2">Ok</button>
 </div>

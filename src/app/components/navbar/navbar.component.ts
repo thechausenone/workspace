@@ -73,21 +73,18 @@ export class NavbarComponent {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
-
-  boardSettings(){
-    let dialogRef = this.dialog.open(BoardSettingsDialogComponent, {
-      width: '500px',
-      data: {name: ""}
-    });
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  }
-    
+  
   DeleteBoard(){
     this.stateManagerService.DeleteBoard(this.GetActiveBoard());
     this.stateManagerService.SetActiveBoardIndex(-1);
     this.HandleSideNavToggle();
     this.router.navigateByUrl("/main/home");
+  }
+
+  boardSettings(){
+    let dialogRef = this.dialog.open(BoardSettingsDialogComponent, {
+      width: '500px'
+    });
   }
 
   AddWindow(){
@@ -96,7 +93,7 @@ export class NavbarComponent {
       data: {name: ""}
     });
     dialogRef.afterClosed().subscribe(result => {
-    });    
+    });
   }
 
   //#region Private Methods
