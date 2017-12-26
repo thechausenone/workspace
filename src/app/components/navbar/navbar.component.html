@@ -2,16 +2,16 @@
   <div class="navbar-content">
     <mat-button-toggle-group class="taskbar-tab-group" vertical value = "home">
 
-      <mat-button-toggle class = "taskbar-tab" (click)="handleSideNavToggle()" [routerLink] = "['/main/home']" value ="home">
+      <mat-button-toggle class = "taskbar-tab" (click)="HandleSideNavToggle()" [routerLink] = "['/main/home']" value ="home">
         <mat-icon>home</mat-icon>
       </mat-button-toggle>
 
-      <mat-button-toggle class="taskbar-tab" *ngFor="let board of boards" mat-button (click)="handleSideNavToggle(board)" [routerLink] = "['/main/grid']">
+      <mat-button-toggle class="taskbar-tab" *ngFor="let board of boards" mat-button (click)="HandleSideNavToggle(board)" [routerLink] = "['/main/grid']">
 
         <mat-icon>{{board.icon}}</mat-icon>
       </mat-button-toggle>
 
-      <mat-button-toggle class="taskbar-tab" (click)="addBoard()">
+      <mat-button-toggle class="taskbar-tab" (click)="AddBoard()" *ngIf = "!hidden">
         <mat-icon>add</mat-icon>
       </mat-button-toggle>
 
@@ -21,14 +21,14 @@
   <mat-sidenav #sidenav mode="side" class="sidenav-panel" position="end">
 
     <div class="sidenav-header">
-      <span [matTooltip] = "activeBoard?.title" matTooltipPosition = "right">
-        <p class = "mat-h2">{{activeBoard?.title | uppercase | titleLength}}</p>
+      <span [matTooltip] = "GetActiveBoard()?.title" matTooltipPosition = "right">
+        <p class = "mat-h2">{{GetActiveBoard()?.title | uppercase | titleLength}}</p>
       </span>
       <mat-icon class = "dropdown-menu" [matMenuTriggerFor]="menu">expand_more</mat-icon>
     </div>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click) = "mapWindowsToDesktop()">Map windows</button>
+      <button mat-menu-item (click) = "MapWindowsToDesktop()">Map windows</button>
       <button mat-menu-item (click) = "boardSettings()">Board Settings</button>
     </mat-menu>
 
@@ -37,7 +37,7 @@
       <mat-icon>settings</mat-icon>
     </mat-list>
 
-    <button mat-button class="sidenav-add-button" (click)="addWindow()">
+    <button mat-button class="sidenav-add-button" (click)="AddWindow()">
       <mat-icon>add_to_photos</mat-icon>
     </button>
   </mat-sidenav>

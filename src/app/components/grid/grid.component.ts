@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GridsterConfig }  from 'angular-gridster2';
 import {Window} from './objects/window.object';
-import {DataService} from '../../providers/data.service';
+import { StateManagerService} from '../../providers/state-manager.service';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({
@@ -15,8 +15,9 @@ export class GridComponent implements OnInit, OnDestroy {
   windows:Array<Window>;
   windowSubscription: Subscription;
 
-  constructor(private dataService: DataService) { 
-    this.windowSubscription = this.dataService.activeWindows$.subscribe(data => this.windows = data);
+  constructor(private stateManagerService: StateManagerService) { 
+    this.windowSubscription = this.stateManagerService.GetWindowsObservable()
+                                  .subscribe(data => this.windows = data);
   }
 
   ngOnInit() {

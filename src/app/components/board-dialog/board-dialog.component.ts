@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {DataService} from '../../providers/data.service';
+import { StateManagerService } from '../../providers/state-manager.service';
 
 @Component({
   selector: 'app-board-dialog',
@@ -9,7 +9,7 @@ import {DataService} from '../../providers/data.service';
 })
 export class BoardDialogComponent {
 
-  constructor(private _dataService: DataService, public dialogRef: MatDialogRef<BoardDialogComponent>,
+  constructor(private stateManagerService: StateManagerService, public dialogRef: MatDialogRef<BoardDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
@@ -17,8 +17,7 @@ export class BoardDialogComponent {
   }
 
   saveBoard(name, icon): void {
-    this._dataService.addBoard(name, icon);
-    this._dataService.getBoards();
+    this.stateManagerService.AddBoard(name, icon);
     this.dialogRef.close();
   }
 }

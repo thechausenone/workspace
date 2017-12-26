@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BrowserWindow } from 'electron';
-
+import { StateManagerService } from '../../providers/state-manager.service';
+import { DatabaseService } from '../../providers/database.service';
 @Component({
   selector: 'app-menubar',
   templateUrl: './menubar.component.html',
@@ -12,11 +13,16 @@ export class MenubarComponent {
   electron: any;
   fullscreenIcon: string;
 
-  constructor() {
+  constructor(private stateManagerService: StateManagerService,
+              private databaseService: DatabaseService) {
     this.electron = require('electron');
     this.window = this.electron.remote.getCurrentWindow();
     this.setIcon();
    }
+
+  SaveBoards():void{
+    this.databaseService.SaveBoardsToDatabase(this.stateManagerService.GetBoards());
+  }
 
   minimizeWindow(){
     this.window.minimize();
