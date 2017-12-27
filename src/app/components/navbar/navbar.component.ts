@@ -6,9 +6,9 @@ import { StateManagerService } from '../../providers/state-manager.service';
 import { AuthenticationService } from '../../modules/login/providers/authentication.service';
 import {ElectronService} from '../../providers/electron.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
-import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
-import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
-import {BoardSettingsDialogComponent} from '../board-settings-dialog/board-settings-dialog.component';
+import {BoardDialogComponent} from '../../modules/dialog/components/board-dialog/board-dialog.component';
+import {WindowDialogComponent} from '../../modules/dialog/components/window-dialog/window-dialog.component';
+import {BoardSettingsDialogComponent} from '../../modules/dialog/components/board-settings-dialog/board-settings-dialog.component';
 import { Subscription } from "rxjs/Subscription";
 import { Router } from '@angular/router';
 

@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { StateManagerService } from '../../providers/state-manager.service';
+import { StateManagerService } from '../../../../providers/state-manager.service';
 
 @Component({
   selector: 'app-window-dialog',
