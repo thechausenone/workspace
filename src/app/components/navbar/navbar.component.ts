@@ -1,15 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import {NgIf} from '@angular/common';
-import {Board} from './objects/board.object'
-import {Window} from '../grid/objects/window.object';
+import { Board } from './objects/board.object'
+import { Window } from '../grid/objects/window.object';
 import { StateManagerService } from '../../providers/state-manager.service';
 import { AuthenticationService } from '../../modules/login/providers/authentication.service';
-import {ElectronService} from '../../providers/electron.service';
-import {MatDialog, MatDialogRef} from '@angular/material';
-import {BoardDialogComponent} from '../../modules/dialog/components/board-dialog/board-dialog.component';
-import {WindowDialogComponent} from '../../modules/dialog/components/window-dialog/window-dialog.component';
-import {BoardSettingsDialogComponent} from '../../modules/dialog/components/board-settings-dialog/board-settings-dialog.component';
-import { Subscription } from "rxjs/Subscription";
+import { ElectronService } from '../../providers/electron.service';
+import { MatDialog } from '@angular/material';
+import { BoardDialogComponent} from '../../modules/dialog/components/board-dialog/board-dialog.component';
+import { WindowDialogComponent } from '../../modules/dialog/components/window-dialog/window-dialog.component';
+import { BoardSettingsDialogComponent } from '../../modules/dialog/components/board-settings-dialog/board-settings-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,6 +20,7 @@ export class NavbarComponent {
   boards: Array<Board>;
   windows: Array<Window>;
   hidden: boolean;
+  dialogSize: string;
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private stateManagerService: StateManagerService,
@@ -31,6 +30,7 @@ export class NavbarComponent {
               private router: Router) {
     this.boards = this.stateManagerService.GetBoards();
     this.hidden = !this.authService.GetUserInfo().CheckUserStatus();
+    this.dialogSize = "300px";
     console.log("navbarcomponenet called");
   }
 
@@ -64,15 +64,6 @@ export class NavbarComponent {
       this.windows = board.windows;
     }
   }
-
-  AddBoard(){
-    let dialogRef = this.dialog.open(BoardDialogComponent, {
-      width: '500px',
-      data: {name: "", icon: ""}
-    });
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  }
   
   DeleteBoard(){
     this.stateManagerService.DeleteBoard(this.GetActiveBoard());
@@ -81,20 +72,25 @@ export class NavbarComponent {
     this.router.navigateByUrl("/main/home");
   }
 
-  boardSettings(){
-    let dialogRef = this.dialog.open(BoardSettingsDialogComponent, {
-      width: '500px'
+  //#region DIALOG METHODS
+  OpenCreateBoardDialog(){
+    this.dialog.open(BoardDialogComponent, {
+      width: this.dialogSize
     });
   }
 
-  AddWindow(){
-    let dialogRef = this.dialog.open(WindowDialogComponent, {
-      width: '500px',
-      data: {name: ""}
-    });
-    dialogRef.afterClosed().subscribe(result => {
+  OpenBoardSettingsDialog(){
+    this.dialog.open(BoardSettingsDialogComponent, {
+      width: this.dialogSize
     });
   }
+
+  OpenCreateWindowDialog(){
+    this.dialog.open(WindowDialogComponent, {
+      width: this.dialogSize
+    });
+  }
+  //#endregion
 
   //#region Private Methods
 

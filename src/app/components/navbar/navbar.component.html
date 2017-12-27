@@ -11,7 +11,7 @@
         <mat-icon>{{board.icon}}</mat-icon>
       </mat-button-toggle>
 
-      <mat-button-toggle class="taskbar-tab" (click)="AddBoard()" *ngIf = "!hidden">
+      <mat-button-toggle class="taskbar-tab" (click)="OpenCreateBoardDialog()" *ngIf = "!hidden">
         <mat-icon>add</mat-icon>
       </mat-button-toggle>
 
@@ -29,7 +29,7 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click) = "MapWindowsToDesktop()">Map Windows</button>
-      <button mat-menu-item (click) = "boardSettings()">Edit Board Settings</button>
+      <button mat-menu-item (click) = "OpenBoardSettingsDialog()">Edit Board Settings</button>
       <button mat-menu-item (click) = "DeleteBoard()">Delete Board</button>
     </mat-menu>
 
@@ -38,7 +38,7 @@
       <mat-icon>settings</mat-icon>
     </mat-list>
 
-    <button mat-button class="sidenav-add-button" (click)="AddWindow()">
+    <button mat-button class="sidenav-add-button" (click)="OpenCreateWindowDialog()">
       <mat-icon>add_to_photos</mat-icon>
     </button>
   </mat-sidenav>
