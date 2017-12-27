@@ -31,7 +31,8 @@ const routes: Routes = [
                 path: 'grid',
                 component: GridComponent
             }        
-        ]
+        ],
+        data: { state: 'main' }
     },
     {
         path: 'login',
@@ -45,7 +46,8 @@ const routes: Routes = [
     },
     {
         path: 'account',
-        component: AccountComponent
+        component: AccountComponent,
+        data: { state: 'account' }
     }
 ];
 
