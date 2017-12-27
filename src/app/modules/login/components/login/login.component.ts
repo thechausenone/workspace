@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../providers/authentication.service';
 import { Router } from "@angular/router";
 import { MatSnackBar } from '@angular/material';
 import { DatabaseService } from '../../../../providers/database.service';
+import { routerTransition } from '../../../../app-routing.animations';
 
 @Component({
   selector: 'app-login',

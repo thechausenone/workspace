@@ -35,11 +35,13 @@ const routes: Routes = [
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        data: { state: 'login' }
     },
     {
         path: 'signup',
-        component: SignupComponent
+        component: SignupComponent,
+        data: { state: 'signup' }
     },
     {
         path: 'account',
