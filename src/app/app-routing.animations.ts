@@ -6,7 +6,7 @@ export const routerTransition = trigger('routerTransition', [
   SlideToRight('signup => login'),
   SlideToRight('login => account'),
   SlideToLeft('account => login'),
-  FadeInAndOut('main <=> *')
+  FadeInAndOut('main => *')
 ])
 
 function SlideToLeft(state:string){
