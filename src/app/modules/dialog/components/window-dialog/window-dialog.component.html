@@ -1,22 +1,32 @@
-<h1 mat-dialog-title>Create a Window</h1>
-<div mat-dialog-content>
-  <p>Name:</p>
-  <mat-form-field>
-    <input matInput tabindex="1" [(ngModel)]="name">
-  </mat-form-field>
-  <p>File:</p>
-
-  <div class="form-flex-container">
-      <mat-form-field >
-          <input type = "text" matInput [value] = "_selectedFile">   
-      </mat-form-field> 
-        <button type="button" mat-button (click)="imgFileInput.click()">Choose a file</button>
-        <input hidden type="file" #imgFileInput (change)="onChange($event)"/>
-  </div>
-  
-
+<div class = "dialog-header">
+    <mat-icon>
+        library_add
+    </mat-icon>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
-  <button mat-button (click)="createWindow(name)" tabindex="2">Ok</button>
+      
+<div class= "dialog-content">
+    <h1 mat-dialog-title>Create a Window</h1>
+
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input matInput placeholder="Name" [value]="name" [(ngModel)]="name">
+        </mat-form-field>
+        
+        <div class="form-flex-container">
+            <mat-form-field >
+                <input matInput placeholder="File Path" type = "text" [value] = "filePath">   
+            </mat-form-field> 
+
+            <mat-icon class = "search-button" (click)="imgFileInput.click()">
+              search
+            </mat-icon>
+
+            <input hidden type="file" #imgFileInput (change)="onChange($event)"/>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="closeDialog()">CANCEL</button>
+        <button mat-button (click)="createWindow()" tabindex="2">OK</button>
+    </div>
 </div>

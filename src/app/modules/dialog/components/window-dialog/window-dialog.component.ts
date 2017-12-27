@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { StateManagerService } from '../../../../providers/state-manager.service';
 
 @Component({
@@ -8,26 +8,25 @@ import { StateManagerService } from '../../../../providers/state-manager.service
   styleUrls: ['./window-dialog.component.scss']
 })
 export class WindowDialogComponent {
-  private _selectedFile: string;
+  filePath: string;
+  name: string;
 
   constructor(private stateManagerService: StateManagerService, 
-              public dialogRef: MatDialogRef<WindowDialogComponent>, 
-              @Inject(MAT_DIALOG_DATA) public data: any) {
-    this._selectedFile = "";
+              public dialogRef: MatDialogRef<WindowDialogComponent>) {
+    this.name = "Default Name"
+    this.filePath = "";
   }
 
-  onNoClick(): void {
+  closeDialog(): void {
     this.dialogRef.close();
-    this._selectedFile = "";
   }
 
-  createWindow(name): void {
-    this.stateManagerService.AddWindow(name, this._selectedFile);
-    this.dialogRef.close();
+  createWindow(): void {
+    this.stateManagerService.AddWindow(this.name, this.filePath);
+    this.closeDialog();
   }
 
   onChange(event){
-    this._selectedFile = event.srcElement.files[0].path;
+    this.filePath = event.srcElement.files[0].path;
   }
-  
 }
