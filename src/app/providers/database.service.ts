@@ -35,7 +35,7 @@ export class DatabaseService {
         return new Observable();
       }
       
-      return this.afDatabase.list<any>('users/' + userId + '/boards')
+      return this.afDatabase.list<Board>('users/' + userId + '/boards')
                             .valueChanges()
                             .do(data => this.HandleResponse(data));
     }

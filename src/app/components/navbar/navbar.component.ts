@@ -27,7 +27,7 @@ export class NavbarComponent {
               private dialog: MatDialog,
               private authService: AuthenticationService,
               private router: Router) {
-    this.boards = this.stateManagerService.GetBoards();
+    this.GetBoards();
     this.hidden = !this.stateManagerService.GetUserInfo().CheckUserStatus();
   }
 
@@ -88,6 +88,15 @@ export class NavbarComponent {
   }
 
   //#region Private Methods
+
+  private GetBoards(){
+    this.stateManagerService.GetBoardsObservable().subscribe(data => {
+      this.boards = data;
+      if (this.GetActiveBoard() != null){
+        this.windows =  this.GetActiveBoard().windows;
+      }
+    });
+  }
 
   private SetActiveBoard(board: Board){
     this.stateManagerService.SetActiveBoardIndex(this.boards.findIndex(x => x == board));

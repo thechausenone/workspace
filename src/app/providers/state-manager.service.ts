@@ -12,6 +12,8 @@ export class StateManagerService {
   private _activeWindowsSource: BehaviorSubject<Array<Window>>;
   private _activeWindows$: Observable<Array<Window>>;
   private userInfo: UserInfo;
+  private _boardsSource: BehaviorSubject<Array<Board>>;
+  private _boards$: Observable<Array<Board>>;
   
   constructor() {
     this._activeBoardIndex = -1;
@@ -19,6 +21,8 @@ export class StateManagerService {
     this._activeWindowsSource = new BehaviorSubject<Array<Window>>(this.GetActiveWindows());
     this._activeWindows$ = this._activeWindowsSource.asObservable();
     this.userInfo = new UserInfo();
+    this._boardsSource = new BehaviorSubject<Array<Board>>(this._boards);
+    this._boards$ = this._boardsSource.asObservable();
     console.log("StateManagerService has been initialized");
   }
 
@@ -43,6 +47,9 @@ export class StateManagerService {
   //#endregion
 
   //#region BOARD METHODS
+  public GetBoardsObservable():Observable<Array<Board>>{
+    return this._boards$;
+  }
 
   public GetBoards(): Array<Board>{
     return this._boards;
@@ -50,10 +57,12 @@ export class StateManagerService {
 
   public SetBoards(boards: Array<Board>): void{
     this._boards = boards;
+    this.UpdateBoardsSource(boards);
   }
 
   public AddBoard(title:string, icon:string):void{
     this._boards.push(new Board(title, icon));
+    this.UpdateBoardsSource(this._boards);
   }
 
   public DeleteBoard(board:Board):void{
@@ -61,6 +70,7 @@ export class StateManagerService {
 
     if (index!== -1){
         this._boards.splice(index, 1);
+        this.UpdateBoardsSource(this._boards);
         console.log("The board titled \"" + board.title + "\" has been deleted.");
     }
     else{
@@ -98,6 +108,9 @@ export class StateManagerService {
   //#endregion
   
   //#region PRIVATE METHODS
+  private UpdateBoardsSource(boards:Array<Board>){
+    this._boardsSource.next(boards);
+  }
 
   private GetActiveBoard(): Board{
     return this._boards[this._activeBoardIndex];
