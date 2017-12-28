@@ -6,9 +6,9 @@ import { StateManagerService } from '../../providers/state-manager.service';
 import { AuthenticationService } from '../../modules/login/providers/authentication.service';
 import {ElectronService} from '../../providers/electron.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
-import {BoardDialogComponent} from '../board-dialog/board-dialog.component';
-import {WindowDialogComponent} from '../window-dialog/window-dialog.component';
-import {BoardSettingsDialogComponent} from '../board-settings-dialog/board-settings-dialog.component';
+import {BoardDialogComponent} from '../../modules/dialog/components/board-dialog/board-dialog.component';
+import {WindowDialogComponent} from '../../modules/dialog/components/window-dialog/window-dialog.component';
+import {BoardSettingsDialogComponent} from '../../modules/dialog/components/board-settings-dialog/board-settings-dialog.component';
 import { Subscription } from "rxjs/Subscription";
 import { Router } from '@angular/router';
 
@@ -22,6 +22,7 @@ export class NavbarComponent {
   boards: Array<Board>;
   windows: Array<Window>;
   hidden: boolean;
+  focusedItem: string;
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private stateManagerService: StateManagerService,
@@ -29,9 +30,9 @@ export class NavbarComponent {
               private dialog: MatDialog,
               private authService: AuthenticationService,
               private router: Router) {
-    this.boards = this.stateManagerService.GetBoards();
-    this.hidden = !this.authService.GetUserInfo().CheckUserStatus();
-    console.log("navbarcomponenet called");
+    this.GetBoards();
+    this.hidden = !this.stateManagerService.GetUserInfo().CheckUserStatus();
+    this.focusedItem = "home";
   }
 
   MapWindowsToDesktop():void{
@@ -66,11 +67,19 @@ export class NavbarComponent {
   }
 
   AddBoard(){
+    let boardCount = this.boards.length;
+
     let dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '500px',
       data: {name: "", icon: ""}
     });
+    
     dialogRef.afterClosed().subscribe(result => {
+      if (this.boards.length != boardCount){
+        let newBoardIndex = this.boards.length - 1;
+        this.focusedItem  = (newBoardIndex).toString();
+        this.HandleSideNavToggle(this.boards[newBoardIndex]);
+      }
     });
   }
   
@@ -97,6 +106,18 @@ export class NavbarComponent {
   }
 
   //#region Private Methods
+  private GetBoardIdentifier(board: Board):string{
+    return this.boards.findIndex(x => x == board).toString();
+  }
+
+  private GetBoards(){
+    this.stateManagerService.GetBoardsObservable().subscribe(data => {
+      this.boards = data;
+      if (this.GetActiveBoard() != null){
+        this.windows =  this.GetActiveBoard().windows;
+      }
+    });
+  }
 
   private SetActiveBoard(board: Board){
     this.stateManagerService.SetActiveBoardIndex(this.boards.findIndex(x => x == board));

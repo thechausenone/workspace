@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {Board} from '../navbar/objects/board.object';
+import {Board} from '../../../../components/navbar/objects/board.object';
 import { Subscription } from "rxjs/Subscription";
-import { StateManagerService } from "../../providers/state-manager.service";
+import { StateManagerService } from "../../../../providers/state-manager.service";
 import { Router } from '@angular/router';
 
 @Component({

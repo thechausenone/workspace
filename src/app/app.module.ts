@@ -8,31 +8,26 @@ import { GridsterModule } from 'angular-gridster2';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { LoginModule } from "./modules/login/login.module";
+import { DialogModule } from "./modules/dialog/dialog.module";
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GridComponent } from './components/grid/grid.component';
-import { BoardDialogComponent } from './components/board-dialog/board-dialog.component';
-import { WindowDialogComponent } from './components/window-dialog/window-dialog.component';
 import { HomeComponent } from './components/home/home.component';
 import { ElectronService } from './providers/electron.service';
 import { DatabaseService } from './providers/database.service';
 import { MainComponent } from './components/main/main.component';
 import { TitleLengthPipe } from './pipes/title-length.pipe';
 import { MenubarComponent } from './components/menubar/menubar.component';
-import { BoardSettingsDialogComponent } from './components/board-settings-dialog/board-settings-dialog.component';
-
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     GridComponent,
-    BoardDialogComponent,
-    WindowDialogComponent,
     HomeComponent,
     MainComponent,
     TitleLengthPipe,
-    MenubarComponent,
-    BoardSettingsDialogComponent
+    MenubarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +35,10 @@ import { BoardSettingsDialogComponent } from './components/board-settings-dialog
     AppRoutingModule,
     GridsterModule,
     LoginModule,
+    DialogModule,
     SharedModule,
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
+    AngularFireDatabaseModule
   ],
   providers: [
     ElectronService,
@@ -49,11 +46,6 @@ import { BoardSettingsDialogComponent } from './components/board-settings-dialog
   ],
   bootstrap: [
     AppComponent
-  ],
-  entryComponents: [
-    BoardDialogComponent, 
-    WindowDialogComponent,
-    BoardSettingsDialogComponent
   ]
 })
 export class AppModule { }

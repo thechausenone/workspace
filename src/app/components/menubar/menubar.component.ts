@@ -20,6 +20,10 @@ export class MenubarComponent {
     this.setIcon();
    }
 
+  ReadBoards():void{
+    this.databaseService.ReadBoardsFromDatabase().subscribe(data => console.log(data));
+  }
+
   SaveBoards():void{
     this.databaseService.SaveBoardsToDatabase(this.stateManagerService.GetBoards());
   }
