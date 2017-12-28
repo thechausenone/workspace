@@ -22,6 +22,7 @@ export class NavbarComponent {
   boards: Array<Board>;
   windows: Array<Window>;
   hidden: boolean;
+  focusedItem: string;
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private stateManagerService: StateManagerService,
@@ -31,6 +32,7 @@ export class NavbarComponent {
               private router: Router) {
     this.GetBoards();
     this.hidden = !this.stateManagerService.GetUserInfo().CheckUserStatus();
+    this.focusedItem = "home";
   }
 
   MapWindowsToDesktop():void{
@@ -65,11 +67,19 @@ export class NavbarComponent {
   }
 
   AddBoard(){
+    let boardCount = this.boards.length;
+
     let dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '500px',
       data: {name: "", icon: ""}
     });
+    
     dialogRef.afterClosed().subscribe(result => {
+      if (this.boards.length != boardCount){
+        let newBoardIndex = this.boards.length - 1;
+        this.focusedItem  = (newBoardIndex).toString();
+        this.HandleSideNavToggle(this.boards[newBoardIndex]);
+      }
     });
   }
   
@@ -96,6 +106,9 @@ export class NavbarComponent {
   }
 
   //#region Private Methods
+  private GetBoardIdentifier(board: Board):string{
+    return this.boards.findIndex(x => x == board).toString();
+  }
 
   private GetBoards(){
     this.stateManagerService.GetBoardsObservable().subscribe(data => {

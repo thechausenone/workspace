@@ -1,19 +1,18 @@
 <mat-sidenav-container class="navbar-container">
   <div class="navbar-content">
-    <mat-button-toggle-group class="taskbar-tab-group" vertical value = "home">
+    <mat-button-toggle-group class="taskbar-tab-group" vertical [(ngModel)] = "focusedItem">
 
-      <mat-button-toggle class = "taskbar-tab" (click)="HandleSideNavToggle()" [routerLink] = "['/main/home']" value ="home">
+      <mat-button-toggle (click)="HandleSideNavToggle()" [routerLink] = "['/main/home']" [value] ="home">
         <mat-icon>home</mat-icon>
       </mat-button-toggle>
 
-      <mat-button-toggle class="taskbar-tab" *ngFor="let board of boards" mat-button (click)="HandleSideNavToggle(board)" [routerLink] = "['/main/grid']">
-
+      <mat-button-toggle *ngFor="let board of boards" mat-button (click)="HandleSideNavToggle(board)" [routerLink] = "['/main/grid']" [value] = "GetBoardIdentifier(board)">
         <mat-icon>{{board.icon}}</mat-icon>
       </mat-button-toggle>
 
-      <mat-button-toggle class="taskbar-tab" (click)="AddBoard()" *ngIf = "!hidden">
+      <button mat-button class = "add-button" (click)="AddBoard()" *ngIf = "!hidden">
         <mat-icon>add</mat-icon>
-      </mat-button-toggle>
+      </button>
 
     </mat-button-toggle-group>
   </div>

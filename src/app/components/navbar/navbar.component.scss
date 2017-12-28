@@ -8,6 +8,11 @@
     margin-top: auto;
     border-radius: 0px !important;
     
+    .add-button{
+      padding: 0px;
+      min-width:56px;
+    }
+    
     mat-icon {
       margin: 15px 0;
       color: $primary-colour-1;
