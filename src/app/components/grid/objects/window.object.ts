@@ -19,8 +19,8 @@ export class Window implements GridsterItem{
     windowFilePath: string;
 
     constructor(windowName:string = "default window", windowFilePath:string = ""){
-        this.x = undefined;
-        this.y = undefined;
+        this.x = 0;
+        this.y = 0;
         this.rows = 1;
         this.cols = 1;
         this.dragEnabled = true;

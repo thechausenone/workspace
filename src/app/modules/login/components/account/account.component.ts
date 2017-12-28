@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../providers/authentication.service';
+import { StateManagerService} from "../../../../providers/state-manager.service"
 import { UserInfo } from '../../providers/objects/userInfo.object';
 import { Router } from "@angular/router";
 import { MatSnackBar } from '@angular/material';
@@ -17,9 +18,10 @@ export class AccountComponent{
   popupMessage: MatSnackBar;
 
   constructor(private _authService: AuthenticationService,
+              private _stateManagerService: StateManagerService,
               router: Router,
               popupMessage: MatSnackBar) {
-    this.userInfo = _authService.GetUserInfo();
+    this.userInfo = _stateManagerService.GetUserInfo();
     this.email = this.userInfo.email;
     this.provider = this.userInfo.provider;
     this.router = router;
