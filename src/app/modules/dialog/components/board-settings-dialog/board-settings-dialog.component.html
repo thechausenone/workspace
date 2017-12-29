@@ -1,30 +1,28 @@
-<mat-toolbar class="settings-title" >Board Settings</mat-toolbar>
-
-<div mat-dialog-content class="input-wrapper">
-  <table>
-      <tr>
-          <td>
-              <mat-form-field>
-                  <input matInput type="text" placeholder="Name" [(ngModel)]="boardtitle"/>
-                  <button mat-button *ngIf="boardtitle" matSuffix mat-icon-button aria-label="Clear" (click)="boardtitle=''">
-                    <mat-icon>mode_edit</mat-icon>
-                  </button>
-              </mat-form-field>
-          </td>
-      </tr>
-      <tr>
-          <td>
-              <mat-form-field>
-                  <input matInput type="text" placeholder="icon" [(ngModel)]="icon"/>
-                  <button mat-button *ngIf="icon" matSuffix mat-icon-button aria-label="Clear" (click)="icon=''">
-                    <mat-icon>mode_edit</mat-icon>
-                  </button>
-              </mat-form-field>
-          </td>
-      </tr>
-  </table>
+<div class = "dialog-header">
+    <mat-icon>
+        mode_edit
+    </mat-icon>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
-  <button mat-button (click)="applyChanges()" tabindex="2">Ok</button>
+      
+<div class= "dialog-content">
+    <h1 mat-dialog-title>Edit Board Settings</h1>
+
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input matInput placeholder="Name" [value]="name" [(ngModel)]="name">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-select placeholder="Icon" [(ngModel)]="icon">
+                <mat-option *ngFor="let icon of icons" [value]="icon">
+                    {{icon}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="closeDialog()">CANCEL</button>
+        <button mat-button (click)="applyChanges()" tabindex="2">OK</button>
+    </div>
 </div>

@@ -15,6 +15,11 @@ $secondary-colour-3: #3f3f3f;
 $background-colour: grey;
 $font-default-colour: white;
 
+$green: rgb(43, 201, 51);
+$red: rgb(201, 43, 43);
+$blue: #1468A0;
+$yellow: rgb(168, 151, 0);
+
 $menubar-height: 36px;
 
 //================MIXINS(REUSABLE STYLES)==================
@@ -34,11 +39,10 @@ $menubar-height: 36px;
 
 @mixin exit-screen-button(){
   @include mat-icon-resize(50px);
-  position: absolute;
-  top: $menubar-height;
-  right:0;
+  position: relative;
+  left:225px;
   color: white;
-  padding: 15px 15px 0 0;
+  padding: 30px 0 0 0;
 }
 
 @mixin box-shadow(){
@@ -49,6 +53,11 @@ $menubar-height: 36px;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 1.12)}
 
 //================OVERRIDES FOR ANGULAR MATERIAL==================
+.mat-dialog-container{
+  padding:0px !important;
+  overflow: hidden;
+}
+
 .mat-h1, .mat-h2, .mat-h3, .mat-h4{
   margin:0 !important;
 }

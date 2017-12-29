@@ -5,6 +5,7 @@ $item-width: 300px;
 .login-container{
     @include flex-display(column, center, center);
     height:100%;
+    width: 100vw;
     background-color: $primary-colour-2;
 
     .exit-button{
@@ -39,7 +40,7 @@ $item-width: 300px;
 
         .login-button{
             @extend .button;
-            background-color: rgb(43, 201, 51);
+            background-color: $green;
             margin:25px 0 15px 0;
         }
 
