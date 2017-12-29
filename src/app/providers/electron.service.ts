@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 // If you import a module but never use any of the imported values other than as TypeScript types,
 // the resulting javascript file will look as if you never imported the module at all.
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, shell } from 'electron';
 import * as childProcess from 'child_process';
 import { Board } from 'app/components/navbar/objects/board.object';
 import { Window } from 'app/components/grid/objects/window.object';
@@ -24,13 +24,17 @@ export class ElectronService {
     return window && window.process && window.process.type;
   }
 
-  public openBoard(board:Board){
-      const {shell} = require('electron');
+  public activateBoard(board:Board){
       var windows = board.windows;
-      for(var i = 0; i < windows.length; i++){
-          var boardWindow:Window = windows[i];
-          shell.openItem(boardWindow.windowFilePath);
+
+      for (let window of windows){
+        var path = window.windowFilePath;
+
+        if (path != ""){
+          shell.openItem(path);
+        }
       }
+
   }
 
 }
