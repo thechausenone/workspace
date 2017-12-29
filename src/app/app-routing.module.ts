@@ -31,19 +31,23 @@ const routes: Routes = [
                 path: 'grid',
                 component: GridComponent
             }        
-        ]
+        ],
+        data: { state: 'main' }
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        data: { state: 'login' }
     },
     {
         path: 'signup',
-        component: SignupComponent
+        component: SignupComponent,
+        data: { state: 'signup' }
     },
     {
         path: 'account',
-        component: AccountComponent
+        component: AccountComponent,
+        data: { state: 'account' }
     }
 ];
 
