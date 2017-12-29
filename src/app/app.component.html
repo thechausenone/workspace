@@ -1,3 +1,7 @@
 <div class = "global-container">
-    <router-outlet></router-outlet>
+    <app-menubar class = "top-container"></app-menubar>
+    <div [@routerTransition]="{value: getState(o), params:{ height:getHeight() }}" class = "bottom-container">
+        <router-outlet #o="outlet"></router-outlet>
+    </div>
 </div>
+

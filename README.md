@@ -19,7 +19,7 @@ Once you have npm installed, you can proceed with the steps listed in this secti
 Clone this repository locally :
 
 ```
-git clone https://github.com/weihanli101/workspace.git
+git clone https://github.com/thechausenone/workspace.git
 ```
 
 Navigate into your local Workspace project directory :

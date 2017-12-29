@@ -1,24 +1,16 @@
 @import 'src/styles.scss';
 
-.main-container {
-    height:100%;
+.left-container{
+  height: 100%;
+  width:auto;
+  float:left;
+}
 
-    .top-container{
-      height:36px;
-      width:100%;
-    }
-    
-    .left-container{
-      height: calc(100% - 36px);
-      width:auto;
-      float:left;
-    }
+.right-container{
+  overflow:hidden;
+  width: auto;
+  height: 100%;
+  position:relative;
+  background-color: $background-colour;
+}
 
-    .right-container{
-      overflow:hidden;
-      width: auto;
-      height: calc(100% - 36px);
-      position:relative;
-      background-color: $background-colour;
-    }
-  }

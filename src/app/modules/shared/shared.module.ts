@@ -5,6 +5,8 @@ import { ModuleWithProviders } from '@angular/core';
 import { AuthenticationService } from '../../modules/login/providers/authentication.service';
 import { StateManagerService } from '../../providers/state-manager.service';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AngularFireModule } from 'angularfire2';
+import { FirebaseConfig } from '../shared/objects/firebase-config.object';
 import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, 
         MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule,
         MatGridListModule, MatListModule, MatCardModule, MatFormFieldModule,
@@ -14,6 +16,9 @@ import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule,
 @NgModule({
   declarations: [
 
+  ],
+  imports: [
+    AngularFireModule.initializeApp(FirebaseConfig),
   ],
   exports: [
     CommonModule,

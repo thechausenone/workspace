@@ -6,4 +6,16 @@
     bottom: 0;
     left: 0;
     right: 0;
+    background-color: $background-colour;
+
+    .top-container{
+        height: $menubar-height;
+        width:100%;
+    }
+
+    .bottom-container{
+        height: calc(100% - #{$menubar-height});
+        width:100%;
+    }
 }
+

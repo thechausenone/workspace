@@ -7,8 +7,8 @@ mat-button:hover{
 .toolbar-container {
   mat-toolbar {
     @include flex-display(row, flex-start, center);
-    min-height: 36px;
-    height: 36px;
+    min-height: $menubar-height;
+    height: $menubar-height;
     padding: 0;
     background-color: $primary-colour-1;
     color: white;

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Board } from "../components/navbar/objects/board.object";
 import { Window } from "../components/grid/objects/window.object";
+import { UserInfo } from "../modules/login/providers/objects/userInfo.object";
 
 @Injectable()
 export class StateManagerService {
@@ -10,15 +11,45 @@ export class StateManagerService {
   private _boards: Array<Board>;
   private _activeWindowsSource: BehaviorSubject<Array<Window>>;
   private _activeWindows$: Observable<Array<Window>>;
+  private userInfo: UserInfo;
+  private _boardsSource: BehaviorSubject<Array<Board>>;
+  private _boards$: Observable<Array<Board>>;
   
   constructor() {
     this._activeBoardIndex = -1;
     this._boards = new Array<Board>();
     this._activeWindowsSource = new BehaviorSubject<Array<Window>>(this.GetActiveWindows());
     this._activeWindows$ = this._activeWindowsSource.asObservable();
+    this.userInfo = new UserInfo();
+    this._boardsSource = new BehaviorSubject<Array<Board>>(this._boards);
+    this._boards$ = this._boardsSource.asObservable();
+    console.log("StateManagerService has been initialized");
   }
 
-  //#region board methods
+  //#region USERINFO METHODS
+
+  public GetUserInfo():UserInfo{
+    return this.userInfo;
+  }
+
+  public SetUserInfo(user: any):void{
+    if (user == null){
+      this.userInfo.ClearAllProperties();
+    }
+    else{
+        this.userInfo.SetAllProperties(user.uid, 
+                                        user.getIdToken,
+                                        user.email,
+                                        user.providerId);
+    };
+  }
+
+  //#endregion
+
+  //#region BOARD METHODS
+  public GetBoardsObservable():Observable<Array<Board>>{
+    return this._boards$;
+  }
 
   public GetBoards(): Array<Board>{
     return this._boards;
@@ -26,10 +57,12 @@ export class StateManagerService {
 
   public SetBoards(boards: Array<Board>): void{
     this._boards = boards;
+    this.UpdateBoardsSource(boards);
   }
 
   public AddBoard(title:string, icon:string):void{
     this._boards.push(new Board(title, icon));
+    this.UpdateBoardsSource(this._boards);
   }
 
   public DeleteBoard(board:Board):void{
@@ -37,6 +70,7 @@ export class StateManagerService {
 
     if (index!== -1){
         this._boards.splice(index, 1);
+        this.UpdateBoardsSource(this._boards);
         console.log("The board titled \"" + board.title + "\" has been deleted.");
     }
     else{
@@ -61,7 +95,7 @@ export class StateManagerService {
 
   //#endregion
 
-  //#region window methods
+  //#region WINDOW METHODS
 
   public AddWindow(name:string, file:string):void{
     this._boards[this._activeBoardIndex].windows.push(new Window(name, file));
@@ -73,7 +107,10 @@ export class StateManagerService {
 
   //#endregion
   
-  //#region private methods
+  //#region PRIVATE METHODS
+  private UpdateBoardsSource(boards:Array<Board>){
+    this._boardsSource.next(boards);
+  }
 
   private GetActiveBoard(): Board{
     return this._boards[this._activeBoardIndex];

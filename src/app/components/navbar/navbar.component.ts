@@ -21,6 +21,7 @@ export class NavbarComponent {
   windows: Array<Window>;
   hidden: boolean;
   dialogSize: string;
+  focusedItem: string;
   @ViewChild('sidenav') sideNav:any;
 
   constructor(private stateManagerService: StateManagerService,
@@ -28,10 +29,10 @@ export class NavbarComponent {
               private dialog: MatDialog,
               private authService: AuthenticationService,
               private router: Router) {
-    this.boards = this.stateManagerService.GetBoards();
-    this.hidden = !this.authService.GetUserInfo().CheckUserStatus();
+    this.GetBoards();
+    this.hidden = !this.stateManagerService.GetUserInfo().CheckUserStatus();
     this.dialogSize = "300px";
-    console.log("navbarcomponenet called");
+    this.focusedItem = "home";
   }
 
   MapWindowsToDesktop():void{
@@ -74,9 +75,19 @@ export class NavbarComponent {
 
   //#region DIALOG METHODS
   OpenCreateBoardDialog(){
-    this.dialog.open(BoardDialogComponent, {
+    let boardCount = this.boards.length;
+    
+    let dialogRef = this.dialog.open(BoardDialogComponent, {
       width: this.dialogSize
     });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if (this.boards.length != boardCount){
+        let newBoardIndex = this.boards.length - 1;
+        this.focusedItem  = (newBoardIndex).toString();
+        this.HandleSideNavToggle(this.boards[newBoardIndex]);
+      }
+    });    
   }
 
   OpenBoardSettingsDialog(){
@@ -93,6 +104,18 @@ export class NavbarComponent {
   //#endregion
 
   //#region Private Methods
+  private GetBoardIdentifier(board: Board):string{
+    return this.boards.findIndex(x => x == board).toString();
+  }
+
+  private GetBoards(){
+    this.stateManagerService.GetBoardsObservable().subscribe(data => {
+      this.boards = data;
+      if (this.GetActiveBoard() != null){
+        this.windows =  this.GetActiveBoard().windows;
+      }
+    });
+  }
 
   private SetActiveBoard(board: Board){
     this.stateManagerService.SetActiveBoardIndex(this.boards.findIndex(x => x == board));
