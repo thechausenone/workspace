@@ -46,7 +46,7 @@ export class ElectronService {
       }
       console.log(scriptContent);
       console.log(this.scriptFilePath);
-      //this.writeToScript(scriptContent);
+      this.writeToScript(scriptContent);
       this.executeScript();
   }
 
