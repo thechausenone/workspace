@@ -10,7 +10,8 @@ import { FirebaseConfig } from '../shared/objects/firebase-config.object';
 import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule, 
         MatTabsModule, MatButtonToggleModule, MatIconModule, MatSidenavModule,
         MatGridListModule, MatListModule, MatCardModule, MatFormFieldModule,
-        MatInputModule, MatTooltipModule, MatSnackBarModule, MatMenuModule} from '@angular/material';
+        MatInputModule, MatTooltipModule, MatSnackBarModule, MatMenuModule,
+        MatSelectModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatToolbarModule,
     MatInputModule,
     MatTooltipModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ]
 })
 export class SharedModule {

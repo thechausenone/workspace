@@ -1,15 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import {NgIf} from '@angular/common';
-import {Board} from './objects/board.object'
-import {Window} from '../grid/objects/window.object';
+import { Board } from './objects/board.object'
+import { Window } from '../grid/objects/window.object';
 import { StateManagerService } from '../../providers/state-manager.service';
 import { AuthenticationService } from '../../modules/login/providers/authentication.service';
-import {ElectronService} from '../../providers/electron.service';
-import {MatDialog, MatDialogRef} from '@angular/material';
-import {BoardDialogComponent} from '../../modules/dialog/components/board-dialog/board-dialog.component';
-import {WindowDialogComponent} from '../../modules/dialog/components/window-dialog/window-dialog.component';
-import {BoardSettingsDialogComponent} from '../../modules/dialog/components/board-settings-dialog/board-settings-dialog.component';
-import { Subscription } from "rxjs/Subscription";
+import { ElectronService } from '../../providers/electron.service';
+import { MatDialog } from '@angular/material';
+import { BoardDialogComponent} from '../../modules/dialog/components/board-dialog/board-dialog.component';
+import { WindowDialogComponent } from '../../modules/dialog/components/window-dialog/window-dialog.component';
+import { BoardSettingsDialogComponent } from '../../modules/dialog/components/board-settings-dialog/board-settings-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,6 +20,7 @@ export class NavbarComponent {
   boards: Array<Board>;
   windows: Array<Window>;
   hidden: boolean;
+  dialogSize: string;
   focusedItem: string;
   @ViewChild('sidenav') sideNav:any;
 
@@ -32,6 +31,7 @@ export class NavbarComponent {
               private router: Router) {
     this.GetBoards();
     this.hidden = !this.stateManagerService.GetUserInfo().CheckUserStatus();
+    this.dialogSize = "300px";
     this.focusedItem = "home";
   }
 
@@ -65,23 +65,6 @@ export class NavbarComponent {
       this.windows = board.windows;
     }
   }
-
-  AddBoard(){
-    let boardCount = this.boards.length;
-
-    let dialogRef = this.dialog.open(BoardDialogComponent, {
-      width: '500px',
-      data: {name: "", icon: ""}
-    });
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if (this.boards.length != boardCount){
-        let newBoardIndex = this.boards.length - 1;
-        this.focusedItem  = (newBoardIndex).toString();
-        this.HandleSideNavToggle(this.boards[newBoardIndex]);
-      }
-    });
-  }
   
   DeleteBoard(){
     this.stateManagerService.DeleteBoard(this.GetActiveBoard());
@@ -90,20 +73,35 @@ export class NavbarComponent {
     this.router.navigateByUrl("/main/home");
   }
 
-  boardSettings(){
-    let dialogRef = this.dialog.open(BoardSettingsDialogComponent, {
-      width: '500px'
+  //#region DIALOG METHODS
+  OpenCreateBoardDialog(){
+    let boardCount = this.boards.length;
+    
+    let dialogRef = this.dialog.open(BoardDialogComponent, {
+      width: this.dialogSize
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if (this.boards.length != boardCount){
+        let newBoardIndex = this.boards.length - 1;
+        this.focusedItem  = (newBoardIndex).toString();
+        this.HandleSideNavToggle(this.boards[newBoardIndex]);
+      }
+    });    
+  }
+
+  OpenBoardSettingsDialog(){
+    this.dialog.open(BoardSettingsDialogComponent, {
+      width: this.dialogSize
     });
   }
 
-  AddWindow(){
-    let dialogRef = this.dialog.open(WindowDialogComponent, {
-      width: '500px',
-      data: {name: ""}
-    });
-    dialogRef.afterClosed().subscribe(result => {
+  OpenCreateWindowDialog(){
+    this.dialog.open(WindowDialogComponent, {
+      width: this.dialogSize
     });
   }
+  //#endregion
 
   //#region Private Methods
   private GetBoardIdentifier(board: Board):string{

@@ -49,7 +49,7 @@ $item-width: 300px;
 
         .signout-button{
             @extend .button;
-            background-color: rgb(201, 43, 43);
+            background-color: $red;
             margin:25px 0 0 0;
         }
     }
