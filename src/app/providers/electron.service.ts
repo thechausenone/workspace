@@ -38,16 +38,23 @@ export class ElectronService {
 
   public activateBoard(board:Board){
       var windows = board.windows;
-      var scriptContent = `@ECHO OFF
-      `;
-
-      for (let window of windows){
-        scriptContent += this.createScriptCommand(window);
+      var scriptCommand = "";
+      var index = 0;
+      function activateWindow(window: Window, electronService: ElectronService){
+        setTimeout(function(){
+          if(window.windowFilePath != null && window.windowFilePath != ""){
+            scriptCommand = electronService.createScriptCommand(window);
+            console.log(scriptCommand);
+            console.log(electronService.scriptFilePath);
+            electronService.executeScript(scriptCommand);
+          }
+          index++;
+          if(index < windows.length){
+            activateWindow(windows[index], electronService);
+          }
+        }, 3000)
       }
-      console.log(scriptContent);
-      console.log(this.scriptFilePath);
-      this.writeToScript(scriptContent);
-      this.executeScript();
+      activateWindow(windows[0], this);
   }
 
   private createScriptCommand(window: Window): string{
@@ -58,36 +65,18 @@ export class ElectronService {
     }
     
     var path = window.windowFilePath;
-    var path2 =  __dirname + "\\assets\\scripts\\nircmd.exe";
     var x = window.x * (this.screenWidth/this.maxRows);
     var y = window.y * (this.screenHeight/this.maxCols);
     var width = (window.cols/this.maxCols) * this.screenWidth;
     var height = (window.rows/this.maxRows) * this.screenHeight;
 
-    if (path.endsWith(".exe")){
-      cmd = `${path2} exec show "${path}" /n
-            ${path2} wait 500
-            ${path2} win setsize foreground  ${x}, ${y}, ${width}, ${height}
-            `;
-    }
-
+    cmd += "\"" + this.scriptFilePath + "\"" + " " + "\"" + path + "\"" + " "  + x + " " + y + " " + width + " " + height;
     return cmd;
   }
 
-  private writeToScript(scriptContent: string){
-    var fs = require('file-system');
-    fs.writeFile(this.scriptFilePath, scriptContent, (err) => {
-      if (err) {
-          console.log("An error ocurred updating the file" + err.message);
-          console.log(err);
-          return;
-      }
-  });
-  }
-
-  private executeScript(): void{
+  private executeScript(command: String): void{
     const { exec } = require('child_process');
-    exec(this.scriptFilePath, (err, stdout, stderr) => {
+    exec(command, (err, stdout, stderr) => {
       if (err) {
         console.error(err);
         return;
