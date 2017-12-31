@@ -6,13 +6,15 @@
         <mat-icon>home</mat-icon>
       </mat-button-toggle>
 
-      <mat-button-toggle *ngFor="let board of boards" mat-button (click)="HandleSideNavToggle(board)" [routerLink] = "['/main/grid']" [value] = "GetBoardIdentifier(board)">
-        <mat-icon>{{board.icon}}</mat-icon>
-      </mat-button-toggle>
-
-      <button mat-button class = "add-button" (click)="OpenCreateBoardDialog()" *ngIf = "!hidden">
-        <mat-icon>add</mat-icon>
-      </button>
+      <div *ngIf = "!hidden">
+          <mat-button-toggle *ngFor="let board of boards" mat-button (click)="HandleSideNavToggle(board)" [routerLink] = "['/main/grid']" [value] = "GetBoardIdentifier(board)">
+            <mat-icon>{{board.icon}}</mat-icon>
+          </mat-button-toggle>
+    
+          <button mat-button class = "add-button" (click)="OpenCreateBoardDialog()">
+            <mat-icon>add</mat-icon>
+          </button>
+      </div>
 
     </mat-button-toggle-group>
   </div>
