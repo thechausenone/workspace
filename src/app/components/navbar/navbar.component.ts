@@ -36,7 +36,7 @@ export class NavbarComponent {
   }
 
   MapWindowsToDesktop():void{
-    this._electronService.openBoard(this.GetActiveBoard());
+    this._electronService.activateBoard(this.GetActiveBoard());
   }
 
   GetActiveBoard():Board{
