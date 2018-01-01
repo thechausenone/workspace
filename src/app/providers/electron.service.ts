@@ -38,6 +38,10 @@ export class ElectronService {
     return window && window.process && window.process.type;
   }
 
+  public openLink(link:string):void{
+    shell.openExternal(link);
+  }
+
   public activateBoard(board:Board): void{
       var windows = board.windows;
       var scriptCommand = "@ECHO OFF";

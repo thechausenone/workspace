@@ -53,8 +53,4 @@ export class MenubarComponent {
       this.fullscreenIcon = "fullscreen";
     }
   }
-
-  openHelp(){
-   this.electron.shell.openExternal("https://github.com/weihanli101/workspace");
-  }
 }
