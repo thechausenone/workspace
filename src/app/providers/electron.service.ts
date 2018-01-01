@@ -26,7 +26,7 @@ export class ElectronService {
       this.childProcess = window.require('child_process');
     }
 
-    this.pathToBAT = __dirname + "\\assets\\scripts\\open-windows.bat";
+    this.pathToBAT = __dirname + "\\assets\\scripts\\activate-board.bat";
     this.pathToNircmd = __dirname + "\\assets\\scripts\\nircmd.exe";
     this.screenHeight = screen.getPrimaryDisplay().size.height;
     this.screenWidth = screen.getPrimaryDisplay().size.width;
