@@ -22,7 +22,7 @@ export class NavbarComponent {
   hidden: boolean;
   dialogSize: string;
   focusedItem: string;
-  @ViewChild('sidenav') sideNav:any;
+  @ViewChild('sidenav') sideNav: any;
 
   constructor(private stateManagerService: StateManagerService,
               private _electronService: ElectronService, 
@@ -31,72 +31,70 @@ export class NavbarComponent {
               private router: Router) {
     this.GetBoards();
     this.hidden = !this.stateManagerService.GetUserInfo().CheckUserStatus();
-    this.dialogSize = "300px";
-    this.focusedItem = "home";
+    this.dialogSize = '300px';
+    this.focusedItem = 'home';
   }
 
-  MapWindowsToDesktop():void{
+  MapWindowsToDesktop(): void {
     this._electronService.activateBoard(this.GetActiveBoard());
   }
 
-  GetActiveBoard():Board{
-    var index = this.stateManagerService.GetActiveBoardIndex();
-    if (index == -1){
+  GetActiveBoard(): Board {
+    const index = this.stateManagerService.GetActiveBoardIndex();
+    if (index === -1) {
       return null; 
     }
     return this.boards[index];
   }
   
-  HandleSideNavToggle(board:Board = null){
-    //case for non-board tab closing
-    if (board == null){
-      if (this.sideNav.opened == true){
+  HandleSideNavToggle(board: Board = null) {
+    // case for non-board tab closing
+    if (board == null) {
+      if (this.sideNav.opened === true) {
         this.sideNav.toggle();
       }
-    }
-    //case for board tab opening/closing
-    else if (!(this.CheckIfBoardIsActive(board) == false && this.sideNav.opened == true)){
+    // case for board tab opening/closing
+    }else if (!(this.CheckIfBoardIsActive(board) === false && this.sideNav.opened === true)) {
       this.sideNav.toggle();
       this.SetActiveBoard(board);
       this.windows = board.windows;
-    }
-    else{
+    }else {
       this.SetActiveBoard(board);
       this.windows = board.windows;
     }
   }
   
-  DeleteBoard(){
+  DeleteBoard() {
     this.stateManagerService.DeleteBoard(this.GetActiveBoard());
     this.stateManagerService.SetActiveBoardIndex(-1);
     this.HandleSideNavToggle();
-    this.router.navigateByUrl("/main/home");
+    this.router.navigateByUrl('/main/home');
   }
 
   //#region DIALOG METHODS
-  OpenCreateBoardDialog(){
-    let boardCount = this.boards.length;
-    
-    let dialogRef = this.dialog.open(BoardDialogComponent, {
+  OpenCreateBoardDialog() {
+    const boardCount = this.boards.length;
+
+    const dialogRef = this.dialog.open(BoardDialogComponent, {
       width: this.dialogSize
     });
     
     dialogRef.afterClosed().subscribe(result => {
-      if (this.boards.length != boardCount){
-        let newBoardIndex = this.boards.length - 1;
+      if (this.boards.length !== boardCount) {
+        const newBoardIndex = this.boards.length - 1;
         this.focusedItem  = (newBoardIndex).toString();
         this.HandleSideNavToggle(this.boards[newBoardIndex]);
       }
     });    
   }
 
-  OpenBoardSettingsDialog(){
+  OpenBoardSettingsDialog() {
     this.dialog.open(BoardSettingsDialogComponent, {
       width: this.dialogSize
     });
   }
 
-  OpenCreateWindowDialog(){
+  OpenCreateWindowDialog() {
     this.dialog.open(WindowDialogComponent, {
       width: this.dialogSize
     });
@@ -104,28 +102,27 @@ export class NavbarComponent {
   //#endregion
 
   //#region Private Methods
-  private GetBoardIdentifier(board: Board):string{
-    return this.boards.findIndex(x => x == board).toString();
+  private GetBoardIdentifier(board: Board): string {
+    return this.boards.findIndex(x => x === board).toString();
   }
 
-  private GetBoards(){
+  private GetBoards() {
     this.stateManagerService.GetBoardsObservable().subscribe(data => {
       this.boards = data;
-      if (this.GetActiveBoard() != null){
+      if (this.GetActiveBoard() != null) {
         this.windows =  this.GetActiveBoard().windows;
       }
     });
   }
 
-  private SetActiveBoard(board: Board){
-    this.stateManagerService.SetActiveBoardIndex(this.boards.findIndex(x => x == board));
+  private SetActiveBoard(board: Board) {
+    this.stateManagerService.SetActiveBoardIndex(this.boards.findIndex(x => x === board));
   }
 
-  private CheckIfBoardIsActive(board:Board):boolean{
-    var activeBoardIndex = this.stateManagerService.GetActiveBoardIndex();
-    return (this.boards.findIndex(x => x == board) === activeBoardIndex);
-  }
-  
+  private CheckIfBoardIsActive(board: Board): boolean {
+    const activeBoardIndex = this.stateManagerService.GetActiveBoardIndex();
+    return (this.boards.findIndex(x => x === board) === activeBoardIndex);
+  }  
   //#endregion
 
 }

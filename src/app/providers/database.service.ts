@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
-import { Board } from "../components/navbar/objects/board.object";
-import { HttpClient } from "@angular/common/http";
-import { StateManagerService } from "./state-manager.service";
-import { AngularFireDatabase, AngularFireList  } from "angularfire2/database";
-import { UserData } from "./objects/user-data.object";
+import { Board } from '../components/navbar/objects/board.object';
+import { HttpClient } from '@angular/common/http';
+import { StateManagerService } from './state-manager.service';
+import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
+import { UserData } from './objects/user-data.object';
 
 @Injectable()
 export class DatabaseService {
@@ -15,11 +15,11 @@ export class DatabaseService {
     constructor(private _http: HttpClient, 
                 private stateManagerService: StateManagerService,
                 private afDatabase: AngularFireDatabase) {
-        console.log("DatabaseService has been initialized");
+        console.log('DatabaseService has been initialized');
     }
 
-    public SaveUserToDatabase(user: any): void{
-      var data = {
+    public SaveUserToDatabase(user: any): void {
+      const data = {
           boards: new Array<Board>(new Board())
       };
 
@@ -27,11 +27,10 @@ export class DatabaseService {
     }
 
     public ReadBoardsFromDatabase(): Observable<Array<Board>> {
-      var userId = this.stateManagerService.GetUserInfo().uid;
+      const userId = this.stateManagerService.GetUserInfo().uid;
 
-      if (userId == "undefined" || userId == "")
-      {
-        console.warn("To access boards, user must be logged in");
+      if (userId === 'undefined' || userId === '') {
+        console.warn('To access boards, user must be logged in');
         return new Observable();
       }
       
@@ -40,28 +39,26 @@ export class DatabaseService {
                             .do(data => this.HandleResponse(data));
     }
 
-    public SaveBoardsToDatabase(boards: Array<Board>): void{
-      var userId = this.stateManagerService.GetUserInfo().uid;
+    public SaveBoardsToDatabase(boards: Array<Board>): void {
+      const userId = this.stateManagerService.GetUserInfo().uid;
 
-      if (userId == "undefined" || userId == "")
-      {
-        console.warn("To save boards, user must be logged in");
-      }
-      else{
+      if (userId === 'undefined' || userId === '') {
+        console.warn('To save boards, user must be logged in');
+      }else {
         this.afDatabase.object('users/' + userId).set({boards: boards});
       }
     }
 
     //#region private methods
 
-    private HandleResponse(boards: Array<Board>){
+    private HandleResponse(boards: Array<Board>) {
       this.stateManagerService.SetBoards(boards);
-      if (boards.length > 0){
+      if (boards.length > 0) {
         this.stateManagerService.SetActiveBoardIndex(0);
       }
     }
 
-    private HandleError (error: any){
+    private HandleError (error: any) {
       console.error(error.message);
     }
     

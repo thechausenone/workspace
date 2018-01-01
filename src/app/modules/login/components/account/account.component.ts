@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../providers/authentication.service';
-import { StateManagerService} from "../../../../providers/state-manager.service"
+import { StateManagerService} from '../../../../providers/state-manager.service';
 import { UserInfo } from '../../providers/objects/userInfo.object';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss']
 })
-export class AccountComponent{
+export class AccountComponent {
   userInfo: UserInfo;
   email: string;
   provider: string;
@@ -28,32 +28,31 @@ export class AccountComponent{
     this.popupMessage = popupMessage;
   }
 
-  Logout():void{
-    var logoutResult;
+  Logout(): void {
+    let logoutResult;
     
     this._authService.Logout().then((data) => {
       logoutResult = data; 
-      if (logoutResult){
+      if (logoutResult) {
         this.HandleLogoutSuccess();
-      }
-      else{
+      }else {
         this.HandleLogoutFailure();
       }
     });
   }
 
-  private HandleLogoutSuccess():void{
-    var popupRef = this.popupMessage.open("You have successfully signed out.", null, {
+  private HandleLogoutSuccess(): void {
+    const popupRef = this.popupMessage.open('You have successfully signed out.', null, {
       duration: 1500
     });
 
     popupRef.afterDismissed().subscribe(() => {
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl('/login');
     });
   }
 
-  private HandleLogoutFailure():void{
-    this.popupMessage.open("Please try again.", null, {
+  private HandleLogoutFailure(): void {
+    this.popupMessage.open('Please try again.', null, {
       duration: 1500
     });
   }

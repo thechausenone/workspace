@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Board } from "../components/navbar/objects/board.object";
-import { Window } from "../components/grid/objects/window.object";
-import { UserInfo } from "../modules/login/providers/objects/userInfo.object";
+import { Board } from '../components/navbar/objects/board.object';
+import { Window } from '../components/grid/objects/window.object';
+import { UserInfo } from '../modules/login/providers/objects/userInfo.object';
 
 @Injectable()
 export class StateManagerService {
@@ -23,20 +23,19 @@ export class StateManagerService {
     this.userInfo = new UserInfo();
     this._boardsSource = new BehaviorSubject<Array<Board>>(this._boards);
     this._boards$ = this._boardsSource.asObservable();
-    console.log("StateManagerService has been initialized");
+    console.log('StateManagerService has been initialized');
   }
 
   //#region USERINFO METHODS
 
-  public GetUserInfo():UserInfo{
+  public GetUserInfo(): UserInfo {
     return this.userInfo;
   }
 
-  public SetUserInfo(user: any):void{
-    if (user == null){
+  public SetUserInfo(user: any): void {
+    if (user == null) {
       this.userInfo.ClearAllProperties();
-    }
-    else{
+    }else {
         this.userInfo.SetAllProperties(user.uid, 
                                         user.getIdToken,
                                         user.email,
@@ -47,48 +46,46 @@ export class StateManagerService {
   //#endregion
 
   //#region BOARD METHODS
-  public GetBoardsObservable():Observable<Array<Board>>{
+  public GetBoardsObservable(): Observable<Array<Board>> {
     return this._boards$;
   }
 
-  public GetBoards(): Array<Board>{
+  public GetBoards(): Array<Board> {
     return this._boards;
   }
 
-  public SetBoards(boards: Array<Board>): void{
+  public SetBoards(boards: Array<Board>): void {
     this._boards = boards;
     this.UpdateBoardsSource(boards);
   }
 
-  public AddBoard(title:string, icon:string):void{
+  public AddBoard(title: string, icon: string): void {
     this._boards.push(new Board(title, icon));
     this.UpdateBoardsSource(this._boards);
   }
 
-  public DeleteBoard(board:Board):void{
-    var index = this._boards.findIndex(currBoard => currBoard === board);
+  public DeleteBoard(board: Board): void {
+    const index = this._boards.findIndex(currBoard => currBoard === board);
 
-    if (index!== -1){
+    if (index !== -1) {
         this._boards.splice(index, 1);
         this.UpdateBoardsSource(this._boards);
-        console.log("The board titled \"" + board.title + "\" has been deleted.");
-    }
-    else{
-        console.error("Could not find a board titled \"" + board.title + "\".");
+        console.log('The board titled \'' + board.title + '\' has been deleted.');
+    }else {
+        console.error('Could not find a board titled \'' + board.title + '\'.');
     }
   }
 
-  public GetActiveBoardIndex(): number{
+  public GetActiveBoardIndex(): number {
     return this._activeBoardIndex;
   }
 
-  public SetActiveBoardIndex(index: number): void{
+  public SetActiveBoardIndex(index: number): void {
     this._activeBoardIndex = index;
     
-    if (index == -1){
+    if (index === -1) {
       this._activeWindowsSource.next(new Array<Window>());
-    }
-    else{
+    }else {
       this._activeWindowsSource.next(this.GetActiveWindows());
     }
   }
@@ -97,30 +94,29 @@ export class StateManagerService {
 
   //#region WINDOW METHODS
 
-  public AddWindow(name:string, file:string):void{
+  public AddWindow(name: string, file: string): void {
     this._boards[this._activeBoardIndex].windows.push(new Window(name, file));
   }
 
-  public GetWindowsObservable(): Observable<Array<Window>>{
+  public GetWindowsObservable(): Observable<Array<Window>> {
     return this._activeWindows$;
   }
 
   //#endregion
   
   //#region PRIVATE METHODS
-  private UpdateBoardsSource(boards:Array<Board>){
+  private UpdateBoardsSource(boards: Array<Board>) {
     this._boardsSource.next(boards);
   }
 
-  private GetActiveBoard(): Board{
+  private GetActiveBoard(): Board {
     return this._boards[this._activeBoardIndex];
   }
 
-  private GetActiveWindows():Array<Window>{
-    if (this._boards.length == 0){
+  private GetActiveWindows(): Array<Window> {
+    if (this._boards.length === 0) {
         return new Array<Window>();
-    }
-    else{
+    }else {
         return this._boards[this._activeBoardIndex].windows;
     }
   }

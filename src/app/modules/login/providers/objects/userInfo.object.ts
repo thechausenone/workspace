@@ -1,29 +1,29 @@
-export class UserInfo{
+export class UserInfo {
     uid: string;
     token: any;
     email: string;
     provider: string;
     private loggedIn: boolean;
 
-    constructor(){
-        this.uid = "undefined";
-        this.token = "undefined";
-        this.email = "undefined";
-        this.provider = "undefined";
+    constructor() {
+        this.uid = 'undefined';
+        this.token = 'undefined';
+        this.email = 'undefined';
+        this.provider = 'undefined';
     }
 
-    CheckUserStatus():boolean{
+    CheckUserStatus(): boolean {
         return this.loggedIn;
     }
-    ClearAllProperties():void{
-        this.uid = "";
-        this.token = "";
-        this.email = "";
-        this.provider = "";
+    ClearAllProperties(): void {
+        this.uid = '';
+        this.token = '';
+        this.email = '';
+        this.provider = '';
         this.loggedIn = false;
     }
 
-    SetAllProperties(uid:string, token:any, email:string, provider:string){
+    SetAllProperties(uid: string, token: any, email: string, provider: string) {
         this.uid = uid;
         this.token = token;
         this.email = email;

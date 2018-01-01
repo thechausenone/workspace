@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../providers/authentication.service';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent{
+export class SignupComponent {
   email: string;
   password: string;
   router: Router;
@@ -17,38 +17,37 @@ export class SignupComponent{
   constructor(private _authService: AuthenticationService,
               router: Router,
               popupMessage: MatSnackBar) {
-    this.email = "";
-    this.password = "";
+    this.email = '';
+    this.password = '';
     this.router = router;
     this.popupMessage = popupMessage;
    }
 
-  SignupWithEmailAndPassword():void{
-    var signupResult;
+  SignupWithEmailAndPassword(): void {
+    let signupResult;
     
     this._authService.SignupWithEmailAndPassword(this.email, this.password) .then((data) => {
       signupResult = data; 
-      if (signupResult){
+      if (signupResult) {
         this.HandleSignupSuccess();
-      }
-      else{
+      }else {
         this.HandleSignupFailure();
       }
     });
   }
 
-  private HandleSignupSuccess():void{
-    var popupRef = this.popupMessage.open("Sign up successful! Please sign in now.", null, {
-      duration:1500
+  private HandleSignupSuccess(): void {
+    const popupRef = this.popupMessage.open('Sign up successful! Please sign in now.', null, {
+      duration: 1500
     });
 
     popupRef.afterDismissed().subscribe(() => {
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl('/login');
     });
   }
 
-  private HandleSignupFailure():void{
-    this.popupMessage.open("Please try again.", null, {
+  private HandleSignupFailure(): void {
+    this.popupMessage.open('Please try again.', null, {
       duration: 1500
     });
   }
