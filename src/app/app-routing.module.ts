@@ -7,6 +7,7 @@ import { MainComponent } from "./components/main/main.component";
 import { LoginComponent } from "./modules/login/components/login/login.component";
 import { SignupComponent } from "./modules/login/components/signup/signup.component";
 import { AccountComponent } from "./modules/login/components/account/account.component";
+import { SettingsPageComponent } from "./modules/settings/components/settings-page/settings-page.component";
 
 const routes: Routes = [
     {
@@ -48,6 +49,11 @@ const routes: Routes = [
         path: 'account',
         component: AccountComponent,
         data: { state: 'account' }
+    },
+    {
+        path: 'settings',
+        component: SettingsPageComponent,
+        data: { state: 'settings' }
     }
 ];
 
