@@ -67,7 +67,7 @@ export class ElectronService {
 
     const cmd = `
               start "" "${path}" /n
-              ${this.pathToNircmd} wait 1000
+              ${this.pathToNircmd} wait 2000
               ${this.pathToNircmd} win setsize foreground  ${x} ${y} ${width} ${height}
               `;
 
