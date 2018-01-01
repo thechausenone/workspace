@@ -1,3 +1,5 @@
+[![](https://github.com/thechausenone/workspace/wiki/images/logo-with-text.png)](https://github.com/thechausenone/workspace/wiki)
+
 # Introduction to Workspace
 
 An electron app to manage desktop workspace.
