@@ -46,11 +46,20 @@ npm install -g @angular/cli
 
 ## Running the project
 
-To run the project, just be in the Workspace project directory and use:  
+Be in the Workspace project directory and use either of the following commands:
+
+To run the project in development mode,
 
 ```
 npm start
 ```
+
+To run the project in production mode (**required to activate boards**),
+
+```
+npm run electron:prod
+```
+
 
 ## Authors
 
