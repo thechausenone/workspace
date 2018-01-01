@@ -9,9 +9,9 @@ export const routerTransition = trigger('routerTransition', [
   FadeInAndOut('main => *')
 ])
 
-function SlideToLeft(state:string){
+function SlideToLeft(state: string) {
   return transition(state, [
-            query(':enter, :leave', style({ position: 'fixed', width:'100%', height: '{{height}}'})
+            query(':enter, :leave', style({ position: 'fixed', width: '100%', height: '{{height}}'})
               , { optional: true }),
             group([
               query(':enter', [
@@ -26,9 +26,9 @@ function SlideToLeft(state:string){
           ])
 }
 
-function SlideToRight(state:string){
+function SlideToRight(state: string) {
   return transition(state, [
-          query(':enter, :leave', style({ position: 'fixed', width:'100%', height: '{{height}}'})
+          query(':enter, :leave', style({ position: 'fixed', width: '100%', height: '{{height}}'})
             , { optional: true }),
           group([
             query(':enter', [
@@ -43,18 +43,18 @@ function SlideToRight(state:string){
         ])
 }
 
-function FadeInAndOut(state:string){
+function FadeInAndOut(state: string) {
   return transition(state, [
           query(':enter, :leave', style({ position: 'fixed', height: '{{height}}'})
             , { optional: true }),
           group([
             query(':enter', [
-              style({ opacity:0 }),
-              animate('0.25s ease', style({ opacity:1 }))
+              style({ opacity: 0 }),
+              animate('0.25s ease', style({ opacity: 1 }))
             ], { optional: true }),
             query(':leave', [
-              style({ opacity:1 }),
-              animate('0.25s ease', style({ opacity:0 }))
+              style({ opacity: 1 }),
+              animate('0.25s ease', style({ opacity: 0 }))
             ], { optional: true })
           ])
         ])

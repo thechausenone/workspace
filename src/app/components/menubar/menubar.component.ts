@@ -20,20 +20,20 @@ export class MenubarComponent {
     this.setIcon();
    }
 
-  ReadBoards():void{
+  ReadBoards(): void {
     this.databaseService.ReadBoardsFromDatabase().subscribe(data => console.log(data));
   }
 
-  SaveBoards():void{
+  SaveBoards(): void {
     this.databaseService.SaveBoardsToDatabase(this.stateManagerService.GetBoards());
   }
 
-  minimizeWindow(){
+  minimizeWindow() {
     this.window.minimize();
   }
 
-  toggleFullscreen(){
-    if(this.isFullscreen){
+  toggleFullscreen() {
+    if (this.isFullscreen) {
       this.window.unmaximize();
     } else {
       this.window.maximize();
@@ -41,16 +41,16 @@ export class MenubarComponent {
     this.setIcon();
   }
 
-  closeWindow(){
+  closeWindow() {
     this.window.close();
   }
 
-  setIcon(){
+  setIcon() {
     this.isFullscreen = this.window.isMaximized();
-    if(this.isFullscreen){
-      this.fullscreenIcon = "filter_none";
+    if (this.isFullscreen) {
+      this.fullscreenIcon = 'filter_none';
     } else {
-      this.fullscreenIcon = "fullscreen";
+      this.fullscreenIcon = 'fullscreen';
     }
   }
 }

@@ -1,5 +1,5 @@
 export const IconOptions = [
-    "web",
-    "web_asset",
-    "note"
+    'web',
+    'web_asset',
+    'note'
 ];
