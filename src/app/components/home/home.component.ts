@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.router = router;
     this.tiles = [
       {text: "Account", image: "account_circle", link: "/login"},
-      {text: "Settings", image: "settings", link: ""},
+      {text: "Settings", image: "settings", link: "/settings"},
       {text: "About", image: "info", link: "https://github.com/thechausenone/workspace/wiki"},
       {text: "Report a bug", image: "bug_report", link: "https://github.com/thechausenone/workspace/issues"}
     ];

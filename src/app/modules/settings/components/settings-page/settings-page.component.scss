@@ -1,0 +1,45 @@
+@import '../../../../../../src/styles.scss';
+$font-size: 18px;
+$item-width: 500px;
+
+.settings-page-container{
+    @include flex-display(column, center, center);
+    height:100%;
+    width: 100vw;
+    background-color: $primary-colour-2;
+
+    .exit-button{
+        @include exit-screen-button();
+        left: ($item-width/2) + 75px;
+    }
+
+    .form-container{
+        @include flex-display(column, center, center);
+        background-color:white;
+        padding: 50px;
+        width: $item-width;
+
+        .section-title{
+            margin-bottom:35px;
+        }
+
+        .setting-row{
+            @include flex-display(row, space-between, center);
+            color: grey;
+
+            mat-icon{
+                @include mat-icon-resize(32px);
+                padding: 0 12px 0 0px;
+
+            }
+
+            mat-form-field{
+                width: $item-width - 46px;
+
+                span{
+                    font-size: $font-size;
+                }
+            }
+        }
+    }
+}
