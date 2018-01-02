@@ -1,6 +1,10 @@
+[![](https://github.com/thechausenone/workspace/wiki/images/logo-with-text.png)](https://github.com/thechausenone/workspace/wiki)
+
 # Introduction to Workspace
 
-An electron app to manage desktop workspace.
+Workspace is a cross-platform desktop application that allows users to configure, manage, and quick-launch application/file windows with ease. Each _window_ in Workspace corresponds to an application/file window and a grouping of _windows_ are called _boards_. Users are able to manage and configure these _boards_ to suit their needs, and once done, each board can be activated to launch all its associated _windows_. Once everything is configured the first time around, launching groups of application/file windows becomes as easy as clicking a button.
+
+_Main technologies used: Angular, Electron, Firebase_
 
 ## Getting Started
 
@@ -42,17 +46,20 @@ npm install -g @angular/cli
 
 ## Running the project
 
-To run the project, just be in the Workspace project directory and use:  
+Be in the Workspace project directory and use either of the following commands:
+
+To run the project in development mode,
 
 ```
 npm start
 ```
 
-## Built With
+To run the project in production mode (**required to activate boards**),
 
-* [Electron](https://electronjs.org/) - used to deploy project as a desktop app
-* [Angular](https://angular.io/) - used as frontend framework
-* [Firebase](https://firebase.google.com/) - used for backend services
+```
+npm run electron:prod
+```
+
 
 ## Authors
 

@@ -13,8 +13,8 @@ export class WindowDialogComponent {
 
   constructor(private stateManagerService: StateManagerService, 
               public dialogRef: MatDialogRef<WindowDialogComponent>) {
-    this.name = "Default Name"
-    this.filePath = "";
+    this.name = 'Default Name';
+    this.filePath = '';
   }
 
   closeDialog(): void {
@@ -26,7 +26,7 @@ export class WindowDialogComponent {
     this.closeDialog();
   }
 
-  onChange(event){
+  onChange(event) {
     this.filePath = event.srcElement.files[0].path;
   }
 }

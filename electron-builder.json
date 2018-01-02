@@ -1,0 +1,29 @@
+{
+  "productName": "Workspace",
+  "directories": {
+    "app": "dist",
+    "output": "app-builds"
+  },
+  "extraResources": {
+    "from": "dist/assets/scripts/",
+    "to": "assets/scripts/"
+  },
+  "win": {
+    "icon": "dist/favicon",
+    "target": [
+      "portable"
+    ]
+  },
+  "mac": {
+    "icon": "dist/favicon",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "icon": "dist",
+    "target": [
+      "AppImage"
+    ]
+  }
+}

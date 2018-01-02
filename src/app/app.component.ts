@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ElectronService } from './providers/electron.service';
-import { routerTransition } from "./app-routing.animations";
+import { routerTransition } from './app-routing.animations';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +27,7 @@ export class AppComponent {
     return outlet.activatedRouteData.state;
   }
 
-  getHeight():string{
-    return (window.innerHeight - 36).toString() + "px";
+  getHeight(): string {
+    return (window.innerHeight - 36).toString() + 'px';
   };
 }

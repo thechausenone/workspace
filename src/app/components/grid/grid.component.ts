@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GridsterConfig }  from 'angular-gridster2';
+import { GridsterConfig } from 'angular-gridster2';
 import {Window} from './objects/window.object';
 import { StateManagerService} from '../../providers/state-manager.service';
 import {Subscription} from 'rxjs/Subscription';
@@ -12,9 +12,29 @@ import {Subscription} from 'rxjs/Subscription';
 export class GridComponent implements OnInit, OnDestroy {
 
   options: GridsterConfig;
-  windows:Array<Window>;
+  windows: Array<Window>;
   windowSubscription: Subscription;
 
+  static eventStop(item, itemComponent, event) {
+    // console.info('eventStop', item, itemComponent, event);
+  }
+
+  static itemChange(item, itemComponent) {
+    // console.info('itemChanged', item, itemComponent);
+  }
+
+  static itemResize(item, itemComponent) {
+    // console.info('itemResized', item, itemComponent);
+  }
+
+  static itemInit(item, itemComponent) {
+    // console.info('itemInitialized', item, itemComponent);
+  }
+
+  static itemRemoved(item, itemComponent) {
+    // console.info('itemRemoved', item, itemComponent);
+  }
+  
   constructor(private stateManagerService: StateManagerService) { 
     this.windowSubscription = this.stateManagerService.GetWindowsObservable()
                                   .subscribe(data => this.windows = data);
@@ -31,10 +51,12 @@ export class GridComponent implements OnInit, OnDestroy {
       margin: 5,
       outerMargin: true,
       mobileBreakpoint: 640,
+      columns: 4,
+      rows: 4,
       minCols: 4,
-      maxCols: 100,
+      maxCols: 4,
       minRows: 4,
-      maxRows: 100,
+      maxRows: 4,
       maxItemCols: 100,
       minItemCols: 1,
       maxItemRows: 100,
@@ -43,12 +65,10 @@ export class GridComponent implements OnInit, OnDestroy {
       minItemArea: 1,
       defaultItemCols: 1,
       defaultItemRows: 1,
-      fixedColWidth: 105,
-      fixedRowHeight: 105,
       keepFixedHeightInMobile: false,
       keepFixedWidthInMobile: false,
       scrollSensitivity: 10,
-      scrollSpeed: 20,
+      scrollSpeed: 0,
       enableEmptyCellClick: false,
       enableEmptyCellContextMenu: false,
       enableEmptyCellDrop: false,
@@ -99,33 +119,12 @@ export class GridComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    //to prevent memory leak when component is destroyed
+    // to prevent memory leak when component is destroyed
     this.windowSubscription.unsubscribe();
   }
 
-
-  static eventStop(item, itemComponent, event) {
-    //console.info('eventStop', item, itemComponent, event);
-  }
-
-  static itemChange(item, itemComponent) {
-    //console.info('itemChanged', item, itemComponent);
-  }
-
-  static itemResize(item, itemComponent) {
-    //console.info('itemResized', item, itemComponent);
-  }
-
-  static itemInit(item, itemComponent) {
-    //console.info('itemInitialized', item, itemComponent);
-  }
-
-  static itemRemoved(item, itemComponent) {
-    //console.info('itemRemoved', item, itemComponent);
-  }
-
   emptyCellClick(event, item) {
-    //console.info('empty cell click', event, item);
+    // console.info('empty cell click', event, item);
     this.windows.push(item);
   }
 

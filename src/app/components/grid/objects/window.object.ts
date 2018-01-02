@@ -1,6 +1,6 @@
-import { GridsterItem }  from 'angular-gridster2';
+import { GridsterItem } from 'angular-gridster2';
 
-export class Window implements GridsterItem{
+export class Window implements GridsterItem {
     x?: number;
     y?: number;
     rows?: number;
@@ -15,10 +15,10 @@ export class Window implements GridsterItem{
     minItemArea?: number;
     maxItemArea?: number;
     [propName: string]: any;
-    windowName:string;
+    windowName: string;
     windowFilePath: string;
 
-    constructor(windowName:string = "default window", windowFilePath:string = ""){
+    constructor(windowName: string = 'default window', windowFilePath: string = '') {
         this.x = 0;
         this.y = 0;
         this.rows = 1;
