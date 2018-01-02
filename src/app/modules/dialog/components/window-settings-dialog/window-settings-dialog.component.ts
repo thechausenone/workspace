@@ -11,14 +11,14 @@ import { Window } from '../../../../components/grid/objects/window.object';
   styleUrls: ['./window-settings-dialog.component.scss']
 })
 export class WindowSettingsDialogComponent {
-  private windowName: string;
+  private name: string;
   private filePath: string;
 
   constructor(private stateManagerService:StateManagerService,
     public dialogRef: MatDialogRef<WindowSettingsDialogComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any) { 
-      this.windowName = this.data.windowName;
-      this.filePath = this.data.filePath;
+      this.name = this.data.windowName;
+      this.filePath = this.data.windowFilePath;
   }
 
   closeDialog(): void {
@@ -26,8 +26,8 @@ export class WindowSettingsDialogComponent {
   }
   
   applyChanges(event){
-    this.data.windowName = this.windowName;
-    this.data.filePath = this.filePath;
+    this.data.windowName = this.name;
+    this.data.windowFilePath = this.filePath;
     this.dialogRef.close();
   }
 
