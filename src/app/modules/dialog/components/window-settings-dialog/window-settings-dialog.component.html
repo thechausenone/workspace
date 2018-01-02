@@ -1,0 +1,32 @@
+<div class = "dialog-header">
+  <mat-icon>
+      mode_edit
+  </mat-icon>
+</div>
+    
+<div class= "dialog-content">
+  <h1 mat-dialog-title>Edit Window Settings</h1>
+
+  <div mat-dialog-content>
+      <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="windowName">
+      </mat-form-field>
+      
+      <div class="form-flex-container">
+          <mat-form-field >
+              <input matInput placeholder="File Path" type="text" [(ngModel)]="filePath">   
+          </mat-form-field> 
+
+          <mat-icon class="search-button" (click)="imgFileInput.click()">
+            search
+          </mat-icon>
+
+          <input hidden type="file" #imgFileInput (change)="onChange($event)"/>
+      </div>
+  </div>
+
+  <div mat-dialog-actions>
+      <button mat-button (click)="closeDialog()">CANCEL</button>
+      <button mat-button (click)="applyChanges()" tabindex="2">OK</button>
+  </div>
+</div>
