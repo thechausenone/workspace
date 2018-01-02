@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material';
 import { BoardDialogComponent} from '../../modules/dialog/components/board-dialog/board-dialog.component';
 import { WindowDialogComponent } from '../../modules/dialog/components/window-dialog/window-dialog.component';
 import { BoardSettingsDialogComponent } from '../../modules/dialog/components/board-settings-dialog/board-settings-dialog.component';
+import { WindowSettingsDialogComponent } from '../../modules/dialog/components/window-settings-dialog/window-settings-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -93,6 +94,13 @@ export class NavbarComponent {
   OpenBoardSettingsDialog(){
     this.dialog.open(BoardSettingsDialogComponent, {
       width: this.dialogSize
+    });
+  }
+
+  OpenWindowSettingsDialog(window: Window){
+    this.dialog.open(WindowSettingsDialogComponent, {
+      width: this.dialogSize,
+      data: window
     });
   }
 

@@ -36,7 +36,7 @@
 
     <mat-list *ngFor="let window of windows" class="sidenav-windows-container">
       <p class = "mat-h4">{{window.windowName}}</p>
-      <mat-icon>settings</mat-icon>
+      <mat-icon (click)="OpenWindowSettingsDialog(window)">settings</mat-icon>
     </mat-list>
 
     <button mat-button class="sidenav-add-button" (click)="OpenCreateWindowDialog()">
