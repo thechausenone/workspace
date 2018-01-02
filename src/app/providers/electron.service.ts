@@ -26,8 +26,7 @@ export class ElectronService {
       this.childProcess = window.require('child_process');
     }
 
-    this.pathToBAT = __dirname + '\\assets\\scripts\\activate-board.bat';
-    this.pathToNircmd = __dirname + '\\assets\\scripts\\nircmd.exe';
+    this.SetFilePaths();
     this.screenHeight = screen.getPrimaryDisplay().size.height;
     this.screenWidth = screen.getPrimaryDisplay().size.width;
     this.maxCols = 4;
@@ -94,6 +93,20 @@ export class ElectronService {
       }
       console.log(stdout);
     });
+  }
+
+  private SetFilePaths(): void {
+    const pathEndingIn = 'app.asar';
+
+    if (__dirname.endsWith(pathEndingIn)) {
+      const newDirName = __dirname.substring(0, __dirname.length - pathEndingIn.length);
+      this.pathToBAT = newDirName + '\\assets\\scripts\\activate-board.bat';
+      this.pathToNircmd = newDirName + '\\assets\\scripts\\nircmd.exe';
+
+    }else {
+      this.pathToBAT = __dirname + '\\assets\\scripts\\activate-board.bat';
+      this.pathToNircmd = __dirname + '\\assets\\scripts\\nircmd.exe';
+    }
   }
 
 }
