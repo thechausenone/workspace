@@ -4,7 +4,6 @@ import {trigger, animate, style, group, animateChild, query, stagger, transition
 export const routerTransition = trigger('routerTransition', [
   SlideToLeft('login => signup'),
   SlideToRight('signup => login'),
-  SlideToRight('login => account'),
   SlideToLeft('account => login'),
   FadeInAndOut('main => *')
 ])
