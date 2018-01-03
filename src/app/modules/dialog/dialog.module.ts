@@ -4,13 +4,15 @@ import { BoardDialogComponent } from './components/board-dialog/board-dialog.com
 import { WindowDialogComponent } from './components/window-dialog/window-dialog.component';
 import { BoardSettingsDialogComponent } from './components/board-settings-dialog/board-settings-dialog.component';
 import { WindowSettingsDialogComponent } from './components/window-settings-dialog/window-settings-dialog.component';
+import { ExitDialogComponent } from './components/exit-dialog/exit-dialog.component';
 
 @NgModule({
   declarations: [
     BoardDialogComponent,
     WindowDialogComponent,
     BoardSettingsDialogComponent,
-    WindowSettingsDialogComponent
+    WindowSettingsDialogComponent,
+    ExitDialogComponent
   ],
   imports: [
     SharedModule
@@ -19,13 +21,15 @@ import { WindowSettingsDialogComponent } from './components/window-settings-dial
     BoardDialogComponent,
     WindowDialogComponent,
     BoardSettingsDialogComponent,
-    WindowSettingsDialogComponent
+    WindowSettingsDialogComponent,
+    ExitDialogComponent
   ],
   entryComponents: [
     BoardDialogComponent,
     WindowDialogComponent,
     BoardSettingsDialogComponent,
-    WindowSettingsDialogComponent
+    WindowSettingsDialogComponent,
+    ExitDialogComponent
   ],
 })
 export class DialogModule {}

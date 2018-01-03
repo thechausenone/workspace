@@ -1,0 +1,27 @@
+@import 'src/styles.scss';
+
+.dialog-header{
+    @include flex-display(column, center, center);
+    width:100%;
+    height:100px;
+    background-color: $red;
+
+    mat-icon{
+        @include mat-icon-resize(50px);
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+.content-wrapper {
+    padding:24px;
+
+    .dialog-text{
+        text-align: center;
+    }
+
+    .mat-dialog-actions{
+        @include flex-display(center, center, center);
+    }
+}
