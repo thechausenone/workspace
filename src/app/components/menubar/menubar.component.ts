@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BrowserWindow } from 'electron';
 import { StateManagerService } from '../../providers/state-manager.service';
 import { DatabaseService } from '../../providers/database.service';
+import { MatDialog } from '@angular/material';
+import { ExitDialogComponent } from '../../modules/dialog/components/exit-dialog/exit-dialog.component';
 @Component({
   selector: 'app-menubar',
   templateUrl: './menubar.component.html',
@@ -14,7 +16,7 @@ export class MenubarComponent {
   fullscreenIcon: string;
 
   constructor(private stateManagerService: StateManagerService,
-              private databaseService: DatabaseService) {
+              private databaseService: DatabaseService, private dialog: MatDialog) {
     this.electron = require('electron');
     this.window = this.electron.remote.getCurrentWindow();
     this.setIcon();
@@ -42,7 +44,10 @@ export class MenubarComponent {
   }
 
   closeWindow() {
-    this.window.close();
+    this.dialog.open(ExitDialogComponent, {
+      width: '500px',
+      data: this.window
+    });
   }
 
   setIcon() {
