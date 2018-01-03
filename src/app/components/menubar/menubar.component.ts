@@ -45,10 +45,9 @@ export class MenubarComponent {
 
   closeWindow() {
     this.dialog.open(ExitDialogComponent, {
-      width: '300px',
+      width: '500px',
       data: this.window
     });
-    //this.window.close();
   }
 
   setIcon() {

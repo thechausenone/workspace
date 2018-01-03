@@ -3,10 +3,17 @@
     error_outline
   </mat-icon>
 </div>
+
 <div class="content-wrapper">
-  <h3 mat-dialog-title>Are you sure you want to exit?</h3>
-  <div class="button-row">
-    <button mat-raised-button color="primary" (click)="cancelDialog()">Cancel</button>
-    <button mat-raised-button style="background-color:red; color: white;" (click)="quitApp()">Exit</button>
+  <div mat-dialog-content>
+    <h1 mat-dialog-title class = "dialog-text">
+      Any unsaved changes to your boards will be discarded.
+      Are you sure you want to continue?
+    </h1>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancelDialog()" tabindex = "-1">CANCEL</button>
+    <button mat-button (click)="quitApp()" tabindex = "-1">EXIT</button>
   </div>
 </div>
