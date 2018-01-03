@@ -54,13 +54,13 @@ export class LoginComponent {
 
     popupRef.afterDismissed().subscribe(() => {
       this._databaseService.ReadBoardsFromDatabase().subscribe(data => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/main');
       });
     });
   }
 
   private HandleLoginFailure(): void {
-    this.popupMessage.open('Login failed please try again.', null, {
+    this.popupMessage.open('Login failed. Please try again.', null, {
       duration: 1500
     });
   }
