@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Board } from '../../../../components/navbar/objects/board.object';
-import { StateManagerService } from "../../../../providers/state-manager.service";
-import { IconOptions } from "../icon-options";
+import { StateManagerService } from '../../../../providers/state-manager.service';
+import { IconOptions } from '../icon-options';
 import { Window } from '../../../../components/grid/objects/window.object';
 
 @Component({
@@ -14,7 +14,7 @@ export class WindowSettingsDialogComponent {
   private name: string;
   private filePath: string;
 
-  constructor(private stateManagerService:StateManagerService,
+  constructor(private stateManagerService: StateManagerService,
     public dialogRef: MatDialogRef<WindowSettingsDialogComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any) { 
       this.name = this.data.windowName;
@@ -25,13 +25,13 @@ export class WindowSettingsDialogComponent {
     this.dialogRef.close();
   }
   
-  applyChanges(event){
+  applyChanges(event) {
     this.data.windowName = this.name;
     this.data.windowFilePath = this.filePath;
     this.dialogRef.close();
   }
 
-  onChange(event){
+  onChange(event) {
     this.filePath = event.srcElement.files[0].path;
   }
   

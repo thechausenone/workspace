@@ -94,14 +94,14 @@ export class NavbarComponent {
       width: this.dialogSize
     });
   }
-  OpenWindowSettingsDialog(window: Window){
+  OpenWindowSettingsDialog(window: Window) {
     this.dialog.open(WindowSettingsDialogComponent, {
       width: this.dialogSize,
       data: window
     });
   }
 
-  OpenCreateWindowDialog(){
+  OpenCreateWindowDialog() {
     this.dialog.open(WindowDialogComponent, {
       width: this.dialogSize
     });
